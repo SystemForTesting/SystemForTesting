@@ -4,15 +4,16 @@
 <html>
 <head>
     <title>welcome</title>
-
+    <link rel="stylesheet" type="text/css" href="<c:url value="markItUp/markitup/skins/markitup/style.css"/>" />
+    <link rel="stylesheet" type="text/css" href="<c:url value="markItUp/markitup/sets/default/style.css"/>" />
 </head>
 <body>
 
-<textarea>
+<textarea id="markItUp"></textarea>
 
-</textarea>
-
-<script src="<c:url value="/webjars/jquery/1.11.1/jquery.min.js"/>"></script>
+<script src="<c:url value="/webjars/jquery/1.11.3/jquery.min.js"/>"></script>
 <script src="<c:url value="markItUp/markitup/jquery.markitup.js"/>"></script>
+<script src="<c:url value="markItUp/markitup/sets/default/set.js"/>"></script>
+<script src="<c:url value="/index.js"/>"></script>
 </body>
 </html>
