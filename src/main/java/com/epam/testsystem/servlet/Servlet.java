@@ -2,7 +2,7 @@ package com.epam.testsystem.servlet;
 
 import com.epam.testsystem.dao.Jpa;
 import com.epam.testsystem.dao.UserDao;
-import com.epam.testsystem.model.DBUser;
+import com.epam.testsystem.model.User;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -21,17 +21,15 @@ public class Servlet extends HttpServlet {
     UserDao userDao;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        DBUser user = new DBUser();
+        User user = new User();
 
-        user.setUsername("Hibernate101");
         userDao.insert(user);
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        DBUser user = new DBUser();
+        User user = new User();
 
-        user.setUsername("Hibernate101");
         userDao.insert(user);
     }
 }
