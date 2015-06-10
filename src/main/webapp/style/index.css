@@ -3,7 +3,7 @@
     padding: 10px;
     float: left;
 
-    width: 400px;
+    width: 500px;
 }
 
 .question{
@@ -27,7 +27,7 @@
 }
 
 .answer{
-    margin: 10px;
+    /*margin: 10px;*/
     float: left;
 }
 
@@ -43,4 +43,10 @@
 
 .clear{
     clear: both;
+}
+
+.row{
+    /*width: 100%;*/
+    margin: 0;
+    width: 500px;
 }
