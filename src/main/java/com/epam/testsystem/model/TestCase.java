@@ -6,14 +6,14 @@ import java.util.List;
 
 @Entity
 public class TestCase extends BaseEntity {
+    @Convert(converter = LocalDateTimePersistenceConverter.class)
     private LocalDateTime startedAt;
+    @Convert(converter = LocalDateTimePersistenceConverter.class)
+    private LocalDateTime dueDate;
 
     @ManyToOne
     private Test test;
 
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Answer> answers;
-
-    @ManyToOne
-    private User user;
 }

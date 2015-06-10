@@ -5,12 +5,11 @@ import java.util.List;
 
 @Entity
 public class Question extends BaseEntity {
-    private String text;
+    private String title;
     private Double weight;
-    // todo list of images, or just one image?
-    @Lob
-    @Column(nullable=false, columnDefinition="mediumblob")
-    private byte[] image;
+
+    @OneToMany
+    private List<Image> images;
     @OneToMany(mappedBy = "question")
     private List<Answer> answers;
 }
