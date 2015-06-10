@@ -10,9 +10,9 @@ public abstract class BaseEntity {
     private Long id;
     private boolean deleted;
 
-    @Convert(converter = LocalDateTimePersistenceConverter.class)
+//    @Convert(converter = LocalDateTimePersistenceConverter.class)
     private LocalDateTime createdAt;
-    @Convert(converter = LocalDateTimePersistenceConverter.class)
+//    @Convert(converter = LocalDateTimePersistenceConverter.class)
     private LocalDateTime updatedAt;
 
     public Long getId() {

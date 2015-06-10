@@ -3,7 +3,7 @@
     padding: 10px;
     float: left;
 
-    width: 300px;
+    width: 400px;
 }
 
 .question{
@@ -11,7 +11,36 @@
     float: left;
 }
 
+.question-text{
+    /*width: 100%;*/
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.add-ans-button{
+    float:right;
+}
+
+.del-ans-button{
+    float:left;
+}
+
 .answer{
     margin: 10px;
     float: left;
+}
+
+.answer .checkbox{
+    margin: 5px;
+    float: left;
+}
+
+.answer-field{
+    margin: 20px;
+    float: left;
+}
+
+.clear{
+    clear: both;
 }
