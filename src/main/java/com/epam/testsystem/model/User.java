@@ -12,11 +12,9 @@ public class User extends BaseEntity {
     private String firstName;
     private String lastName;
     private String email;
-    // todo change to onetoone and add permissions?
-    @OneToOne
+    @ManyToOne
     private Role role;
 
-    // todo remove? if not remove fetchtype?
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY)
     private List<TestCase> testCases;
 }
