@@ -1,11 +1,19 @@
 package com.epam.testsystem.model;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
 
+@Entity
 public class TestCase extends BaseEntity {
+    @Convert(converter = LocalDateTimePersistenceConverter.class)
     private LocalDateTime startedAt;
+    @Convert(converter = LocalDateTimePersistenceConverter.class)
+    private LocalDateTime dueDate;
+
+    @ManyToOne
     private Test test;
-    private Map<Question, List<Answer>> answers;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<Answer> answers;
 }
