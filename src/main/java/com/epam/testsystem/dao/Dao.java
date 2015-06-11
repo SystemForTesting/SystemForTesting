@@ -9,6 +9,6 @@ public interface Dao<T extends BaseEntity>{
     void update(T entity);
     void delete(T entity);
 
-    T findById(int id);
+    T findById(Long id);
     List<T> findAll();
 }

@@ -1,5 +1,7 @@
 package com.epam.testsystem.model;
 
+import com.epam.testsystem.util.LocalDateTimePersistenceConverter;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;

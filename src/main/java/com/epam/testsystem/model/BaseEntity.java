@@ -1,5 +1,6 @@
 package com.epam.testsystem.model;
 
+import com.epam.testsystem.util.LocalDateTimePersistenceConverter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -16,9 +17,9 @@ public abstract class BaseEntity {
     private Long id;
     private boolean deleted;
 
-//    @Convert(converter = LocalDateTimePersistenceConverter.class)
+    @Convert(converter = LocalDateTimePersistenceConverter.class)
     private LocalDateTime createdAt;
-//    @Convert(converter = LocalDateTimePersistenceConverter.class)
+    @Convert(converter = LocalDateTimePersistenceConverter.class)
     private LocalDateTime updatedAt;
 
     @PrePersist
