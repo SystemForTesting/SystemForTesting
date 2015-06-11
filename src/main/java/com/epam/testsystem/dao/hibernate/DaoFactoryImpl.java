@@ -37,10 +37,10 @@ public class DaoFactoryImpl extends DaoFactory {
             T instance = (T) constructor.newInstance(emf.createEntityManager());
             return instance;
         } catch (ClassNotFoundException e) {
-            throw new DaoException("There is no JdbcDao matching " + entityClassName, e);
+            throw new DaoException("There is no DaoImpl matching " + entityClassName, e);
         } catch (NoSuchMethodException e) {
             throw new DaoException("Dao class corresponding to " +
-                    entityClassName + " does not have constructor that accepts connection", e);
+                    entityClassName + " does not have constructor that accepts EntityManager", e);
         } catch (InvocationTargetException | InstantiationException | IllegalAccessException e) {
             throw new DaoException("Could not instantiate dao for " + entityClassName, e);
         }
