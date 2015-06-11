@@ -1,4 +1,4 @@
-package com.epam.testsystem.model;
+package com.epam.testsystem.util;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

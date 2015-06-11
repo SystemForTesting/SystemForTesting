@@ -4,7 +4,7 @@ import com.epam.testsystem.model.User;
 import org.apache.struts.action.ActionForm;
 
 public class UserForm extends ActionForm {
-    private User user;
+    private User user = new User();
 
     public User getUser() {
         return user;
