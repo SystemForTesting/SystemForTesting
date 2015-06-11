@@ -6,15 +6,19 @@ import com.epam.testsystem.form.UserForm;
 import com.epam.testsystem.model.User;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 
 
 public class LoginAction extends BaseAction<UserForm> {
+    private static final Logger LOG= LoggerFactory.getLogger(LoginAction.class);
     @Override
     protected ActionForward onPost(ActionMapping mapping, UserForm form, HttpServletRequest request) {
         User loginPassword = form.getUser();
         User user = getUserDao().findByCredentials(loginPassword);
+        LOG.debug("User has been found {}", user.getFirstName());
         return mapping.findForward("success");
     }
 
