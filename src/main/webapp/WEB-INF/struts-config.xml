@@ -13,17 +13,31 @@
 
 	<action-mappings>
         <action path="/login"
-                type="com.epam.testsystem.action.LoginAction"
+                type="org.springframework.web.struts.DelegatingActionProxy"
                 name="userForm"
                 scope="request">
             <forward name="success" path="/WEB-INF/pages/main/login-form.jsp" />
+            <forward name="redirect" redirect="true" path="/welcome.do" />
+        </action>
+        <action path="/welcome"
+            type="org.springframework.web.struts.DelegatingActionProxy">
+            <forward name="success" path="/welcome.jsp" />
         </action>
 	</action-mappings>
 
+    <controller>
+        <set-property property="processorClass" value="org.springframework.web.struts.AutowiringTilesRequestProcessor" />
+    </controller>
     <message-resources parameter="properties.messages" />
     <plug-in className="org.apache.struts.tiles.TilesPlugin" >
         <set-property property="definitions-config"
                       value="/WEB-INF/tiles-defs.xml"/>
+    </plug-in>
+
+
+    <plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
+        <set-property property="contextConfigLocation"
+        value="/WEB-INF/action-servlet.xml"/>
     </plug-in>
 
 </struts-config>

@@ -1,13 +1,17 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 
-<html:form action="/login">
+<form role="form" action="<c:url value='/j_spring_security_check'/>" method="post">>
     <div class="text-center">
-        <html:text property="user.username" />
-        <html:text property="user.password" />
+        <input type="text" name="username" />
+        <input type="password" name="password" />
+        <input type="hidden"
+               name="${_csrf.parameterName}"
+               value="${_csrf.token}"/>
         <html:submit>
             <bean:message key="body.login.button" />
         </html:submit>
     </div>
-</html:form>
+</form>

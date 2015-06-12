@@ -18,8 +18,12 @@ public class LoginAction extends BaseAction<UserForm> {
     protected ActionForward onPost(ActionMapping mapping, UserForm form, HttpServletRequest request) {
         User loginPassword = form.getUser();
         User user = getUserDao().findByCredentials(loginPassword);
-        LOG.debug("User has been found {}", user.getFirstName());
-        return mapping.findForward("success");
+        request.setAttribute("role", user.getRoleName());
+        if (user != null) {
+            return mapping.findForward("redirect");
+        } else {
+            return mapping.findForward("success");
+        }
     }
 
     @Override
