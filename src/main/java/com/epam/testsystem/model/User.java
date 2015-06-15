@@ -72,4 +72,8 @@ public class User extends BaseEntity {
     public void setTestCases(List<TestCase> testCases) {
         this.testCases = testCases;
     }
+
+    public String getRoleName() {
+        return this.getRole().getName();
+    }
 }
