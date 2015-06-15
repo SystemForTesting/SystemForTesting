@@ -4,17 +4,20 @@ import com.epam.testsystem.dao.UserDao;
 import com.epam.testsystem.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-public class UserDaoImpl extends AbstractDao<User> implements UserDao {
+@Component
+public class UserDaoImpl implements UserDao {
     private static final Logger LOG= LoggerFactory.getLogger(UserDaoImpl.class);
 
-    public UserDaoImpl(EntityManager em) {
-        super(em);
-    }
+    @PersistenceContext
+    private EntityManager em;
 
     @Override
     public User findByCredentials(User user) {
