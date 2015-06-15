@@ -7,17 +7,12 @@
 
 
 	<form-beans>
-        <form-bean name="userForm"
-                   type="com.epam.testsystem.form.UserForm" />
 	</form-beans>
 
 	<action-mappings>
         <action path="/login"
-                type="org.springframework.web.struts.DelegatingActionProxy"
-                name="userForm"
-                scope="request">
+                type="org.springframework.web.struts.DelegatingActionProxy">
             <forward name="success" path="/WEB-INF/pages/main/login-form.jsp" />
-            <forward name="redirect" redirect="true" path="/welcome.do" />
         </action>
         <action path="/welcome"
             type="org.springframework.web.struts.DelegatingActionProxy">
@@ -37,7 +32,7 @@
 
     <plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
         <set-property property="contextConfigLocation"
-        value="/WEB-INF/action-servlet.xml"/>
+        value="/WEB-INF/spring-context.xml"/>
     </plug-in>
 
 </struts-config>

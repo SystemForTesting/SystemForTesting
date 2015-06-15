@@ -3,7 +3,6 @@ package com.epam.testsystem.dao.hibernate;
 import com.epam.testsystem.dao.Dao;
 import com.epam.testsystem.dao.DaoException;
 import com.epam.testsystem.dao.DaoFactory;
-import com.epam.testsystem.dao.UserDao;
 import com.epam.testsystem.model.BaseEntity;
 
 import javax.persistence.EntityManager;

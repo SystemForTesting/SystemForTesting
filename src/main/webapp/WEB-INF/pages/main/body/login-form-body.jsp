@@ -3,7 +3,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 
-<form role="form" action="<c:url value='/j_spring_security_check'/>" method="post">>
+<form role="form" action="<c:url value='/login'/>" method="post">>
     <div class="text-center">
         <input type="text" name="username" />
         <input type="password" name="password" />
