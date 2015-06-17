@@ -6,10 +6,6 @@ public class SecurityWebApplicationInitializer
         extends AbstractSecurityWebApplicationInitializer {
 
     public SecurityWebApplicationInitializer() {
-        super(
-//                ActionConfig.class,
-//                PersistenceConfig.class,
-                SecurityConfig.class
-        );
+        super(SpringAppConfig.class);
     }
 }

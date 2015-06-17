@@ -39,9 +39,4 @@
         <servlet-name>action</servlet-name>
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
-
-    <persistence-unit-ref>
-        <persistence-unit-ref-name>persistence/primary</persistence-unit-ref-name>
-        <persistence-unit-name>primary</persistence-unit-name>
-    </persistence-unit-ref>
 </web-app>
