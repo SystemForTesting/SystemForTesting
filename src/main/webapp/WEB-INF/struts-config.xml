@@ -4,8 +4,6 @@
 "http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
 
 <struts-config>
-
-
 	<form-beans>
 	</form-beans>
 
@@ -20,19 +18,10 @@
         </action>
 	</action-mappings>
 
-    <controller>
-        <set-property property="processorClass" value="org.springframework.web.struts.AutowiringTilesRequestProcessor" />
-    </controller>
     <message-resources parameter="properties.messages" />
+
     <plug-in className="org.apache.struts.tiles.TilesPlugin" >
         <set-property property="definitions-config"
                       value="/WEB-INF/tiles-defs.xml"/>
     </plug-in>
-
-
-    <plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
-        <set-property property="contextConfigLocation"
-        value="/WEB-INF/spring-context.xml"/>
-    </plug-in>
-
 </struts-config>
