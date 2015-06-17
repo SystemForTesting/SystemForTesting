@@ -4,7 +4,9 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "DBUSER")
+@Table(name = "DBUSER"
+//        uniqueConstraints = @UniqueConstraint(columnNames="USERNAME")
+)
 public class User extends BaseEntity {
     private String username;
     private String password;
