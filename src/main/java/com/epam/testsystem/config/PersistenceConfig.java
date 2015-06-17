@@ -1,20 +1,15 @@
 package com.epam.testsystem.config;
 
-import org.hibernate.SessionFactory;
-import org.hibernate.jpa.HibernatePersistenceProvider;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver;
+import org.springframework.jndi.JndiTemplate;
 import org.springframework.orm.hibernate4.HibernateExceptionTranslator;
-import org.springframework.orm.hibernate4.HibernateTransactionManager;
-import org.springframework.orm.jpa.JpaTransactionManager;
-import org.springframework.orm.jpa.JpaVendorAdapter;
-import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.jta.JtaTransactionManager;
 
+import javax.naming.NamingException;
 import javax.persistence.EntityManagerFactory;
 
 @Configuration
@@ -24,6 +19,13 @@ public class PersistenceConfig {
     @Bean
     public HibernateExceptionTranslator hibernateExceptionTranslator(){
         return new HibernateExceptionTranslator();
+    }
+
+    @Bean
+    public EntityManagerFactory entityManagerFactory() throws NamingException {
+        JndiTemplate jndi = new JndiTemplate();
+        EntityManagerFactory emf = (EntityManagerFactory) jndi.lookup("java:/emf");
+        return emf;
     }
 
 //    @Bean
@@ -36,9 +38,8 @@ public class PersistenceConfig {
 //        return em;
 //    }
 //
-//    @Bean
-//    public PlatformTransactionManager platformTransactionManager(){
-//        JtaTransactionManager jtaTransactionManager = new JtaTransactionManager();
-//        return jtaTransactionManager;
-//    }
+    @Bean
+    public PlatformTransactionManager platformTransactionManager(){
+        return new JtaTransactionManager();
+    }
 }
