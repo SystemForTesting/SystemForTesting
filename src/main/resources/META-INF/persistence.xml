@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
     <persistence-unit name="primary">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <jta-data-source>java:jboss/datasources/testsystem</jta-data-source>
         <class>com.epam.testsystem.model.Answer</class>
         <class>com.epam.testsystem.model.Image</class>
@@ -10,9 +11,9 @@
         <class>com.epam.testsystem.model.TestCase</class>
         <class>com.epam.testsystem.model.User</class>
         <properties>
-            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <!--<property name="hibernate.hbm2ddl.auto" value="create"/>-->
             <property name="hibernate.show_sql" value="true"/>
-            <property name="hibernate.hbm2ddl.import_files" value="META-INF/db/initial_data.sql" />
+            <!--<property name="hibernate.hbm2ddl.import_files" value="META-INF/db/initial_data.sql" />-->
         </properties>
     </persistence-unit>
 </persistence>
