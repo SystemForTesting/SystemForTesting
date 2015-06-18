@@ -3,7 +3,7 @@
 "http://struts.apache.org/dtds/tiles-config_1_3.dtd">
 <tiles-definitions>
 
-	<definition name="main-template" template="/WEB-INF/pages/tiles/layout.jsp">
+	<definition name="common-template" template="/WEB-INF/pages/tiles/layout.jsp">
 		<put name="header" value="/WEB-INF/pages/tiles/header.jsp" />
 		<put name="footer" value="/WEB-INF/pages/tiles/footer.jsp" />
 	</definition>
