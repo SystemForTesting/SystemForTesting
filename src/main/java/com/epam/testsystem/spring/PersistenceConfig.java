@@ -28,16 +28,6 @@ public class PersistenceConfig {
         return emf;
     }
 
-//    @Bean
-//    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-//        LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-////        JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-////        em.setJpaVendorAdapter(vendorAdapter);
-////        em.setPersistenceProvider(new HibernatePersistenceProvider());
-//        em.setPersistenceUnitName("primary");
-//        return em;
-//    }
-//
     @Bean
     public PlatformTransactionManager platformTransactionManager(){
         return new JtaTransactionManager();

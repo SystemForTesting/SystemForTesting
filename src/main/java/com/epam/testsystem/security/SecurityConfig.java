@@ -11,6 +11,8 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
@@ -22,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
     @Override
@@ -37,20 +39,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                     .antMatchers("/login", "/login.do").anonymous()
-                .antMatchers("/admin", "/admin**").hasRole("ADMIN")
-                .anyRequest().authenticated()
-                .and()
+                    .antMatchers("/admin", "/admin**", "/welcome.do").hasRole("ADMIN")
+                    .anyRequest().authenticated()
+                    .and()
                 .formLogin()
                     .loginPage("/login.do")
                     .loginProcessingUrl("/login")
-                    .failureUrl("/login?error=1")
+                    .defaultSuccessUrl("/")
+                    .failureUrl("/login.do?error=1")
                     .and()
-                .csrf();
+                .exceptionHandling()
+                    .accessDeniedPage("/WEB-INF/pages/common/403.jsp");
     }
 
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }

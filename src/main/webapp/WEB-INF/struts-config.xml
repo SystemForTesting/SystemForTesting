@@ -10,7 +10,7 @@
 	<action-mappings>
         <action path="/login"
                 type="org.springframework.web.struts.DelegatingActionProxy">
-            <forward name="success" path="/WEB-INF/pages/main/login-form.jsp" />
+            <forward name="success" path="/WEB-INF/pages/common/login.jsp" />
         </action>
         <action path="/welcome"
             type="org.springframework.web.struts.DelegatingActionProxy">
