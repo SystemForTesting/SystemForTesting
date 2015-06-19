@@ -39,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                     .antMatchers("/login", "/login.do").anonymous()
-                    .antMatchers("/admin", "/admin**", "/welcome.do").hasRole("ADMIN")
+                    .antMatchers("/admin", "/admin/**").hasRole("ADMIN")
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()

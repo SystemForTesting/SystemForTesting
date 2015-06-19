@@ -16,9 +16,6 @@ public class User extends BaseEntity {
     @ManyToOne
     private Role role;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<TestCase> testCases;
-
     public String getUsername() {
         return username;
     }
@@ -65,14 +62,6 @@ public class User extends BaseEntity {
 
     public void setRole(Role role) {
         this.role = role;
-    }
-
-    public List<TestCase> getTestCases() {
-        return testCases;
-    }
-
-    public void setTestCases(List<TestCase> testCases) {
-        this.testCases = testCases;
     }
 
     public String getRoleName() {
