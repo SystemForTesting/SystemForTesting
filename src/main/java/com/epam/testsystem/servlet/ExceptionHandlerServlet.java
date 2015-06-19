@@ -1,4 +1,4 @@
-package com.epam.testsystem.action;
+package com.epam.testsystem.servlet;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

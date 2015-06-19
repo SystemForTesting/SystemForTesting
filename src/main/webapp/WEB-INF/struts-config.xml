@@ -5,6 +5,8 @@
 
 <struts-config>
 	<form-beans>
+        <form-bean name="testForm"
+                   type="com.epam.testsystem.form.TestForm"/>
 	</form-beans>
 
 	<action-mappings>
@@ -12,9 +14,12 @@
                 type="org.springframework.web.struts.DelegatingActionProxy">
             <forward name="success" path="/WEB-INF/pages/common/login.jsp" />
         </action>
-        <action path="/welcome"
-            type="org.springframework.web.struts.DelegatingActionProxy">
-            <forward name="success" path="/welcome.jsp" />
+        <action path="/admin/testAddEdit"
+                type="org.springframework.web.struts.DelegatingActionProxy"
+                name="testForm"
+                scope="request">
+            <forward name="success" path="/WEB-INF/pages/admin/test-add-edit.jsp" />
+            <forward name="redirect" redirect="true" path="/admin/testView.do" />
         </action>
 	</action-mappings>
 

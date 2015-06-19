@@ -29,7 +29,7 @@ public class PersistenceConfig {
     }
 
     @Bean
-    public PlatformTransactionManager platformTransactionManager(){
+    public PlatformTransactionManager transactionManager(){
         return new JtaTransactionManager();
     }
 }

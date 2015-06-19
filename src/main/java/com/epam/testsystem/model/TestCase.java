@@ -16,6 +16,9 @@ public class TestCase extends BaseEntity {
     @ManyToOne
     private Test test;
 
+    @ManyToOne
+    private User user;
+
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Answer> answers;
 }

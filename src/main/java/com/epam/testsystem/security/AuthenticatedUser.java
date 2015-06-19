@@ -9,8 +9,8 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-public class SecurityUser extends User implements UserDetails {
-    public SecurityUser(User user) {
+public class AuthenticatedUser extends User implements UserDetails {
+    public AuthenticatedUser(User user) {
         if(user != null) {
             this.setId(user.getId());
             this.setDeleted(user.isDeleted());
@@ -22,7 +22,6 @@ public class SecurityUser extends User implements UserDetails {
             this.setLastName(user.getLastName());
             this.setPassword(user.getPassword());
             this.setRole(user.getRole());
-            this.setTestCases(user.getTestCases());
         }
     }
     @Override
