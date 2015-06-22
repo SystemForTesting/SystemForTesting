@@ -4,7 +4,6 @@ import com.epam.testsystem.form.TestForm;
 import com.epam.testsystem.model.Test;
 import com.epam.testsystem.model.User;
 import com.epam.testsystem.repository.TestRepository;
-import com.epam.testsystem.util.SecurityUtils;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionRedirect;
@@ -22,10 +21,15 @@ public class TestAddEditAction extends BaseAction<TestForm> {
     TestRepository testRepository;
 
     @Override
-    protected ActionForward onPost(ActionMapping mapping, TestForm form, HttpServletRequest request) {
+    protected ActionForward onPost(ActionMapping mapping, TestForm form) {
         Test test = form.getTest();
         User user = getCurrentlyAuthenticatedUser();
-        test.setCreator(user);
+        // todo problem: id input field can be modified by javacript
+        if(test.getId() == null || test.getId().equals(0L)) {
+            test.setCreatedBy(user);
+        } else {
+            test.setUpdatedBy(user);
+        }
         Test saved = testRepository.save(test);
 
         ActionRedirect redirect = new ActionRedirect(mapping.findForward("redirect"));

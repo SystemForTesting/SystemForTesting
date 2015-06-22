@@ -12,7 +12,7 @@
         <bean:message key="test.title" />
     </div>
     <div class="col-sm-10">
-        <html:text property="test.title" style="width: 100%" />
+        <html:text property="title" style="width: 100%" />
     </div>
     <div class="clearfix"></div>
     <br />
@@ -21,7 +21,7 @@
         <bean:message key="test.pass.mark" />
     </div>
     <div class="col-sm-10">
-        <html:text property="test.passMark" style="width: 100%" />
+        <html:text property="passMark" style="width: 100%" />
     </div>
     <div class="clearfix"></div>
     <br />
@@ -35,7 +35,7 @@
     <div class="clearfix"></div>
     <br />
     <div class="text-center">
-        <html:text property="id" styleClass="hidden" />
+        <html:text property="id" readonly="true" styleClass="hidden" />
         <input type="hidden"
                name="${_csrf.parameterName}"
                value="${_csrf.token}"/>
