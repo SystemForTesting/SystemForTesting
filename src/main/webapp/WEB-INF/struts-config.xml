@@ -1,31 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE struts-config PUBLIC 
-"-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" 
-"http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+<!DOCTYPE struts-config PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+        "http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
 
 <struts-config>
-	<form-beans>
-        <form-bean name="testForm"
-                   type="com.epam.testsystem.form.TestForm"/>
-	</form-beans>
+    <form-beans>
+        <form-bean name="testForm" type="com.epam.testsystem.form.TestForm"/>
+        <form-bean name="testListForm" type="com.epam.testsystem.form.TestListForm"/>
+    </form-beans>
 
-	<action-mappings>
+    <action-mappings>
         <action path="/login"
                 type="org.springframework.web.struts.DelegatingActionProxy">
-            <forward name="success" path="/WEB-INF/pages/common/login.jsp" />
+            <forward name="success" path="/WEB-INF/pages/common/login.jsp"/>
         </action>
         <action path="/admin/testAddEdit"
                 type="org.springframework.web.struts.DelegatingActionProxy"
                 name="testForm"
                 scope="request">
-            <forward name="success" path="/WEB-INF/pages/admin/test-add-edit.jsp" />
-            <forward name="redirect" redirect="true" path="/admin/testView.do" />
+            <forward name="success" path="/WEB-INF/pages/admin/test-add-edit.jsp"/>
+            <forward name="redirect" redirect="true" path="/admin/testView.do"/><!--TODO-->
         </action>
-	</action-mappings>
+        <action path="/admin/testList"
+                type="org.springframework.web.struts.DelegatingActionProxy"
+                name="testListForm"
+                scope="request">
+            <forward name="success" path="/WEB-INF/pages/admin/test-list.jsp"/>
+        </action>
+    </action-mappings>
 
-    <message-resources parameter="properties.messages" />
+    <message-resources parameter="properties.messages"/>
 
-    <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+    <plug-in className="org.apache.struts.tiles.TilesPlugin">
         <set-property property="definitions-config"
                       value="/WEB-INF/tiles-defs.xml"/>
     </plug-in>

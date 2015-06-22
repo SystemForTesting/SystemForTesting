@@ -9,9 +9,13 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.util.Collection;
 
 @Configuration
 @EnableWebSecurity
@@ -34,18 +38,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/login", "/login.do").anonymous()
-                    .antMatchers("/admin", "/admin/**").hasRole("ADMIN")
-                    .anyRequest().authenticated()
-                    .and()
+                .antMatchers("/login", "/login.do").anonymous()
+                .antMatchers("/admin", "/admin/**").hasRole("ADMIN")
+                .anyRequest().authenticated()
+                .and()
                 .formLogin()
-                    .loginPage("/login.do")
-                    .loginProcessingUrl("/login")
-                    .defaultSuccessUrl("/")
-                    .failureUrl("/login.do?error=1")
-                    .and()
+                .loginPage("/login.do")
+                .loginProcessingUrl("/login")
+                .successHandler((request, response, authentication) -> {
+                    Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+                    String contextPath = request.getContextPath();
+                    if (authorities.contains(new SimpleGrantedAuthority("ROLE_ADMIN")))
+                        response.sendRedirect(contextPath + "/admin/testList.do");
+                    else response.sendRedirect(contextPath + "/");
+                })
+                .failureUrl("/login.do?error=1")
+                .and()
                 .exceptionHandling()
-                    .accessDeniedPage("/WEB-INF/pages/common/403.jsp");
+                .accessDeniedPage("/WEB-INF/pages/common/403.jsp");
     }
 
     @Bean

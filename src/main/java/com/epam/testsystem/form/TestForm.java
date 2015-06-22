@@ -4,6 +4,8 @@ import com.epam.testsystem.model.Test;
 import org.apache.struts.action.ActionForm;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TestForm extends ActionForm {
     private Long id;

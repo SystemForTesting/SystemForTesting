@@ -8,7 +8,9 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="markItUp/markitup/sets/default/style.css"/>"/>
     <link rel="stylesheet" type="text/css"
           href="<c:url value="style/bootstrap-material-design/dist/css/material-fullpalette.css"/>"/>
+    <link rel="stylesheet" type="text/css"
           href="<c:url value="style/bootstrap-material-design/dist/css/material.css"/>"/>
+    <link rel="stylesheet" type="text/css"
           href="<c:url value="style/bootstrap-material-design/dist/css/ripples.css"/>"/>
     <link rel="stylesheet" type="text/css" href="<c:url value="style/index.css"/>"/>
 </head>
