@@ -15,13 +15,12 @@ public abstract class BaseAction<T> extends Action {
         if (method.equals("GET")) {
             return onGet(mapping, (T) form);
         } else if (method.equals("POST")) {
-            return onPost(mapping, (T) form, request);
-        } else {
-            throw new ActionException("Methods other then GET and POST are not supported");
+            return onPost(mapping, (T) form);
         }
+        return null;
     }
 
-    protected abstract ActionForward onPost(ActionMapping mapping, T form, HttpServletRequest request);
+    protected abstract ActionForward onPost(ActionMapping mapping, T form);
 
     protected abstract ActionForward onGet(ActionMapping mapping, T form);
 }

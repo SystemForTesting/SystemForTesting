@@ -1,9 +1,8 @@
 package com.epam.testsystem.model;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import com.epam.testsystem.util.DurationToStringConverter;
+
+import javax.persistence.*;
 import java.time.Duration;
 import java.util.List;
 
@@ -11,9 +10,16 @@ import java.util.List;
 public class Test extends BaseEntity {
     private String title;
     private Double passMark;
+
+    @Convert(converter = DurationToStringConverter.class)
     private Duration duration;
+
     @ManyToOne
-    private User creator;
+    private User createdBy;
+
+    @ManyToOne
+    private User updatedBy;
+
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Question> questions;
 
@@ -41,12 +47,12 @@ public class Test extends BaseEntity {
         this.duration = duration;
     }
 
-    public User getCreator() {
-        return creator;
+    public User getCreatedBy() {
+        return createdBy;
     }
 
-    public void setCreator(User creator) {
-        this.creator = creator;
+    public void setCreatedBy(User creator) {
+        this.createdBy = creator;
     }
 
     public List<Question> getQuestions() {
@@ -55,5 +61,13 @@ public class Test extends BaseEntity {
 
     public void setQuestions(List<Question> questions) {
         this.questions = questions;
+    }
+
+    public User getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(User updatedBy) {
+        this.updatedBy = updatedBy;
     }
 }
