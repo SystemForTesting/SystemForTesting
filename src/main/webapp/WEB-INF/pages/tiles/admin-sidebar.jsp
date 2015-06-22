@@ -5,8 +5,7 @@
 <h4><bean:message key="admin.sidebar.navigation.test" /></h4>
 <ul class="nav nav-pills nav-stacked">
     <li>
-        <%--<html:link action="/testList">--%>
-        <html:link action="/admin/testView">
+        <html:link action="/admin/testList">
             <bean:message key="admin.sidebar.navigation.test.list" />
         </html:link>
     </li>
