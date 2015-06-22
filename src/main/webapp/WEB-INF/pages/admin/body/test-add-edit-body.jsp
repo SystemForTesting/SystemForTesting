@@ -2,11 +2,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<div class="text-center text-danger">
-    <c:if test="${not empty param.error}">
-        <bean:message key="error.wrong.username.password" />
-    </c:if>
-</div>
+
 <html:form action="/admin/testAddEdit">
     <div class="col-sm-2">
         <bean:message key="test.title" />

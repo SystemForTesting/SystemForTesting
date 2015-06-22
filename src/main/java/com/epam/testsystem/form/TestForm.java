@@ -6,33 +6,60 @@ import org.apache.struts.action.ActionForm;
 import java.time.Duration;
 
 public class TestForm extends ActionForm {
-    private Test test = new Test();
+    private Long id;
+    private String title;
+    private Double passMark;
+    private Duration duration;
 
     public Long getId() {
-        return test.getId();
+        return id;
     }
 
     public void setId(Long id) {
-        test.setId(id);
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Double getPassMark() {
+        return passMark;
+    }
+
+    public void setPassMark(Double passMark) {
+        this.passMark = passMark;
     }
 
     public Long getDuration() {
-        if (test.getDuration() == null){
+        if (duration == null){
             return null;
         } else {
-            return test.getDuration().toMinutes();
+            return duration.toMinutes();
         }
     }
 
     public void setDuration(Long duration) {
-        test.setDuration(Duration.ofMinutes(duration));
+        this.duration = Duration.ofMinutes(duration);
     }
 
-    public Test getTest() {
-        return test;
+    public void map(Test test) {
+        if (test == null)
+            return;
+
+        this.id = test.getId();
+        this.title = test.getTitle();
+        this.passMark = test.getPassMark();
+        this.duration = test.getDuration();
     }
 
-    public void setTest(Test test) {
-        this.test = test;
+    public void updateTest(Test test) {
+        test.setTitle(title);
+        test.setPassMark(passMark);
+        test.setDuration(duration);
     }
 }
