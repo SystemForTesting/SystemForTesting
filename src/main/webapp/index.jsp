@@ -17,30 +17,39 @@
 </head>
 <body>
 
-<textarea id="markItUp"></textarea>
-
-<form class="question-form">
-    <div>
-        <textarea class="form-control" rows="3"></textarea>
-    </div>
-    <div class="answers">
-        <div class="answer">
-            <div class="col-lg-10">
-                <div class="input-group">
+<%--<textarea id="markItUp"></textarea>--%>
+<div class="main-quest-panel">
+    <div class="questions">
+        <form class="question-form">
+            <div>
+                <textarea class="form-control" rows="3"></textarea>
+            </div>
+            <div class="answers">
+                <div class="answer">
+                    <div class="col-lg-10">
+                        <div class="input-group">
                         <span class="input-group-addon">
                              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                         </span>
-                    <input type="text" class="form-control" aria-label="...">
+                            <textarea class="form-control" rows="3"></textarea>
+                            <%--<input type="text" class="form-control" aria-label="...">--%>
                         <span class="input-group-addon">
                             <input type="checkbox" aria-label="...">
                         </span>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+            <div class="clear"></div>
+            <a onclick="addAnswer(this)" href="javascript:void(0)" class="btn btn-primary btn-raised add-ans-button">Add answer</a>
+        </form>
     </div>
-    <div class="clear"></div>
-    <a href="javascript:void(0)" class="btn btn-primary btn-raised add-ans-button">Add answer</a>
-</form>
+    <div class="text-center">
+        <a href="javascript:void(0)" class="btn btn-primary btn-raised add-qwest-button">Add question</a>
+    </div>
+</div>
+
+
 
 <script src="<c:url value="/webjars/jquery/2.1.4/jquery.min.js"/>"></script>
 <script src="<c:url value="markItUp/markitup/jquery.markitup.js"/>"></script>

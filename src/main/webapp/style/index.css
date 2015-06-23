@@ -6,6 +6,14 @@
     width: 500px;
 }
 
+.main-quest-panel{
+    width: 500px;
+}
+
+.questions{
+    width: 500px;
+}
+
 .question{
     margin: 10px;
     float: left;
@@ -22,6 +30,10 @@
     float:right;
 }
 
+.add-quest-button{
+    margin: auto;
+}
+
 .del-ans-button{
     float:left;
 }
@@ -29,6 +41,7 @@
 .answer{
     /*margin: 10px;*/
     float: left;
+    width: 595px;
 }
 
 .answer .checkbox{
