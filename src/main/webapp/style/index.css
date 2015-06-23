@@ -3,7 +3,15 @@
     padding: 10px;
     float: left;
 
-    width: 400px;
+    width: 500px;
+}
+
+.main-quest-panel{
+    width: 500px;
+}
+
+.questions{
+    width: 500px;
 }
 
 .question{
@@ -22,13 +30,18 @@
     float:right;
 }
 
+.add-quest-button{
+    margin: auto;
+}
+
 .del-ans-button{
     float:left;
 }
 
 .answer{
-    margin: 10px;
+    /*margin: 10px;*/
     float: left;
+    width: 595px;
 }
 
 .answer .checkbox{
@@ -43,4 +56,10 @@
 
 .clear{
     clear: both;
+}
+
+.row{
+    /*width: 100%;*/
+    margin: 0;
+    width: 500px;
 }
