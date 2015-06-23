@@ -11,11 +11,11 @@
     <div class="text-center">
         <input type="text" name="username" />
         <input type="password" name="password" />
-        <input type="hidden"
+        <input class="hidden" type="hidden"
                name="${_csrf.parameterName}"
                value="${_csrf.token}"/>
         <html:submit>
-            <bean:message key="body.login.button" />
+            <bean:message key="button.login" />
         </html:submit>
     </div>
 </form>

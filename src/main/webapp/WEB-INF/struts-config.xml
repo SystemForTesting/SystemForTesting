@@ -21,6 +21,13 @@
             <forward name="success" path="/WEB-INF/pages/admin/test-add-edit.jsp"/>
             <forward name="redirect" redirect="true" path="/admin/testView.do"/><!--TODO-->
         </action>
+        <action path="/admin/testView"
+                type="org.springframework.web.struts.DelegatingActionProxy"
+                name="testForm"
+                scope="request">
+            <forward name="success" path="/WEB-INF/pages/admin/test-view.jsp"/>
+            <forward name="redirect" redirect="true" path="/admin/testList.do"/><!--TODO-->
+        </action>
         <action path="/admin/testList"
                 type="org.springframework.web.struts.DelegatingActionProxy"
                 name="testListForm"
