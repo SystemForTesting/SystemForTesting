@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 
 @MappedSuperclass
 public abstract class BaseEntity {
-    // todo chack that each table starts from 1
     @Id
     @GenericGenerator(name = "sequence", strategy = "sequence", parameters = {
             @org.hibernate.annotations.Parameter(name = "sequenceName", value = "sequence"),
