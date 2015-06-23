@@ -12,7 +12,7 @@
     <%--href="<c:url value="style/bootstrap-material-design/dist/css/material.css"/>"/>--%>
     <%--<link rel="stylesheet" type="text/css"--%>
     <%--href="<c:url value="style/bootstrap-material-design/dist/css/ripples.css"/>"/>--%>
-    <link rel="stylesheet" type="text/css" href="<c:url value="webjars/bootstrap/3.3.4/css/bootstrap.css"/>"/>
+    <link rel="stylesheet" type="text/css" href="<c:url value="webjars/bootstrap/3.3.5/css/bootstrap.css"/>"/>
     <link rel="stylesheet" type="text/css" href="<c:url value="style/index.css"/>"/>
 </head>
 <body>
@@ -48,6 +48,6 @@
 <script src="<c:url value="/js/index.js"/>"></script>
 <%--<script src="<c:url value="/style/bootstrap-material-design/dist/js/material.js"/>"></script>--%>
 <%--<script src="<c:url value="/style/bootstrap-material-design/dist/js/ripples.js"/>"></script>--%>
-<script src="<c:url value="/webjars/bootstrap/3.3.4/js/bootstrap.js"/>"></script>
+<script src="<c:url value="/webjars/bootstrap/3.3.5/js/bootstrap.js"/>"></script>
 </body>
 </html>
