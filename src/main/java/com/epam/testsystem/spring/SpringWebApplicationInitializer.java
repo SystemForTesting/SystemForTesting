@@ -1,5 +1,6 @@
 package com.epam.testsystem.spring;
 
+import com.epam.testsystem.filter.LocaleFilter;
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
@@ -20,5 +21,9 @@ public class SpringWebApplicationInitializer
         characterEncodingFilter.setInitParameter("encoding", "UTF-8");
         characterEncodingFilter.setInitParameter("forceEncoding", "true");
         characterEncodingFilter.addMappingForUrlPatterns(null, false, "/*");
+
+        FilterRegistration.Dynamic localeFilter = servletContext.
+                addFilter("localeFilter", new LocaleFilter());
+        localeFilter.addMappingForUrlPatterns(null, false, "*.do");
     }
 }
