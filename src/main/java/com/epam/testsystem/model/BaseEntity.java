@@ -16,6 +16,7 @@ public abstract class BaseEntity {
     })
     @GeneratedValue(generator = "sequence", strategy=GenerationType.SEQUENCE)
     private Long id;
+    private boolean deleted;
 
     @Convert(converter = LocalDateTimePersistenceConverter.class)
     private LocalDateTime createdAt;
@@ -38,6 +39,14 @@ public abstract class BaseEntity {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 
     public LocalDateTime getCreatedAt() {

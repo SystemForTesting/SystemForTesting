@@ -13,6 +13,7 @@ public class AuthenticatedUser extends User implements UserDetails {
     public AuthenticatedUser(User user) {
         if(user != null) {
             this.setId(user.getId());
+            this.setDeleted(user.isDeleted());
             this.setCreatedAt(user.getCreatedAt());
             this.setUpdatedAt(user.getUpdatedAt());
             this.setUsername(user.getUsername());
