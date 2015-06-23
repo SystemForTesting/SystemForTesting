@@ -7,12 +7,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 
 <table class="table table-striped">
-    <tr>
-        <th>#</th>
-        <th><bean:message key="test.title" /> </th>
-        <th><bean:message key="test.pass.mark"/> </th>
-        <th><bean:message key="test.duration"/> </th>
-    </tr>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th><bean:message key="test.title" /> </th>
+            <th><bean:message key="test.pass.mark"/> </th>
+            <th><bean:message key="test.duration"/> </th>
+        </tr>
+    </thead>
+    <tbody>
     <logic:iterate name="testListForm" property="tests" id="test" indexId="index">
         <tr>
             <td><bean:write name="index"/></td>
@@ -21,4 +24,5 @@
             <td><bean:write name="test" property="duration"/></td>
         </tr>
     </logic:iterate>
+    </tbody>
 </table>
