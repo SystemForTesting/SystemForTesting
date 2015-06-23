@@ -3,9 +3,14 @@
 "http://struts.apache.org/dtds/tiles-config_1_3.dtd">
 <tiles-definitions>
 
-	<definition name="main-template" template="/WEB-INF/pages/tiles/layout.jsp">
+	<definition name="common-template" template="/WEB-INF/pages/tiles/no-sidebar-layout.jsp">
 		<put name="header" value="/WEB-INF/pages/tiles/header.jsp" />
 		<put name="footer" value="/WEB-INF/pages/tiles/footer.jsp" />
 	</definition>
+    <definition name="admin-template" template="/WEB-INF/pages/tiles/sidebar-layout.jsp">
+        <put name="header" value="/WEB-INF/pages/tiles/header.jsp" />
+        <put name="sidebar" value="/WEB-INF/pages/tiles/admin-sidebar.jsp" />
+        <put name="footer" value="/WEB-INF/pages/tiles/footer.jsp" />
+    </definition>
 
 </tiles-definitions>

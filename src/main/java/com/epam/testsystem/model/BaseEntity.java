@@ -1,5 +1,6 @@
 package com.epam.testsystem.model;
 
+import com.epam.testsystem.util.LocalDateTimePersistenceConverter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -7,6 +8,7 @@ import java.time.LocalDateTime;
 
 @MappedSuperclass
 public abstract class BaseEntity {
+    // todo chack that each table starts from 1
     @Id
     @GenericGenerator(name = "sequence", strategy = "sequence", parameters = {
             @org.hibernate.annotations.Parameter(name = "sequenceName", value = "sequence"),

@@ -1,4 +1,4 @@
-package com.epam.testsystem.model;
+package com.epam.testsystem.util;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
@@ -10,17 +10,11 @@ public class LocalDateTimePersistenceConverter implements AttributeConverter<Loc
 
     @Override
     public java.sql.Timestamp convertToDatabaseColumn(LocalDateTime entityValue) {
-        if (entityValue != null) {
-            return java.sql.Timestamp.valueOf(entityValue);
-        }
-        return null;
+        return entityValue == null ? null : Timestamp.valueOf(entityValue);
     }
 
     @Override
     public LocalDateTime convertToEntityAttribute(java.sql.Timestamp databaseValue) {
-        if (databaseValue != null) {
-            return databaseValue.toLocalDateTime();
-        }
-        return null;
+        return databaseValue == null ? null : databaseValue.toLocalDateTime();
     }
 }

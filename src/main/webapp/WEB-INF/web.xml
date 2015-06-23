@@ -16,6 +16,10 @@
                 /WEB-INF/struts-config.xml
             </param-value>
         </init-param>
+        <init-param>
+            <param-name>autowire</param-name>
+            <param-value>byName</param-value>
+        </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
@@ -23,4 +27,7 @@
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
 
+    <error-page>
+        <location>/error</location>
+    </error-page>
 </web-app>

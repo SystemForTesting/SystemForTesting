@@ -1,11 +1,13 @@
 package com.epam.testsystem.model;
 
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
-@Table(name = "DBUSER")
+@Table(name = "DBUSER"
+//        uniqueConstraints = @UniqueConstraint(columnNames="USERNAME")
+)
 public class User extends BaseEntity {
     private String username;
     private String password;
@@ -14,9 +16,6 @@ public class User extends BaseEntity {
     private String email;
     @ManyToOne
     private Role role;
-
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<TestCase> testCases;
 
     public String getUsername() {
         return username;
@@ -66,11 +65,7 @@ public class User extends BaseEntity {
         this.role = role;
     }
 
-    public List<TestCase> getTestCases() {
-        return testCases;
-    }
-
-    public void setTestCases(List<TestCase> testCases) {
-        this.testCases = testCases;
+    public String getRoleName() {
+        return this.getRole().getName();
     }
 }
