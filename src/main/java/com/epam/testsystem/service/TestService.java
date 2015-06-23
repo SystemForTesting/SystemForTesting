@@ -45,4 +45,9 @@ public class TestService {
         List<Test> all = (List<Test>) testRepository.findAll();
         return all;
     }
+
+    public void delete(Long id) {
+        testRepository.delete(id);
+
+    }
 }
