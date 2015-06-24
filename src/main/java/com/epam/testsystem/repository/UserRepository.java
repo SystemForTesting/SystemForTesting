@@ -1,9 +1,7 @@
 package com.epam.testsystem.repository;
 
 import com.epam.testsystem.model.User;
-import org.springframework.data.repository.CrudRepository;
 
-//@Repository
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface UserRepository extends CustomCrudRepository<User> {
     User findByUsername(String username);
 }
