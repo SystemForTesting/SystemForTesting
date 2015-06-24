@@ -30,6 +30,39 @@
     </div>
     <div class="clearfix"></div>
     <br />
+
+    <div class="main-quest-panel col-sm-12">
+        <div class="questions">
+            <div class="question-form">
+                <label>Вопрос №</label>
+                <div>
+                    <textarea class="form-control" rows="3"></textarea>
+                </div>
+                <div class="answers">
+                    <div class="answer">
+                        <div>
+                            <div class="input-group">
+                        <span class="input-group-addon">
+                             <span class="glyphicon glyphicon-remove" onclick="removeAnswer(this)" aria-hidden="true"></span>
+                        </span>
+                                <textarea class="form-control" rows="3"></textarea>
+                                    <%--<input type="text" class="form-control" aria-label="...">--%>
+                        <span class="input-group-addon">
+                            <input type="checkbox" aria-label="...">
+                        </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <a onclick="addAnswer(this)" href="javascript:void(0)" class="btn btn-primary btn-raised add-ans-button">Add answer</a>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="text-center">
+            <a href="javascript:void(0)" class="btn btn-primary btn-raised add-qwest-button">Add question</a>
+        </div>
+    </div>
+
     <div class="text-center">
         <html:text property="id" readonly="true" styleClass="hidden" />
         <input class="hidden" type="hidden"
