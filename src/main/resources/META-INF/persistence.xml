@@ -11,9 +11,9 @@
         <class>com.epam.testsystem.model.TestCase</class>
         <class>com.epam.testsystem.model.User</class>
         <properties>
-            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <!--<property name="hibernate.hbm2ddl.auto" value="create"/>-->
             <property name="hibernate.show_sql" value="true"/>
-            <property name="hibernate.hbm2ddl.import_files" value="META-INF/db/initial_data.sql" />
+            <!--<property name="hibernate.hbm2ddl.import_files" value="META-INF/db/initial_data.sql" />-->
             <property name="jboss.entity.manager.factory.jndi.name" value="java:/emf"/>
         </properties>
     </persistence-unit>
