@@ -6,15 +6,6 @@
     margin-top: 20px;
 }
 
-.main-quest-panel{
-}
-
-.questions{
-}
-
-.question{
-}
-
 .question-text{
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -24,20 +15,14 @@
 .add-ans-button{
     float:right;
 }
-
-.add-quest-button{
-}
-
-.del-ans-button{
-}
-
-.answer{
-}
-
 .answer .checkbox{
     margin: 5px;
 }
 
 .answer-field{
     margin: 20px;
+}
+
+.vresize {
+    resize: vertical;
 }

@@ -40,7 +40,7 @@
                     <label>Вопрос №</label>
 
                     <div>
-                        <nested:textarea property="title" rows="3" styleClass="form-control">
+                        <nested:textarea property="title" rows="3" styleClass="form-control vresize">
                         </nested:textarea>
                             <%--<textarea  class="form-control" rows="3"></textarea>--%>
                     </div>
@@ -53,7 +53,7 @@
                                         <span class="glyphicon glyphicon-remove" onclick="removeAnswer(this)"
                                               aria-hidden="true"></span>
                                         </span>
-                                        <nested:textarea property="text" rows="3" styleClass="form-control">
+                                        <nested:textarea property="text" rows="3" styleClass="form-control vresize">
                                         </nested:textarea>
                                             <%--<textarea class="form-control" rows="3"></textarea>--%>
                                             <%--<input type="text" class="form-control" aria-label="...">--%>
