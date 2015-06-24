@@ -9,7 +9,21 @@ public class Image extends BaseEntity {
     private String caption;
 
     @Lob
-    @Column(nullable=false, columnDefinition="mediumblob")
     private byte[] image;
 
+    public String getCaption() {
+        return caption;
+    }
+
+    public void setCaption(String caption) {
+        this.caption = caption;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
 }

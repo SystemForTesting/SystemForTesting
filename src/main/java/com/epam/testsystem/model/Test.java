@@ -20,7 +20,7 @@ public class Test extends BaseEntity {
     @ManyToOne
     private User updatedBy;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Question> questions;
 
     public String getTitle() {
