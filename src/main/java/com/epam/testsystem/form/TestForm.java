@@ -1,5 +1,6 @@
 package com.epam.testsystem.form;
 
+import com.epam.testsystem.model.Question;
 import com.epam.testsystem.model.Test;
 import org.apache.struts.action.ActionForm;
 
@@ -12,6 +13,7 @@ public class TestForm extends ActionForm {
     private String title;
     private Double passMark;
     private Duration duration;
+    private List<Question> questions = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -37,6 +39,14 @@ public class TestForm extends ActionForm {
         this.passMark = passMark;
     }
 
+    public List<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
+    }
+
     public Long getDuration() {
         if (duration == null){
             return null;
@@ -57,6 +67,7 @@ public class TestForm extends ActionForm {
         this.title = test.getTitle();
         this.passMark = test.getPassMark();
         this.duration = test.getDuration();
+        this.questions = test.getQuestions();
     }
 
     public void updateTest(Test test) {
