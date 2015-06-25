@@ -6,32 +6,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html:form action="/admin/testAddEdit">
-    <div class="col-sm-2">
-        <bean:message key="test.title"/>
+    <div class="form-inline col-sm-4 text-center form-group">
+        <label><bean:message key="test.title"/></label>
+        <html:text property="title" style="width: 100%;" styleClass="form-control"/>
     </div>
-    <div class="col-sm-10">
-        <html:text property="title" style="width: 100%"/>
-    </div>
-    <div class="clearfix"></div>
-    <br/>
 
-    <div class="col-sm-2">
-        <bean:message key="test.pass.mark"/>
+    <div class="form-inline col-sm-4 text-center form-group">
+        <label><bean:message key="test.pass.mark"/></label>
+        <html:text property="passMark" style="width: 100%;" styleClass="form-control"/>
     </div>
-    <div class="col-sm-10">
-        <html:text property="passMark" style="width: 100%"/>
-    </div>
-    <div class="clearfix"></div>
-    <br/>
 
-    <div class="col-sm-2">
-        <bean:message key="test.duration"/>
+    <div class="form-inline col-sm-4 text-center form-group">
+        <label><bean:message key="test.duration"/></label>
+        <html:text property="duration" style="width: 100%;" styleClass="form-control"/>
     </div>
-    <div class="col-sm-10">
-        <html:text property="duration" style="width: 100%"/>
-    </div>
-    <div class="clearfix"></div>
-    <br/>
 
     <div class="main-quest-panel col-sm-12">
         <div class="questions">
@@ -40,7 +28,7 @@
                     <bean:write name="qindex"/>
                 </c:set>
                 <div class="question-form" id="${currentIndex}">
-                    <label>Вопрос № ${currentIndex + 1}</label>
+                    <label><bean:message key="question"/> ${currentIndex + 1}</label>
 
                     <div>
                         <nested:textarea property="title" rows="3" styleClass="form-control vresize">
@@ -68,14 +56,14 @@
                         </nested:iterate>
                     </div>
                     <a onclick="addAnswer(this)" href="javascript:void(0)"
-                       class="btn btn-primary btn-raised add-ans-button">Add answer</a>
+                       class="btn btn-primary btn-raised add-ans-button"><bean:message key="button.add.answer"/></a>
 
                     <div class="clearfix"></div>
                 </div>
             </nested:iterate>
         </div>
         <div class="text-center">
-            <a href="javascript:void(0)" class="btn btn-primary btn-raised add-qwest-button">Add question</a>
+            <a href="javascript:void(0)" class="btn btn-primary btn-raised add-qwest-button"><bean:message key="button.add.question"/></a>
         </div>
     </div>
 

@@ -1,7 +1,12 @@
 #body {
     border-left: 1px solid #eee;
 }
-/*--------------------------------*/
+/*---------TEST FORM-----------------------*/
+.input-field-full-width {
+    width: 100%;
+}
+/*---------END TEST FORM-----------------------*/
+/*---------QUESTION FORM-----------------------*/
 .question-form {
     margin-top: 20px;
 }
@@ -26,3 +31,4 @@
 .vresize {
     resize: vertical;
 }
+/*---------END QUESTION FORM-----------------------*/
