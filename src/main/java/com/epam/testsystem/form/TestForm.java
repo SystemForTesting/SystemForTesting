@@ -1,5 +1,6 @@
 package com.epam.testsystem.form;
 
+import com.epam.testsystem.model.Answer;
 import com.epam.testsystem.model.Question;
 import com.epam.testsystem.model.Test;
 import org.apache.struts.action.ActionForm;
@@ -13,7 +14,44 @@ public class TestForm extends ActionForm {
     private String title;
     private Double passMark;
     private Duration duration;
-    private List<Question> questions = new ArrayList<>();
+    private List<Question> questions = new StrutsArrayList<Question>(Question.class) {
+        @Override
+        protected Question elementToAdd() {
+            return new Question() {
+                @Override
+                public List<Answer> getAnswers() {
+                    if(super.getAnswers() == null)
+                        super.setAnswers(new StrutsArrayList<>(Answer.class));
+                    return super.getAnswers();
+                }
+            };
+        }
+    };
+
+//            new ArrayList<Question>() {
+//        @Override
+//        public Question get(int index) {
+//            if(this.size() <= index)
+//                this.add(new Question() {
+//                    @Override
+//                    public List<Answer> getAnswers() {
+//                        if(super.getAnswers() == null)
+//                            setAnswers(new ArrayList<Answer>() {
+//                                @Override
+//                                public Answer get(int index) {
+//                                    if(this.size() <= index) {
+//                                        this.add(new Answer());
+//                                        this.add(new Answer());
+//                                    }
+//                                    return super.get(index);
+//                                }
+//                            });
+//                        return super.getAnswers();
+//                    }
+//                });
+//            return super.get(index);
+//        }
+//    };
 
     public Long getId() {
         return id;
