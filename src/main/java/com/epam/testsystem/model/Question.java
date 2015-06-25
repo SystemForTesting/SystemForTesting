@@ -10,9 +10,10 @@ public class Question extends BaseEntity {
     private String title;
     private Double weight;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Image> images;
-    @OneToMany(mappedBy = "question", fetch = FetchType.EAGER)
+
+    @OneToMany(mappedBy = "question", fetch = FetchType.LAZY)
     private List<Answer> answers;
 
     public String getTitle() {
