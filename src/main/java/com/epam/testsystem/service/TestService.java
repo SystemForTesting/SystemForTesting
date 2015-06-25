@@ -21,7 +21,6 @@ public class TestService {
     @Transactional
     public Test findById(Long id) {
         Test test = testRepository.findOne(id);
-        test.getQuestions();
         return test;
     }
 
