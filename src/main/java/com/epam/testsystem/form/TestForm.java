@@ -3,14 +3,11 @@ package com.epam.testsystem.form;
 import com.epam.testsystem.model.Answer;
 import com.epam.testsystem.model.Question;
 import com.epam.testsystem.model.Test;
-import org.apache.struts.action.ActionForm;
 
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.List;
 
-public class TestForm extends ActionForm {
-    private Long id;
+public class TestForm extends BaseForm {
     private String title;
     private Double passMark;
     private Duration duration;
@@ -52,14 +49,6 @@ public class TestForm extends ActionForm {
 //            return super.get(index);
 //        }
 //    };
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getTitle() {
         return title;

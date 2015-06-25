@@ -14,12 +14,6 @@ public class Test extends BaseEntity {
     @Convert(converter = DurationToStringConverter.class)
     private Duration duration;
 
-    @ManyToOne
-    private User createdBy;
-
-    @ManyToOne
-    private User updatedBy;
-
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Question> questions;
 
@@ -47,27 +41,11 @@ public class Test extends BaseEntity {
         this.duration = duration;
     }
 
-    public User getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(User creator) {
-        this.createdBy = creator;
-    }
-
     public List<Question> getQuestions() {
         return questions;
     }
 
     public void setQuestions(List<Question> questions) {
         this.questions = questions;
-    }
-
-    public User getUpdatedBy() {
-        return updatedBy;
-    }
-
-    public void setUpdatedBy(User updatedBy) {
-        this.updatedBy = updatedBy;
     }
 }

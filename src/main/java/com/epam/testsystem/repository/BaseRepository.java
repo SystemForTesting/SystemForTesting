@@ -7,7 +7,7 @@ import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.data.repository.Repository;
 
 @NoRepositoryBean
-public interface CustomCrudRepository<T extends BaseEntity> extends Repository<T, Long> {
+public interface BaseRepository<T extends BaseEntity> extends Repository<T, Long> {
     <S extends T> S save(S var1);
 
     <S extends T> Iterable<S> save(Iterable<S> var1);

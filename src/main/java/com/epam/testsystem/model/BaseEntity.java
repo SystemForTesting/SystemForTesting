@@ -22,6 +22,12 @@ public abstract class BaseEntity {
     @Convert(converter = LocalDateTimePersistenceConverter.class)
     private LocalDateTime updatedAt;
 
+    @ManyToOne
+    private User createdBy;
+
+    @ManyToOne
+    private User updatedBy;
+
     @PrePersist
     protected void onCreate() {
         createdAt = LocalDateTime.now();
@@ -62,5 +68,21 @@ public abstract class BaseEntity {
 
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public User getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(User creator) {
+        this.createdBy = creator;
+    }
+
+    public User getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(User updatedBy) {
+        this.updatedBy = updatedBy;
     }
 }
