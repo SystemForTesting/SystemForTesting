@@ -1,12 +1,6 @@
 package com.epam.testsystem.form;
 
-import com.epam.testsystem.model.Answer;
-import com.epam.testsystem.model.Question;
-import org.springframework.core.GenericTypeResolver;
-
-import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
-import java.util.List;
 
 public class StrutsArrayList<E> extends ArrayList<E> {
     Class<E> clazz;

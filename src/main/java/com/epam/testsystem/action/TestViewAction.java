@@ -5,7 +5,6 @@ import com.epam.testsystem.model.Test;
 import com.epam.testsystem.service.TestService;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionRedirect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 

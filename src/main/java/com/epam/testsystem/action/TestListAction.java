@@ -2,9 +2,11 @@ package com.epam.testsystem.action;
 
 import com.epam.testsystem.form.TestListForm;
 import com.epam.testsystem.model.Test;
-import com.epam.testsystem.repository.TestRepository;
 import com.epam.testsystem.service.TestService;
-import org.apache.struts.action.*;
+import org.apache.struts.action.Action;
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 

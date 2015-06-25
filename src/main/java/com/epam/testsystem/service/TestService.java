@@ -8,20 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 import static com.epam.testsystem.util.SecurityUtils.getCurrentlyAuthenticatedUser;
 
 @Service
-public class TestService {
-
+public class TestService extends BaseService<Test> {
     @Autowired
-    TestRepository testRepository;
-
-    @Transactional
-    public Test findById(Long id) {
-        Test test = testRepository.findOne(id);
-        return test;
+    public TestService(TestRepository repository) {
+        super(repository);
     }
 
     @Transactional
@@ -33,22 +26,11 @@ public class TestService {
             test = new Test();
             test.setCreatedBy(user);
         } else {
-            test = testRepository.findOne(form.getId());
+            test = repository.findOne(form.getId());
             test.setUpdatedBy(user);
         }
         form.updateTest(test);
-        Test saved = testRepository.save(test);
+        Test saved = repository.save(test);
         return saved;
-    }
-
-    @Transactional
-    public List<Test> findAll() {
-        List<Test> all = (List<Test>) testRepository.findAll();
-        return all;
-    }
-
-    public void delete(Long id) {
-        testRepository.delete(id);
-
     }
 }
