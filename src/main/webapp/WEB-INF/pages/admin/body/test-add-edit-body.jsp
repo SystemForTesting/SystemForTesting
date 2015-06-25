@@ -35,9 +35,12 @@
 
     <div class="main-quest-panel col-sm-12">
         <div class="questions">
-            <nested:iterate property="questions">
-                <div class="question-form">
-                    <label>Вопрос №</label>
+            <nested:iterate property="questions" indexId="qindex">
+                <c:set var="currentIndex">
+                    <bean:write name="qindex"/>
+                </c:set>
+                <div class="question-form" id="${currentIndex}">
+                    <label>Вопрос № ${currentIndex + 1}</label>
 
                     <div>
                         <nested:textarea property="title" rows="3" styleClass="form-control vresize">
@@ -55,12 +58,9 @@
                                         </span>
                                         <nested:textarea property="text" rows="3" styleClass="form-control vresize">
                                         </nested:textarea>
-                                            <%--<textarea class="form-control" rows="3"></textarea>--%>
-                                            <%--<input type="text" class="form-control" aria-label="...">--%>
                                 <span class="input-group-addon">
                                     <nested:checkbox property="right">
                                     </nested:checkbox>
-                                    <%--<input type="checkbox" aria-label="...">--%>
                                 </span>
                                     </div>
                                 </div>
