@@ -12,5 +12,10 @@
         <put name="sidebar" value="/WEB-INF/pages/tiles/admin-sidebar.jsp" />
         <put name="footer" value="/WEB-INF/pages/tiles/footer.jsp" />
     </definition>
+    <definition name="testcase-template" template="/WEB-INF/pages/tiles/sidebar-layout.jsp">
+        <put name="header" value="/WEB-INF/pages/tiles/header.jsp" />
+        <put name="sidebar" value="/WEB-INF/pages/tiles/testcase-sidebar.jsp" />
+        <put name="footer" value="/WEB-INF/pages/tiles/footer.jsp" />
+    </definition>
 
 </tiles-definitions>

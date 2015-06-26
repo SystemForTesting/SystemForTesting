@@ -41,6 +41,11 @@
                 scope="request">
             <forward name="success" path="/WEB-INF/pages/admin/question-list.jsp"/>
         </action>
+        <action path="/test"
+                type="org.springframework.web.struts.DelegatingActionProxy"
+                scope="request">
+            <forward name="success" path="/WEB-INF/pages/user/user-testcase.jsp"/>
+        </action>
     </action-mappings>
 
     <message-resources parameter="properties.messages"/>
