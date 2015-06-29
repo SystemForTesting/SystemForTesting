@@ -29,7 +29,7 @@ public class TestService extends BaseService<Test> {
             test = repository.findOne(form.getId());
             test.setUpdatedBy(user);
         }
-        form.updateTest(test);
+        form.update(test);
         Test saved = repository.save(test);
         return saved;
     }

@@ -24,6 +24,7 @@
     <div class="main-quest-panel col-sm-12">
         <div class="questions">
             <nested:iterate property="questions" indexId="qindex">
+                <nested:text property="id" readonly="true" styleClass="hidden"/>
                 <c:set var="currentIndex">
                     <bean:write name="qindex"/>
                 </c:set>
@@ -37,6 +38,7 @@
                     </div>
                     <div class="answers">
                         <nested:iterate property="answers">
+                            <nested:text property="id" readonly="true" styleClass="hidden"/>
                             <div class="answer">
                                 <div>
                                     <div class="input-group">

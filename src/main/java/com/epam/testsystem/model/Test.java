@@ -4,6 +4,7 @@ import com.epam.testsystem.util.DurationToStringConverter;
 
 import javax.persistence.*;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -47,5 +48,26 @@ public class Test extends BaseEntity {
 
     public void setQuestions(List<Question> questions) {
         this.questions = questions;
+    }
+
+    public Question getQuestionById(Long id) {
+        if (questions == null || id == null) {
+            return null;
+        }
+
+        for (Question question : questions) {
+            if (id.equals(question.getId())) {
+                return question;
+            }
+        }
+        return null;
+    }
+
+    public void addQuestion(Question question) {
+        if (questions == null) {
+            questions = new ArrayList<>();
+        }
+
+        this.questions.add(question);
     }
 }

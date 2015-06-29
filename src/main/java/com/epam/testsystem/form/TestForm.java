@@ -1,54 +1,19 @@
 package com.epam.testsystem.form;
 
 import com.epam.testsystem.model.Answer;
+import com.epam.testsystem.model.BaseEntity;
 import com.epam.testsystem.model.Question;
 import com.epam.testsystem.model.Test;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
-public class TestForm extends BaseForm {
+public class TestForm extends BaseForm<Test> {
     private String title;
     private Double passMark;
     private Duration duration;
-    private List<Question> questions = new StrutsArrayList<Question>(Question.class) {
-        @Override
-        protected Question elementToAdd() {
-            return new Question() {
-                @Override
-                public List<Answer> getAnswers() {
-                    if(super.getAnswers() == null)
-                        super.setAnswers(new StrutsArrayList<>(Answer.class));
-                    return super.getAnswers();
-                }
-            };
-        }
-    };
-
-//            new ArrayList<Question>() {
-//        @Override
-//        public Question get(int index) {
-//            if(this.size() <= index)
-//                this.add(new Question() {
-//                    @Override
-//                    public List<Answer> getAnswers() {
-//                        if(super.getAnswers() == null)
-//                            setAnswers(new ArrayList<Answer>() {
-//                                @Override
-//                                public Answer get(int index) {
-//                                    if(this.size() <= index) {
-//                                        this.add(new Answer());
-//                                        this.add(new Answer());
-//                                    }
-//                                    return super.get(index);
-//                                }
-//                            });
-//                        return super.getAnswers();
-//                    }
-//                });
-//            return super.get(index);
-//        }
-//    };
+    private List<QuestionForm> questions = new StrutsArrayList<>(QuestionForm.class);
 
     public String getTitle() {
         return title;
@@ -66,11 +31,11 @@ public class TestForm extends BaseForm {
         this.passMark = passMark;
     }
 
-    public List<Question> getQuestions() {
+    public List<QuestionForm> getQuestions() {
         return questions;
     }
 
-    public void setQuestions(List<Question> questions) {
+    public void setQuestions(List<QuestionForm> questions) {
         this.questions = questions;
     }
 
@@ -94,12 +59,27 @@ public class TestForm extends BaseForm {
         this.title = test.getTitle();
         this.passMark = test.getPassMark();
         this.duration = test.getDuration();
-        this.questions = test.getQuestions();
+        for (Question question : test.getQuestions()) {
+            QuestionForm questionForm = new QuestionForm();
+            questionForm.map(question);
+            this.questions.add(questionForm);
+        }
     }
 
-    public void updateTest(Test test) {
+    public void update(Test test) {
         test.setTitle(title);
         test.setPassMark(passMark);
         test.setDuration(duration);
+        for (QuestionForm questionForm : questions) {
+            Long questionFormId = questionForm.getId();
+            Question question = test.getQuestionById(questionFormId);
+            if (question != null) {
+                questionForm.update(question);
+            } else {
+                Question newQuestion = new Question();
+                questionForm.update(newQuestion);
+                test.addQuestion(newQuestion);
+            }
+        }
     }
 }

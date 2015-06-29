@@ -3,6 +3,7 @@ package com.epam.testsystem.model;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -46,5 +47,26 @@ public class Question extends BaseEntity {
 
     public void setAnswers(List<Answer> answers) {
         this.answers = answers;
+    }
+
+    public Answer getAnswerById(Long id) {
+        if (answers == null || id == null) {
+            return null;
+        }
+
+        for (Answer answer : answers) {
+            if(id.equals(answer.getId())) {
+                return answer;
+            }
+        }
+        return null;
+    }
+
+    public void addAnswer(Answer answer) {
+        if (answers == null) {
+            answers = new ArrayList<>();
+        }
+
+        this.answers.add(answer);
     }
 }

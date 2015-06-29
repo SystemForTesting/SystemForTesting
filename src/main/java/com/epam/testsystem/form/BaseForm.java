@@ -1,10 +1,11 @@
 package com.epam.testsystem.form;
 
+import com.epam.testsystem.model.BaseEntity;
 import org.apache.struts.action.ActionForm;
 
-public class BaseForm extends ActionForm {
+public abstract class BaseForm<E extends BaseEntity> extends ActionForm {
     protected Long id;
-    protected boolean deleted;
+//    protected boolean deleted;
 //    private LocalDateTime createdAt;
 //    private LocalDateTime updatedAt;
 //    private User createdBy;
@@ -18,11 +19,7 @@ public class BaseForm extends ActionForm {
         this.id = id;
     }
 
-    public boolean isDeleted() {
-        return deleted;
-    }
+    public abstract void map(E e);
 
-    public void setDeleted(boolean deleted) {
-        this.deleted = deleted;
-    }
+    public abstract void update(E e);
 }
