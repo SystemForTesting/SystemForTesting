@@ -16,3 +16,8 @@ Insert into ANSWER (ID,CREATEDAT,DELETED,UPDATEDAT,RIGHT,TEXT,QUESTION_ID) value
 Insert into ANSWER (ID,CREATEDAT,DELETED,UPDATEDAT,RIGHT,TEXT,QUESTION_ID) values (2,to_timestamp('24-JUN-15 02.12.20.746000000 PM','DD-MON-RR HH.MI.SS.FF AM'),0,to_timestamp('24-JUN-15 02.12.23.902000000 PM','DD-MON-RR HH.MI.SS.FF AM'),0,'Second answer',1);
 Insert into ANSWER (ID,CREATEDAT,DELETED,UPDATEDAT,RIGHT,TEXT,QUESTION_ID) values (3,to_timestamp('24-JUN-15 02.12.45.644000000 PM','DD-MON-RR HH.MI.SS.FF AM'),0,to_timestamp('24-JUN-15 02.12.50.788000000 PM','DD-MON-RR HH.MI.SS.FF AM'),0,'Third answer',1);
 
+-- so that hibernate sequence starts from 4
+select hibernate_sequence.nextval from dual;
+select hibernate_sequence.nextval from dual;
+select hibernate_sequence.nextval from dual;
+

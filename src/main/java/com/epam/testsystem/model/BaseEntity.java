@@ -11,7 +11,7 @@ public abstract class BaseEntity {
     @Id
     @GenericGenerator(name = "sequence", strategy = "sequence", parameters = {
             @org.hibernate.annotations.Parameter(name = "sequenceName", value = "sequence"),
-            @org.hibernate.annotations.Parameter(name = "allocationSize", value = "20"),
+            @org.hibernate.annotations.Parameter(name = "allocationSize", value = "1"),
     })
     @GeneratedValue(generator = "sequence", strategy=GenerationType.SEQUENCE)
     private Long id;
