@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class TestServiceTest {
+public class MockitoTestService {
 
     @InjectMocks
     private TestService testService;
@@ -23,15 +23,10 @@ public class TestServiceTest {
     private TestForm testForm;
 
     @org.junit.Test
-    public void testCreate() {
+    public void testCreateIsSuccess() {
         /*Arrange*/
-        User authenticatedUser = new User();
-        authenticatedUser.setId((long) 1);
-        authenticatedUser.setFirstName("FirstName");
-        authenticatedUser.setPassword("password");
-
+        User authenticatedUser = getAuthenticatedUser();
         Long authenticatedUserId = authenticatedUser.getId();
-
         Test test = new Test();
         test.setCreatedBy(authenticatedUser);
 
@@ -44,14 +39,10 @@ public class TestServiceTest {
     }
 
     @org.junit.Test
-    public void testUpdate() {
-        User authenticatedUser = new User();
-        authenticatedUser.setId((long) 1);
-        authenticatedUser.setFirstName("FirstName");
-        authenticatedUser.setPassword("password");
-
+    public void testUpdateIsSuccess() {
+        /*Arrange*/
+        User authenticatedUser = getAuthenticatedUser();
         Long authenticatedUserId = authenticatedUser.getId();
-
         Test test = new Test();
         test.setCreatedBy(authenticatedUser);
 
@@ -65,6 +56,14 @@ public class TestServiceTest {
 
         /*Assert*/
         assertEquals(new Long(2), test.getUpdatedBy().getId());
+    }
+
+    private User getAuthenticatedUser() {
+        User authenticatedUser = new User();
+        authenticatedUser.setId((long) 1);
+        authenticatedUser.setFirstName("FirstName");
+        authenticatedUser.setPassword("password");
+        return authenticatedUser;
     }
 }
 
