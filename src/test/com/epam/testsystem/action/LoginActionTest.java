@@ -4,10 +4,6 @@ import servletunit.struts.MockStrutsTestCase;
 
 public class LoginActionTest extends MockStrutsTestCase {
 
-    public LoginActionTest(String testName) {
-        super(testName);
-    }
-
     public void setUp() throws Exception {
         super.setUp();
 
