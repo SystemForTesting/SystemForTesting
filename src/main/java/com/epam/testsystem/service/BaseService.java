@@ -28,4 +28,9 @@ public class BaseService<E extends BaseEntity> {
     public void delete(Long id) {
         repository.delete(id);
     }
+
+    @Transactional
+    public E save(E e) {
+        return repository.save(e);
+    }
 }

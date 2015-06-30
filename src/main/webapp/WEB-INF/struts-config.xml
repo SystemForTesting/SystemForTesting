@@ -7,6 +7,7 @@
     <form-beans>
         <form-bean name="testForm" type="com.epam.testsystem.form.TestForm"/>
         <form-bean name="testListForm" type="com.epam.testsystem.form.TestListForm"/>
+        <form-bean name="questionForm" type="com.epam.testsystem.form.QuestionForm"/>
         <form-bean name="questionListForm" type="com.epam.testsystem.form.QuestionListForm"/>
     </form-beans>
 
@@ -34,6 +35,13 @@
                 name="testListForm"
                 scope="request">
             <forward name="success" path="/WEB-INF/pages/admin/test-list.jsp"/>
+        </action>
+        <action path="/admin/questionAddEdit"
+                type="org.springframework.web.struts.DelegatingActionProxy"
+                name="questionForm"
+                scope="request">
+            <forward name="success" path="/WEB-INF/pages/admin/question-add-edit.jsp"/>
+            <forward name="redirect" redirect="true" path="/admin/questionView.do"/>
         </action>
         <action path="/admin/questionList"
                 type="org.springframework.web.struts.DelegatingActionProxy"
