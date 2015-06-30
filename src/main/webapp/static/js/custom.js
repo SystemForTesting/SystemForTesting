@@ -1,3 +1,5 @@
+//------------------------------START ADMIN PAGE------------------------------------------------
+
 $('.main-quest-panel').on('click','.add-qwest-button',function(){
     var nextQuestionId = $('.question-form').last().attr('id') - 1 + 2;
     var nextQuestionNumber = $('.question-form').last().attr('id') - 1 + 3;
@@ -19,6 +21,13 @@ function removeAnswer(element){
     $('a').last().focus();
 }
 
-//function(){
-//
-//}
+//------------------------------END ADMIN PAGE------------------------------------------------
+
+//------------------------------START USER PAGE------------------------------------------------
+
+function switchQuestionToNext(){
+    var currentQuest = $('.question-button.current').attr('id');
+
+}
+
+//------------------------------END USER PAGE------------------------------------------------
