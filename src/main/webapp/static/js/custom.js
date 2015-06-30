@@ -27,7 +27,37 @@ function removeAnswer(element){
 
 function switchQuestionToNext(){
     var currentQuest = $('.question-button.current').attr('id');
-
+    if (currentQuest < $('.question-button').size()){
+        var nextQuest = currentQuest - 1 + 2;
+        $(".question-button#"+currentQuest+"").removeClass('current');
+        $(".question-button#"+nextQuest+"").addClass('current');
+    }
 }
+
+function switchQuestionToPrevious(){
+    var currentQuest = $('.question-button.current').attr('id');
+    if (currentQuest > 1){
+        var previousQuest = currentQuest - 1;
+        $(".question-button#"+currentQuest+"").removeClass('current');
+        $(".question-button#"+previousQuest+"").addClass('current');
+    }
+}
+
+function selectQuestion(element){
+    var currentQuest = $('.question-button.current').attr('id');
+    $(".question-button#"+currentQuest+"").removeClass('current');
+    $(element).addClass('current');
+}
+
+function addMissed(){
+    var currentQuestion = $('.question-button.current');
+    currentQuestion.addClass('missed');
+};
+
+function addAnswered(){
+    var currentQuestion = $('.question-button.current');
+    currentQuestion.removeClass('missed');
+    currentQuestion.addClass('answered');
+};
 
 //------------------------------END USER PAGE------------------------------------------------

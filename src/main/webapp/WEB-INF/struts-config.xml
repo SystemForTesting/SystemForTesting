@@ -8,6 +8,7 @@
         <form-bean name="testForm" type="com.epam.testsystem.form.TestForm"/>
         <form-bean name="testListForm" type="com.epam.testsystem.form.TestListForm"/>
         <form-bean name="questionListForm" type="com.epam.testsystem.form.QuestionListForm"/>
+        <form-bean name="testCaseForm" type="com.epam.testsystem.form.TestCaseForm"/>
     </form-beans>
 
     <action-mappings>
@@ -43,6 +44,7 @@
         </action>
         <action path="/test"
                 type="org.springframework.web.struts.DelegatingActionProxy"
+                name="testCaseForm"
                 scope="request">
             <forward name="success" path="/WEB-INF/pages/user/user-testcase.jsp"/>
         </action>
