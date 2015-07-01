@@ -7,6 +7,14 @@
 
 <button onclick="addMissed()">add missed</button>
 <button onclick="addAnswered()">add answered</button>
+
+<%--<div class="custom-btn-block">--%>
+    <%--<label for="ans-btn" class="button">--%>
+        <%--<span>A</span>--%>
+    <%--</label>--%>
+    <%--<input onclick="selectAnswer()" id="ans-btn" type="checkbox">--%>
+<%--</div>--%>
+
 <html:form action="/test">
     <nested:iterate property="questions">
         <div class="question">
@@ -17,16 +25,34 @@
                 <nested:write property="multipleAnswers"/>
             </c:set>
 
-            ${isMultiple}
             <div class="answers">
-                <nested:iterate property="answers">
+                <nested:iterate property="answers" indexId="index">
 
-                    <c:if test="${isMultiple eq 0}">
-                        <nested:radio property="answers[0]" value="text"/><nested:write property="text"/>
-                    </c:if>
-                    <c:if test="${isMultiple eq 1}">
-                        <nested:checkbox property="answers[0]" value="text"/><nested:write property="text"/>
-                    </c:if>
+                    <c:set var="currentIndex">
+                        <bean:write name="index"/>
+                    </c:set>
+                    <div>
+                        <c:if test="${isMultiple eq 0}">
+                            <div class="custom-btn-block">
+                                <label for="ans-btn${currentIndex}" class="button">
+                                    <span>A</span>
+                                </label>
+                                <input name="answers" onclick="selectAnswer()" id="ans-btn${currentIndex}" type="radio"><nested:write property="text"/>
+                            </div>
+                            <%--<input type="radio" name="answers[${currentIndex}]"><nested:write property="text"/>--%>
+                            <%--<nested:radio name="answers[${currentIndex}]" property="" value="text"/><nested:write property="text"/>--%>
+                        </c:if>
+                        <c:if test="${isMultiple eq 1}">
+                            <div class="custom-btn-block">
+                                <label for="ans-btn${currentIndex}" class="button">
+                                    <span>A</span>
+                                </label>
+                                <input name="answers[${currentIndex}]" onclick="selectAnswer()" id="ans-btn${currentIndex}" type="checkbox"><nested:write property="text"/>
+                            </div>
+                            <%--<input type="checkbox" name="answers[${currentIndex}]"><nested:write property="text"/>--%>
+                            <%--<nested:checkbox property="answers" value="text"/><nested:write property="text"/>--%>
+                        </c:if>
+                    </div>
 
                 </nested:iterate>
             </div>
