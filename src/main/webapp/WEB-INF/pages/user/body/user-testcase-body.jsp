@@ -5,82 +5,65 @@
 <%@ taglib uri="http://struts.apache.org/tags-nested" prefix="nested" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%--<html:form action="/admin/testAddEdit">--%>
-    <%--<div class="form-inline col-sm-4 text-center form-group">--%>
-        <%--<label><bean:message key="test.title"/></label>--%>
-        <%--<html:text property="title" style="width: 100%;" styleClass="form-control"/>--%>
-    <%--</div>--%>
+<button onclick="addMissed()">add missed</button>
+<button onclick="addAnswered()">add answered</button>
 
-    <%--<div class="form-inline col-sm-4 text-center form-group">--%>
-        <%--<label><bean:message key="test.pass.mark"/></label>--%>
-        <%--<html:text property="passMark" style="width: 100%;" styleClass="form-control"/>--%>
-    <%--</div>--%>
+<%--<div class="custom-btn-block">--%>
+    <%--<label for="ans-btn" class="button">--%>
+        <%--<span>A</span>--%>
+    <%--</label>--%>
+    <%--<input onclick="selectAnswer()" id="ans-btn" type="checkbox">--%>
+<%--</div>--%>
 
-    <%--<div class="form-inline col-sm-4 text-center form-group">--%>
-        <%--<label><bean:message key="test.duration"/></label>--%>
-        <%--<html:text property="duration" style="width: 100%;" styleClass="form-control"/>--%>
-    <%--</div>--%>
+<html:form action="/test">
+    <nested:iterate property="questions">
+        <div class="question">
+            <div class="quest-text text-center panel panel-default">
+                <nested:write property="title"/>
+            </div>
+            <c:set var="isMultiple">
+                <nested:write property="multipleAnswers"/>
+            </c:set>
 
-    <%--<div class="main-quest-panel col-sm-12">--%>
-        <%--<div class="questions">--%>
-            <%--<nested:iterate property="questions" indexId="qindex">--%>
-                <%--<c:set var="currentIndex">--%>
-                    <%--<bean:write name="qindex"/>--%>
-                <%--</c:set>--%>
-                <%--<div class="question-form" id="${currentIndex}">--%>
-                    <%--<label><bean:message key="question"/> ${currentIndex + 1}</label>--%>
+            <div class="answers">
+                <nested:iterate property="answers" indexId="index">
 
-                    <%--<div>--%>
-                        <%--<nested:textarea property="title" rows="3" styleClass="form-control vresize">--%>
-                        <%--</nested:textarea>--%>
-                            <%--&lt;%&ndash;<textarea  class="form-control" rows="3"></textarea>&ndash;%&gt;--%>
-                    <%--</div>--%>
-                    <%--<div class="answers">--%>
-                        <%--<nested:iterate property="answers">--%>
-                            <%--<div class="answer">--%>
-                                <%--<div>--%>
-                                    <%--<div class="input-group">--%>
-                                    <%--<span class="input-group-addon">--%>
-                                        <%--<span class="glyphicon glyphicon-remove" onclick="removeAnswer(this)"--%>
-                                              <%--aria-hidden="true"></span>--%>
-                                        <%--</span>--%>
-                                        <%--<nested:textarea property="text" rows="3" styleClass="form-control vresize">--%>
-                                        <%--</nested:textarea>--%>
-                                <%--<span class="input-group-addon">--%>
-                                    <%--<nested:checkbox property="right">--%>
-                                    <%--</nested:checkbox>--%>
-                                <%--</span>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                        <%--</nested:iterate>--%>
-                    <%--</div>--%>
-                    <%--<a onclick="addAnswer(this)" href="javascript:void(0)"--%>
-                       <%--class="btn btn-primary btn-raised add-ans-button"><bean:message key="button.add.answer"/></a>--%>
+                    <c:set var="currentIndex">
+                        <bean:write name="index"/>
+                    </c:set>
+                    <div>
+                        <c:if test="${isMultiple eq 0}">
+                            <div class="custom-btn-block">
+                                <label for="ans-btn${currentIndex}" class="button">
+                                    <span>A</span>
+                                </label>
+                                <input name="answers" onclick="selectAnswer()" id="ans-btn${currentIndex}" type="radio"><nested:write property="text"/>
+                            </div>
+                            <%--<input type="radio" name="answers[${currentIndex}]"><nested:write property="text"/>--%>
+                            <%--<nested:radio name="answers[${currentIndex}]" property="" value="text"/><nested:write property="text"/>--%>
+                        </c:if>
+                        <c:if test="${isMultiple eq 1}">
+                            <div class="custom-btn-block">
+                                <label for="ans-btn${currentIndex}" class="button">
+                                    <span>A</span>
+                                </label>
+                                <input name="answers[${currentIndex}]" onclick="selectAnswer()" id="ans-btn${currentIndex}" type="checkbox"><nested:write property="text"/>
+                            </div>
+                            <%--<input type="checkbox" name="answers[${currentIndex}]"><nested:write property="text"/>--%>
+                            <%--<nested:checkbox property="answers" value="text"/><nested:write property="text"/>--%>
+                        </c:if>
+                    </div>
 
-                    <%--<div class="clearfix"></div>--%>
-                <%--</div>--%>
-            <%--</nested:iterate>--%>
-        <%--</div>--%>
-        <%--<div class="text-center">--%>
-            <%--<a href="javascript:void(0)" class="btn btn-primary btn-raised add-qwest-button"><bean:message key="button.add.question"/></a>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-
-    <%--<div class="text-center">--%>
-        <%--<html:text property="id" readonly="true" styleClass="hidden"/>--%>
-        <%--<input class="hidden" type="hidden"--%>
-               <%--name="${_csrf.parameterName}"--%>
-               <%--value="${_csrf.token}"/>--%>
-        <%--<html:submit>--%>
-            <%--<bean:message key="button.save"/>--%>
-        <%--</html:submit>--%>
-    <%--</div>--%>
-<%--</html:form>--%>
+                </nested:iterate>
+            </div>
+        </div>
+    </nested:iterate>
+</html:form>
 
 <nav>
     <ul class="pager">
-        <li><a href="#"><span class="glyphicon glyphicon-menu-left"></span></a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-menu-right"></span></a></li>
+        <li><a href="#" onclick="switchQuestionToPrevious()"><span class="glyphicon glyphicon-menu-left"></span></a>
+        </li>
+        <li><a href="#" onclick="switchQuestionToNext()"><span class="glyphicon glyphicon-menu-right"></span></a></li>
     </ul>
 </nav>

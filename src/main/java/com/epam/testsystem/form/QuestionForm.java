@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QuestionForm extends BaseForm<Question> {
+    private Integer multipleAnswers = 0;
     private String title;
     private Double weight;
 
@@ -36,15 +37,26 @@ public class QuestionForm extends BaseForm<Question> {
         this.weight = weight;
     }
 
+    public int getMultipleAnswers() {
+        return multipleAnswers;
+    }
+
+    public void setMultipleAnswers(int multipleAnswers) {
+        this.multipleAnswers = multipleAnswers;
+    }
+
     public void map(Question question) {
         this.id = question.getId();
         this.title = question.getTitle();
         this.weight = question.getWeight();
+        int trueAnswers = 0;
         for (Answer answer : question.getAnswers()) {
             AnswerForm answerForm = new AnswerForm();
             answerForm.map(answer);
             answers.add(answerForm);
+            if (answer.isRight()) trueAnswers++;
         }
+        if (trueAnswers > 1) multipleAnswers = 1;
     }
 
     @Override

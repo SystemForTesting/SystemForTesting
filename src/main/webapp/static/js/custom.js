@@ -24,9 +24,44 @@ function removeAnswer(element){
 
 //------------------------------START USER PAGE------------------------------------------------
 
-function switchQuestionToNext(){
+function switchQuestionToNext() {
     var currentQuest = $('.question-button.current').attr('id');
+    if (currentQuest < $('.question-button').size()) {
+        var nextQuest = currentQuest - 1 + 2;
+        $(".question-button#" + currentQuest + "").removeClass('current');
+        $(".question-button#" + nextQuest + "").addClass('current');
+    }
+}
 
+function switchQuestionToPrevious() {
+    var currentQuest = $('.question-button.current').attr('id');
+    if (currentQuest > 1) {
+        var previousQuest = currentQuest - 1;
+        $(".question-button#" + currentQuest + "").removeClass('current');
+        $(".question-button#" + previousQuest + "").addClass('current');
+    }
+}
+
+function selectQuestion(element) {
+    var currentQuest = $('.question-button.current').attr('id');
+    $(".question-button#" + currentQuest + "").removeClass('current');
+    $(element).addClass('current');
+}
+
+function addMissed() {
+    var currentQuestion = $('.question-button.current');
+    currentQuestion.addClass('missed');
+};
+
+function addAnswered() {
+    var currentQuestion = $('.question-button.current');
+    currentQuestion.removeClass('missed');
+    currentQuestion.addClass('answered');
+};
+
+function selectAnswer() {
+    $('.custom-btn-block input').parent().children('label').removeClass('selected-answer');
+    $('.custom-btn-block input:checked').parent().children('label').addClass('selected-answer');
 }
 
 //------------------------------END USER PAGE------------------------------------------------
