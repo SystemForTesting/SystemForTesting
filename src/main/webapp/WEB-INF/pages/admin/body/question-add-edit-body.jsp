@@ -4,14 +4,16 @@
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-nested" prefix="nested" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<html:form action="/admin/questionAddEdit">
+<c:if test="${not empty testForm}">
+    <nested:define id="questionForm" />
+</c:if>
+<nested:form action="/admin/questionAddEdit">
     <div class="question-form">
         <div>
-            <html:textarea property="title" rows="3" styleClass="form-control vresize">
-            </html:textarea>
-                <%--<textarea  class="form-control" rows="3"></textarea>--%>
+            <nested:textarea property="title" rows="3" styleClass="form-control vresize">
+            </nested:textarea>
         </div>
         <div class="answers">
             <nested:iterate property="answers">
@@ -19,16 +21,16 @@
                 <div class="answer">
                     <div>
                         <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-remove" onclick="removeAnswer(this)"
-                                              aria-hidden="true"></span>
-                                        </span>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-remove" onclick="removeAnswer(this)"
+                              aria-hidden="true"></span>
+                    </span>
                             <nested:textarea property="text" rows="3" styleClass="form-control vresize">
                             </nested:textarea>
-                                <span class="input-group-addon">
-                                    <nested:checkbox property="right">
-                                    </nested:checkbox>
-                                </span>
+                    <span class="input-group-addon">
+                        <nested:checkbox property="right">
+                        </nested:checkbox>
+                    </span>
                         </div>
                     </div>
                 </div>
@@ -39,13 +41,13 @@
 
         <div class="clearfix"></div>
         <div class="text-center">
-            <html:text property="id" readonly="true" styleClass="hidden"/>
+            <nested:text property="id" readonly="true" styleClass="hidden"/>
             <input class="hidden" type="hidden"
                    name="${_csrf.parameterName}"
                    value="${_csrf.token}"/>
-            <html:submit>
+            <nested:submit>
                 <bean:message key="button.save"/>
-            </html:submit>
+            </nested:submit>
         </div>
     </div>
-</html:form>
+</nested:form>
