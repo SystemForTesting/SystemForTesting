@@ -23,6 +23,8 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class TestListActionTest {
 
+    @InjectMocks
+    private TestListAction testListAction;
     @Mock
     private TestService testService;
     @Mock
@@ -35,12 +37,9 @@ public class TestListActionTest {
     private HttpServletResponse response;
     @Mock
     private ActionMapping mapping;
-    @InjectMocks
-    private TestListAction testListAction;
 
     @org.junit.Test
     public void testListActionForwardSuccessAndNotNull() throws Exception {
-//        TestListAction testListAction = new TestListAction();
         ArrayList<Test> tests = new ArrayList<>();
         Test testOne = new Test();
         testOne.setId((long) 1);
@@ -56,6 +55,7 @@ public class TestListActionTest {
 
         ActionForward forward = testListAction.execute(mapping, testListForm, request, response);
 
+        verify(testService).findAll();
         verify(mapping).findForward("success");
 
         assertNotNull(forward);
