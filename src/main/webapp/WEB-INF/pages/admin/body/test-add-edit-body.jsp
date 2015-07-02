@@ -25,11 +25,11 @@
         <div class="questions">
             <nested:iterate property="questions" indexId="qindex">
                 <nested:text property="id" readonly="true" styleClass="hidden"/>
-                <c:set var="currentIndex">
+                <c:set var="aIndex">
                     <bean:write name="qindex"/>
                 </c:set>
-                <div class="question-form" id="${currentIndex}">
-                    <label><bean:message key="question"/> ${currentIndex + 1}</label>
+                <div class="question-form" id="${aIndex}">
+                    <label><bean:message key="question"/> ${aIndex + 1}</label>
 
                     <div>
                         <nested:textarea property="title" rows="3" styleClass="form-control vresize">

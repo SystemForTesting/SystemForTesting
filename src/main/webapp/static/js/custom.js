@@ -1,21 +1,21 @@
 //------------------------------START ADMIN PAGE------------------------------------------------
 
-$('.main-quest-panel').on('click','.add-qwest-button',function(){
+$('.main-quest-panel').on('click', '.add-qwest-button', function () {
     var nextQuestionId = $('.question-form').last().attr('id') - 1 + 2;
     var nextQuestionNumber = $('.question-form').last().attr('id') - 1 + 3;
 
-    $('.questions').append('<div class="question-form" id="' + nextQuestionId +'"><label>' +'Вопрос №' + nextQuestionNumber +'</label><div><textarea name="questions['+nextQuestionId+'].title" rows="3" class="form-control vresize"></textarea></div><div class="answers"> <div class="answer"><div><div class="input-group"><span class="input-group-addon"><span class="glyphicon glyphicon-remove" onclick="removeAnswer(this)" aria-hidden="true"></span></span><textarea name="questions['+nextQuestionId+'].answers[0].text" rows="3" class="form-control vresize"></textarea><span class="input-group-addon"><input type="checkbox" name="questions['+nextQuestionId+'].answers[0].right"> </span></div></div></div></div><a onclick="addAnswer(this)" href="javascript:void(0)" class="btn btn-primary btn-raised add-ans-button">Add answer</a> <div class="clearfix"></div></div>');
+    $('.questions').append('<div class="question-form" id="' + nextQuestionId + '"><label>' + 'Вопрос №' + nextQuestionNumber + '</label><div><textarea name="questions[' + nextQuestionId + '].title" rows="3" class="form-control vresize"></textarea></div><div class="answers"> <div class="answer"><div><div class="input-group"><span class="input-group-addon"><span class="glyphicon glyphicon-remove" onclick="removeAnswer(this)" aria-hidden="true"></span></span><textarea name="questions[' + nextQuestionId + '].answers[0].text" rows="3" class="form-control vresize"></textarea><span class="input-group-addon"><input type="checkbox" name="questions[' + nextQuestionId + '].answers[0].right"> </span></div></div></div></div><a onclick="addAnswer(this)" href="javascript:void(0)" class="btn btn-primary btn-raised add-ans-button">Add answer</a> <div class="clearfix"></div></div>');
     $('textarea').last().focus();
 });
 
-function addAnswer(element){
+function addAnswer(element) {
     var currentAnswerCount = $(element).parent('.question-form').children('.answers').children('.answer').size();
 
-    $(element).parent().children('.answers').append('<div class="answer"><div><div class="input-group"><span class="input-group-addon"><span class="glyphicon glyphicon-remove" onclick="removeAnswer(this)" aria-hidden="true"></span></span><textarea name="answers['+currentAnswerCount+'].text" rows="3" class="form-control vresize" style="margin-top: 0px; margin-bottom: 0px; height: 78px;"></textarea> <span class="input-group-addon"><input type="checkbox" name=answers['+currentAnswerCount+'].right"></span></div></div></div>');
+    $(element).parent().children('.answers').append('<div class="answer"><div><div class="input-group"><span class="input-group-addon"><span class="glyphicon glyphicon-remove" onclick="removeAnswer(this)" aria-hidden="true"></span></span><textarea name="answers[' + currentAnswerCount + '].text" rows="3" class="form-control vresize" style="margin-top: 0px; margin-bottom: 0px; height: 78px;"></textarea> <span class="input-group-addon"><input type="checkbox" name=answers[' + currentAnswerCount + '].right"></span></div></div></div>');
     $('a').last().focus();
 }
 
-function removeAnswer(element){
+function removeAnswer(element) {
     $(element).parent().parent().parent().parent().remove();
     $('a').last().focus();
 }
@@ -30,6 +30,14 @@ function switchQuestionToNext() {
         var nextQuest = currentQuest - 1 + 2;
         $(".question-button#" + currentQuest + "").removeClass('current');
         $(".question-button#" + nextQuest + "").addClass('current');
+
+        $("#question" + currentQuest + "").addClass('hidden');
+        $("#question" + nextQuest + "").removeClass('hidden');
+
+        var answeredCount = $("#question" + currentQuest + " .answers div div input:checked").size();
+        if (answeredCount < 1) {
+            $(".question-button#" + currentQuest + "").addClass('missed');
+        } else $(".question-button#" + currentQuest + "").removeClass('missed');
     }
 }
 
@@ -39,29 +47,62 @@ function switchQuestionToPrevious() {
         var previousQuest = currentQuest - 1;
         $(".question-button#" + currentQuest + "").removeClass('current');
         $(".question-button#" + previousQuest + "").addClass('current');
+        $("#question" + currentQuest + "").addClass('hidden');
+        $("#question" + previousQuest + "").removeClass('hidden');
+
+        var answeredCount = $("#question" + currentQuest + " .answers div div input:checked").size();
+        if (answeredCount < 1) {
+            $(".question-button#" + currentQuest + "").addClass('missed');
+        } else $(".question-button#" + currentQuest + "").removeClass('missed');
     }
 }
 
 function selectQuestion(element) {
     var currentQuest = $('.question-button.current').attr('id');
+    var selectedQuest = $(element).parent().children('button').attr('id');
+
+    $("#question" + currentQuest + "").addClass('hidden');
+    $("#question" + selectedQuest + "").removeClass('hidden');
+
     $(".question-button#" + currentQuest + "").removeClass('current');
     $(element).addClass('current');
+
+    var answeredCount = $("#question" + currentQuest + " .answers div div input:checked").size();
+    if (answeredCount < 1) {
+        $(".question-button#" + currentQuest + "").addClass('missed');
+    } else $(".question-button#" + currentQuest + "").removeClass('missed');
 }
 
 function addMissed() {
     var currentQuestion = $('.question-button.current');
-    currentQuestion.addClass('missed');
+    currentQuestion.addClass('not-sure');
 };
 
-function addAnswered() {
-    var currentQuestion = $('.question-button.current');
-    currentQuestion.removeClass('missed');
-    currentQuestion.addClass('answered');
-};
+$('.onoffswitch').on('click', 'input', function () {
+    if ($(this).is(':checked'))
+        $('.question-button.current').addClass('not-sure');
+    else
+        $('.question-button.current').removeClass('not-sure');
 
-function selectAnswer() {
-    $('.custom-btn-block input').parent().children('label').removeClass('selected-answer');
-    $('.custom-btn-block input:checked').parent().children('label').addClass('selected-answer');
+});
+
+function getButtonChar(element, currentIndex){
+    var firsChar = "A".charCodeAt(0) - 1;
+    var nextChar = String.fromCharCode(firsChar + currentIndex);
+    $(element).text(nextChar)
 }
 
+function selectAnswer(element) {
+    $(element).parent().parent().parent().children('div').children('div').children('input').parent().children('label').removeClass('selected-answer');
+    $(element).parent().parent().parent().children('div').children('div').children('input:checked').parent().children('label').addClass('selected-answer');
+
+    $(".question-button.current").addClass('answered');
+}
+
+$('.custom-btn-block label span').ready(function(){
+    var firsChar = "A".charCodeAt(0) - 1;
+    var currentIndex = this.dataset.indexNumber;
+    var nextChar = String.fromCharCode(firsChar + currentIndex);
+    $(element).text(nextChar)
+});
 //------------------------------END USER PAGE------------------------------------------------

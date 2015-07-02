@@ -2,6 +2,7 @@ package com.epam.testsystem.action;
 
 import com.epam.testsystem.form.QuestionListForm;
 import com.epam.testsystem.form.TestCaseForm;
+import com.epam.testsystem.model.Answer;
 import com.epam.testsystem.model.Question;
 import com.epam.testsystem.model.TestCase;
 import com.epam.testsystem.service.QuestionService;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller("/test")
@@ -39,6 +41,12 @@ public class UserTestCaseAction extends BaseAction<TestCaseForm> {
         if (id != null) {
             TestCase testCase = testCaseService.findById(id);
             form.map(testCase);
+            ArrayList<Answer> answers = new ArrayList<>();
+            Answer answer = new Answer();
+            answer.setText("just testing");
+            answer.setRight(false);
+            answers.add(answer);
+            form.setAnswers(answers);
         }
         return mapping.findForward("success");
     }
