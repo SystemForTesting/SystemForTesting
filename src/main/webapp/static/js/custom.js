@@ -23,6 +23,10 @@ function removeAnswer(element) {
     $('a').last().focus();
 }
 
+function removeQuestion(element) {
+    $(element).parent().parent().parent().remove();
+    $('a').last().focus();
+}
 //------------------------------END ADMIN PAGE------------------------------------------------
 
 //------------------------------START USER PAGE------------------------------------------------

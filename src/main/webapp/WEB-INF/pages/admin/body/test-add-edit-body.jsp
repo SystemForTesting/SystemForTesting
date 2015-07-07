@@ -75,7 +75,7 @@
         <input class="hidden" type="hidden"
                name="${_csrf.parameterName}"
                value="${_csrf.token}"/>
-        <html:submit>
+        <html:submit styleClass="btn btn-default btn-raised add-qwest-button">
             <bean:message key="button.save"/>
         </html:submit>
     </div>
