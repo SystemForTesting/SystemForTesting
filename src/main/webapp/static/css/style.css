@@ -75,14 +75,14 @@
 }
 
 .answers {
-    width: 80%;
+    width: 92%;
 }
 
 .quest-text {
     font-family: 'TradeGothicLTStd-BdCn20', 'PT Sans Narrow';
     font-weight: 700;
     font-size: 18px;
-    margin: 20px 0;
+    /*margin: 20px 0;*/
     border-bottom: 1px solid #337AB7;
     padding: 5px;
 }
@@ -92,6 +92,17 @@
     font-weight: 700;
     font-size: 18px;
     margin: 10px 40px;
+    display: table;
+}
+
+.custom-btn-block span {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 10px;
+}
+
+.custom-btn-block label {
+    float: left;
 }
 
 .custom-btn-block input {
@@ -111,7 +122,10 @@
 .button {
     top: 100px;
     left: 200px;
-    display: inline-block;
+
+    display: table-cell;
+    vertical-align: top
+
     margin: 0 auto;
 
     -webkit-border-radius: 20px;

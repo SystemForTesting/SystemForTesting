@@ -14,9 +14,17 @@
 <%--</div>--%>
 
 <%--<nested:iterate name="testCaseForm" property="answers">--%>
-    <%--<nested:radio property="right" value="" />--%>
-    <%--<nested:text property="text" />--%>
+<%--<nested:radio property="right" value="" />--%>
+<%--<nested:text property="text" />--%>
 <%--</nested:iterate>--%>
+
+<%--<nav>--%>
+    <%--<ul class="pager">--%>
+        <%--<li><a href="#" onclick="switchQuestionToPrevious()"><span class="glyphicon glyphicon-menu-left"></span></a>--%>
+        <%--</li>--%>
+        <%--<li><a href="#" onclick="switchQuestionToNext()"><span class="glyphicon glyphicon-menu-right"></span></a></li>--%>
+    <%--</ul>--%>
+<%--</nav>--%>
 
 <html:form action="/test">
     <nested:iterate property="questions" indexId="qindex">
@@ -32,7 +40,8 @@
             </c:set>
 
             <div style="float: right" class="text-center">
-                <label>Not sure</label>
+                <label><bean:message key="answer.not.sure"/></label>
+
                 <div class="onoffswitch">
                     <input type="checkbox" class="onoffswitch-checkbox" id="switch${qindex + 1}">
                     <label class="onoffswitch-label" for="switch${qindex + 1}">
@@ -48,23 +57,30 @@
                     <c:set var="aIndex">
                         <bean:write name="aindex"/>
                     </c:set>
-                    <div class="col-sm-6">
+                    <div class="col-sm-12">
                         <c:if test="${isMultiple eq 0}">
                             <div class="custom-btn-block">
                                 <label for="q${qIndex}a${aIndex}" class="button">
-                                    <span data-index-number="${aIndex}"></span>
+                                    <span current-index="${aIndex}"></span>
                                 </label>
-                                <input name="answers" onclick="selectAnswer(this)" id="q${qIndex}a${aIndex}" type="radio"><nested:write
-                                    property="text"/>
+                                <input name="answers" onclick="selectAnswer(this)" id="q${qIndex}a${aIndex}"
+                                       type="radio">
+                                <span>
+                                    <nested:write property="text"/>
+                                </span>
                             </div>
                         </c:if>
                         <c:if test="${isMultiple eq 1}">
                             <div class="custom-btn-block">
                                 <label for="q${qIndex}a${aIndex}" class="button">
-                                    <span>A</span>
+                                    <span current-index="${aIndex}"></span>
                                 </label>
                                 <input name="answers[${aIndex}]" onclick="selectAnswer(this)"
-                                       id="q${qIndex}a${aIndex}" type="checkbox"><nested:write property="text"/>
+                                       id="q${qIndex}a${aIndex}" type="checkbox">
+
+                                <span>
+                                    <nested:write property="text"/>
+                                </span>
                             </div>
                         </c:if>
                     </div>

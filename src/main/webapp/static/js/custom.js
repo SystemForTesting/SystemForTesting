@@ -24,6 +24,19 @@ function removeAnswer(element) {
 
 //------------------------------START USER PAGE------------------------------------------------
 
+$(document).keydown(function(e) {
+    switch(e.which) {
+        case 37: // left
+            switchQuestionToPrevious();
+            break;
+        case 39: // right
+            switchQuestionToNext();
+            break;
+        default: return; // exit this handler for other keys
+    }
+    e.preventDefault(); // prevent the default action (scroll / move caret)
+});
+
 function switchQuestionToNext() {
     var currentQuest = $('.question-button.current').attr('id');
     if (currentQuest < $('.question-button').size()) {
@@ -99,10 +112,15 @@ function selectAnswer(element) {
     $(".question-button.current").addClass('answered');
 }
 
-$('.custom-btn-block label span').ready(function(){
-    var firsChar = "A".charCodeAt(0) - 1;
-    var currentIndex = this.dataset.indexNumber;
-    var nextChar = String.fromCharCode(firsChar + currentIndex);
-    $(element).text(nextChar)
+$(document).ready(function(){
+    var allSpans = $('.custom-btn-block label span');
+    var firsChar = "A".charCodeAt(0);
+
+    $.each(allSpans, function(index, value) {
+        var currentIndex = $(value).attr('current-index');
+        var summ = parseInt(firsChar, 10) + parseInt(currentIndex, 10);
+        var nextChar = String.fromCharCode(summ);
+        $(value).text(nextChar)
+    });
 });
 //------------------------------END USER PAGE------------------------------------------------
