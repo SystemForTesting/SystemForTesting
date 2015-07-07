@@ -65,7 +65,8 @@
             </nested:iterate>
         </div>
         <div class="text-center">
-            <a href="javascript:void(0)" class="btn btn-primary btn-raised add-qwest-button"><bean:message key="button.add.question"/></a>
+            <a href="javascript:void(0)" class="btn btn-primary btn-raised add-qwest-button"><bean:message
+                    key="button.add.question"/></a>
         </div>
     </div>
 
