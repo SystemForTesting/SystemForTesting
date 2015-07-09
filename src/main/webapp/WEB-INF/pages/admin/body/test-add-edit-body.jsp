@@ -21,12 +21,13 @@
         <label><bean:message key="test.duration"/></label>
         <html:text property="duration" style="width: 100%;" styleClass="form-control"/>
     </div>
+
     <div class="text-center">
         <html:text property="id" readonly="true" styleClass="hidden"/>
         <input class="hidden" type="hidden"
                name="${_csrf.parameterName}"
                value="${_csrf.token}"/>
-        <html:submit>
+        <html:submit styleClass="btn btn-default btn-raised add-qwest-button">
             <bean:message key="button.save"/>
         </html:submit>
     </div>
