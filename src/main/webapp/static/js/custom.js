@@ -13,9 +13,13 @@ $('.main-quest-panel').on('click', '.add-qwest-button', function () {
 
 function addAnswer(element) {
     var currentAnswerCount = $(element).parent('.question-form').children('.answers').children('.answer').size();
+    var currentQuestion = $(element).parent('.question-form').attr('id');
 
-    $(element).parent().children('.answers').append('<div class="answer"><div><div class="input-group"><span class="input-group-addon"><span class="glyphicon glyphicon-remove" onclick="removeAnswer(this)" aria-hidden="true"></span></span><textarea name="answers[' + currentAnswerCount + '].text" rows="3" class="form-control vresize" style="margin-top: 0px; margin-bottom: 0px; height: 78px;"></textarea> <span class="input-group-addon"><input type="checkbox" name=answers[' + currentAnswerCount + '].right"></span></div></div></div>');
-    $('a').last().focus();
+    $(element).parent().children('.answers').append('<div class="answer"><div><div class="input-group"><span class="input-group-addon"><span class="glyphicon glyphicon-remove" onclick="removeAnswer(this)" aria-hidden="true"></span></span><textarea name="questions[' + currentQuestion + '].answers[' + currentAnswerCount + '].text" rows="3" class="form-control vresize" style="margin-top: 0px; margin-bottom: 0px; height: 78px;"></textarea> <span class="input-group-addon"><input type="checkbox" name="questions[' + currentQuestion + '].answers[' + currentAnswerCount + '].right"></span></div></div></div>');
+
+    var lastTextArea= $('textarea').last();
+    if (lastTextArea.attr('name') == "questions[" + currentQuestion + "].answers[" + currentAnswerCount + "].text")
+        lastTextArea.focus();
 }
 
 function removeAnswer(element) {

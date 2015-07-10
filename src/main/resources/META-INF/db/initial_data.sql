@@ -1,20 +1,23 @@
-INSERT INTO ROLE(id, deleted, createdAt,  name) VALUES (1, 0, CURRENT_TIMESTAMP, 'admin');
-INSERT INTO ROLE(id, deleted, createdAt, name) VALUES (2, 0, CURRENT_TIMESTAMP, 'user');
-INSERT INTO DBUSER(id, deleted, createdAt, username, password, firstName, lastName, email, ROLE_ID) VALUES (1, 0, CURRENT_TIMESTAMP, 'admin', '$2a$10$tmbxYWr3HiDCvq1dxPu6luNWACloAIE7teQfEnxW5DZ2cWXP7Pqa.', 'Latarsha', 'Weyand', 'weyand@gmail.com', 1);
-INSERT INTO DBUSER(id, deleted, createdAt, username, password, firstName, lastName, email, ROLE_ID) VALUES (2, 0, CURRENT_TIMESTAMP, 'student01', '$2a$10$HREPNHpD1PPLynDpj14ryO0Flh06/GZI/t4F/vKhNimX9qZR6y.Ii', 'Shay', 'Macaraeg', 'macaraeg@gmail.com', 2);
-INSERT INTO DBUSER(id, deleted, createdAt, username, password, firstName, lastName, email, ROLE_ID) VALUES (3, 0, CURRENT_TIMESTAMP, 'student02', '$2a$10$q0EhIvjh59VKVhMWNYyxMecDz5RuWlCUune1MkPkl/NUcCB15b0Ea', 'Danica', 'Ramerez', 'ramerez@gmail.com', 2);
-
-Insert into TEST (ID,CREATEDAT,DELETED,UPDATEDAT,DURATION,PASSMARK,TITLE,CREATEDBY_ID,UPDATEDBY_ID) values (1,to_timestamp('24-JUN-15 01.58.24.531000000 PM','DD-MON-RR HH.MI.SS.FF AM'),0,null,'PT2H',80,'First test',1,null);
-
-Insert into QUESTION (ID,CREATEDAT,DELETED,UPDATEDAT,TITLE,WEIGHT) values (1,to_timestamp('24-JUN-15 02.11.30.337000000 PM','DD-MON-RR HH.MI.SS.FF AM'),0,to_timestamp('24-JUN-15 02.11.33.909000000 PM','DD-MON-RR HH.MI.SS.FF AM'),'First question',0.5);
-Insert into QUESTION (ID,CREATEDAT,DELETED,UPDATEDAT,TITLE,WEIGHT) values (2,to_timestamp('24-JUN-15 02.12.06.824000000 PM','DD-MON-RR HH.MI.SS.FF AM'),0,to_timestamp('24-JUN-15 02.12.04.144000000 PM','DD-MON-RR HH.MI.SS.FF AM'),'Second question',1);
-
-Insert into TEST_QUESTION (TEST_ID,QUESTIONS_ID) values (1,1);
-Insert into TEST_QUESTION (TEST_ID,QUESTIONS_ID) values (1,2);
-
-Insert into ANSWER (ID,CREATEDAT,DELETED,UPDATEDAT,RIGHT,TEXT,QUESTION_ID) values (1,to_timestamp('24-JUN-15 02.06.59.221000000 PM','DD-MON-RR HH.MI.SS.FF AM'),0,to_timestamp('24-JUN-15 02.07.01.514000000 PM','DD-MON-RR HH.MI.SS.FF AM'),1,'First answer',1);
-Insert into ANSWER (ID,CREATEDAT,DELETED,UPDATEDAT,RIGHT,TEXT,QUESTION_ID) values (2,to_timestamp('24-JUN-15 02.12.20.746000000 PM','DD-MON-RR HH.MI.SS.FF AM'),0,to_timestamp('24-JUN-15 02.12.23.902000000 PM','DD-MON-RR HH.MI.SS.FF AM'),0,'Second answer',1);
-Insert into ANSWER (ID,CREATEDAT,DELETED,UPDATEDAT,RIGHT,TEXT,QUESTION_ID) values (3,to_timestamp('24-JUN-15 02.12.45.644000000 PM','DD-MON-RR HH.MI.SS.FF AM'),0,to_timestamp('24-JUN-15 02.12.50.788000000 PM','DD-MON-RR HH.MI.SS.FF AM'),0,'Third answer',1);
+Insert into ANSWER (ID,CREATEDAT,DELETED,UPDATEDAT,RIGHT,TEXT,CREATEDBY_ID,UPDATEDBY_ID,QUESTION_ID) values ('6',to_timestamp('10.07.15 13:41:11,318000000','DD.MM.RR HH24:MI:SS,FF'),'0',null,'0','First answer',null,null,'5');
+Insert into ANSWER (ID,CREATEDAT,DELETED,UPDATEDAT,RIGHT,TEXT,CREATEDBY_ID,UPDATEDBY_ID,QUESTION_ID) values ('8',to_timestamp('10.07.15 13:41:11,319000000','DD.MM.RR HH24:MI:SS,FF'),'0',null,'0','First answer',null,null,'7');
+Insert into ANSWER (ID,CREATEDAT,DELETED,UPDATEDAT,RIGHT,TEXT,CREATEDBY_ID,UPDATEDBY_ID,QUESTION_ID) values ('9',to_timestamp('10.07.15 13:55:14,448000000','DD.MM.RR HH24:MI:SS,FF'),'0',null,'1','Second answer',null,null,'5');
+Insert into ANSWER (ID,CREATEDAT,DELETED,UPDATEDAT,RIGHT,TEXT,CREATEDBY_ID,UPDATEDBY_ID,QUESTION_ID) values ('10',to_timestamp('10.07.15 14:05:41,172000000','DD.MM.RR HH24:MI:SS,FF'),'0',null,'0','Third answer',null,null,'5');
+Insert into ANSWER (ID,CREATEDAT,DELETED,UPDATEDAT,RIGHT,TEXT,CREATEDBY_ID,UPDATEDBY_ID,QUESTION_ID) values ('11',to_timestamp('10.07.15 14:05:41,173000000','DD.MM.RR HH24:MI:SS,FF'),'0',null,'0','Fourth answer',null,null,'5');
+Insert into ANSWER (ID,CREATEDAT,DELETED,UPDATEDAT,RIGHT,TEXT,CREATEDBY_ID,UPDATEDBY_ID,QUESTION_ID) values ('12',to_timestamp('10.07.15 14:05:41,174000000','DD.MM.RR HH24:MI:SS,FF'),'0',null,'0','Fifth answer',null,null,'5');
+Insert into ANSWER (ID,CREATEDAT,DELETED,UPDATEDAT,RIGHT,TEXT,CREATEDBY_ID,UPDATEDBY_ID,QUESTION_ID) values ('13',to_timestamp('10.07.15 14:05:41,175000000','DD.MM.RR HH24:MI:SS,FF'),'0',null,'0','Sixth answer',null,null,'5');
+Insert into ANSWER (ID,CREATEDAT,DELETED,UPDATEDAT,RIGHT,TEXT,CREATEDBY_ID,UPDATEDBY_ID,QUESTION_ID) values ('14',to_timestamp('10.07.15 14:05:41,177000000','DD.MM.RR HH24:MI:SS,FF'),'0',to_timestamp('10.07.15 14:06:28,026000000','DD.MM.RR HH24:MI:SS,FF'),'1','Second answer',null,null,'7');
+Insert into ANSWER (ID,CREATEDAT,DELETED,UPDATEDAT,RIGHT,TEXT,CREATEDBY_ID,UPDATEDBY_ID,QUESTION_ID) values ('15',to_timestamp('10.07.15 14:05:41,178000000','DD.MM.RR HH24:MI:SS,FF'),'0',null,'0','Third answer',null,null,'7');
+Insert into DBUSER (ID,CREATEDAT,DELETED,UPDATEDAT,EMAIL,FIRSTNAME,LASTNAME,PASSWORD,USERNAME,CREATEDBY_ID,UPDATEDBY_ID,ROLE_ID) values ('1',to_timestamp('10.07.15 13:34:31,644000000','DD.MM.RR HH24:MI:SS,FF'),'0',null,'weyand@gmail.com','Latarsha','Weyand','$2a$10$tmbxYWr3HiDCvq1dxPu6luNWACloAIE7teQfEnxW5DZ2cWXP7Pqa.','admin',null,null,'1');
+Insert into DBUSER (ID,CREATEDAT,DELETED,UPDATEDAT,EMAIL,FIRSTNAME,LASTNAME,PASSWORD,USERNAME,CREATEDBY_ID,UPDATEDBY_ID,ROLE_ID) values ('2',to_timestamp('10.07.15 13:34:31,646000000','DD.MM.RR HH24:MI:SS,FF'),'0',null,'macaraeg@gmail.com','Shay','Macaraeg','$2a$10$HREPNHpD1PPLynDpj14ryO0Flh06/GZI/t4F/vKhNimX9qZR6y.Ii','student01',null,null,'2');
+Insert into DBUSER (ID,CREATEDAT,DELETED,UPDATEDAT,EMAIL,FIRSTNAME,LASTNAME,PASSWORD,USERNAME,CREATEDBY_ID,UPDATEDBY_ID,ROLE_ID) values ('3',to_timestamp('10.07.15 13:34:31,648000000','DD.MM.RR HH24:MI:SS,FF'),'0',null,'ramerez@gmail.com','Danica','Ramerez','$2a$10$q0EhIvjh59VKVhMWNYyxMecDz5RuWlCUune1MkPkl/NUcCB15b0Ea','student02',null,null,'2');
+Insert into QUESTION (ID,CREATEDAT,DELETED,UPDATEDAT,TITLE,WEIGHT,CREATEDBY_ID,UPDATEDBY_ID) values ('5',to_timestamp('10.07.15 13:41:11,316000000','DD.MM.RR HH24:MI:SS,FF'),'0',null,'First question',null,null,null);
+Insert into QUESTION (ID,CREATEDAT,DELETED,UPDATEDAT,TITLE,WEIGHT,CREATEDBY_ID,UPDATEDBY_ID) values ('7',to_timestamp('10.07.15 13:41:11,319000000','DD.MM.RR HH24:MI:SS,FF'),'0',null,'Second question',null,null,null);
+Insert into ROLE (ID,CREATEDAT,DELETED,UPDATEDAT,NAME,CREATEDBY_ID,UPDATEDBY_ID) values ('1',to_timestamp('10.07.15 13:34:31,639000000','DD.MM.RR HH24:MI:SS,FF'),'0',null,'admin',null,null);
+Insert into ROLE (ID,CREATEDAT,DELETED,UPDATEDAT,NAME,CREATEDBY_ID,UPDATEDBY_ID) values ('2',to_timestamp('10.07.15 13:34:31,640000000','DD.MM.RR HH24:MI:SS,FF'),'0',null,'user',null,null);
+Insert into TEST (ID,CREATEDAT,DELETED,UPDATEDAT,DURATION,PASSMARK,TITLE,CREATEDBY_ID,UPDATEDBY_ID) values ('4',to_timestamp('10.07.15 13:41:11,302000000','DD.MM.RR HH24:MI:SS,FF'),'0',to_timestamp('10.07.15 13:55:14,450000000','DD.MM.RR HH24:MI:SS,FF'),'PT2H','80','First test','1','1');
+Insert into TESTCASE (ID,CREATEDAT,DELETED,UPDATEDAT,DUEDATE,STARTEDAT,CREATEDBY_ID,UPDATEDBY_ID,TEST_ID,USER_ID) values ('1',to_timestamp('10.07.15 13:08:21,881000000','DD.MM.RR HH24:MI:SS,FF'),'0',to_timestamp('10.07.15 13:08:26,556000000','DD.MM.RR HH24:MI:SS,FF'),to_timestamp('10.07.15 13:08:28,779000000','DD.MM.RR HH24:MI:SS,FF'),to_timestamp('10.07.15 13:08:31,162000000','DD.MM.RR HH24:MI:SS,FF'),'1','1','4','1');
+Insert into TEST_QUESTION (TEST_ID,QUESTIONS_ID) values ('4','5');
+Insert into TEST_QUESTION (TEST_ID,QUESTIONS_ID) values ('4','7');
 
 -- so that hibernate sequence starts from 4
 select hibernate_sequence.nextval from dual;
