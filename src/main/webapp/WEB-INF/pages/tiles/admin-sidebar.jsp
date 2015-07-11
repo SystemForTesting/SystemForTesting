@@ -14,4 +14,9 @@
             <bean:message key="admin.sidebar.navigation.test.add" />
         </html:link>
     </li>
+    <li>
+        <html:link action="/admin/testAddEdit">
+            <bean:message key="admin.sidebar.navigation.students" />
+        </html:link>
+    </li>
 </ul>

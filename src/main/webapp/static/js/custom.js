@@ -31,6 +31,11 @@ function removeQuestion(element) {
     $(element).parent().parent().parent().remove();
     $('a').last().focus();
 }
+
+function selectTestFromTable(element){
+    var testId =$(element).attr('test-id');
+    window.location.href = "testView.do?id="+testId;
+}
 //------------------------------END ADMIN PAGE------------------------------------------------
 
 //------------------------------START USER PAGE------------------------------------------------
@@ -98,11 +103,6 @@ function selectQuestion(element) {
     } else $(".question-button#" + currentQuest + "").removeClass('missed');
 }
 
-function addMissed() {
-    var currentQuestion = $('.question-button.current');
-    currentQuestion.addClass('not-sure');
-};
-
 $('.onoffswitch').on('click', 'input', function () {
     if ($(this).is(':checked'))
         $('.question-button.current').addClass('not-sure');
@@ -133,6 +133,16 @@ $(document).ready(function () {
         var summ = parseInt(firsChar, 10) + parseInt(currentIndex, 10);
         var nextChar = String.fromCharCode(summ);
         $(value).text(nextChar)
+    });
+
+    var questCount = $('.question');
+
+    $.each(questCount, function (index, value) {
+        var nextNumber = parseInt(index)+1;
+        if (nextNumber == 1)
+            $('.test-case-bottons').append('<div class="col-sm-3"><button onclick="selectQuestion(this)" id="'+nextNumber+'" class="btn btn-default question-button current">'+nextNumber+'</button></div>');
+        else
+            $('.test-case-bottons').append('<div class="col-sm-3"><button onclick="selectQuestion(this)" id="'+nextNumber+'" class="btn btn-default question-button">'+nextNumber+'</button></div>');
     });
 });
 //------------------------------END USER PAGE------------------------------------------------
