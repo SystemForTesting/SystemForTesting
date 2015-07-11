@@ -9,36 +9,57 @@
 </head>
 <body>
 
-<div class="questions">
-    <c:forEach begin="1" end="30" varStatus="index">
-        <button class="question-button btn btn-primary">
-                ${index}
-        </button>
-    </c:forEach>
+<div class="main">
+    <div class="panel panel-default front-panel">
+        <span class="slide-in-out-button" onclick="slidePanel.doSlide(this)">BBB</span>
+    </div>
+
+    <div class="panel panel-default back-panel">
+        <table class="table stud-table">
+            <thead>
+                <tr>
+                    <td>Student</td>
+                    <td>Link to test</td>
+                </tr>
+            </thead>
+            <tr>
+                <td class="stud-td">
+                    <div class="stud-wide-info" onclick="widePanel.doExpand(this)">Smith</div>
+                    <div class="stud-cell">Smith</div>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="stud-td">
+                    <div class="stud-wide-info" onclick="widePanel.doExpand(this)">Johnson</div>
+                    <div class="stud-cell">Johnson</div>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="stud-td">
+                    <div class="stud-wide-info" onclick="widePanel.doExpand(this)">White</div>
+                    <div class="stud-cell">White</div>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="stud-td">
+                    <div class="stud-wide-info" onclick="widePanel.doExpand(this)">Scott</div>
+                    <div class="stud-cell">Scott</div>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
 </div>
-
-<div class="questions col-sm-4">
-    <c:forEach begin="1" end="30" varStatus="index">
-        <div class="col-sm-3" style="float: left">
-            <button class="btn btn-primary">
-                    ${index}
-            </button>
-        </div>
-    </c:forEach>
-</div>
-
-<div class="questions-two">
-    <c:forEach begin="1" end="30" varStatus="index">
-        <button class="question-button-two btn btn-primary">
-                ${index}
-        </button>
-    </c:forEach>
-</div>
-
-
 
 <script src="<c:url value="/webjars/jquery/2.1.4/jquery.min.js"/>"></script>
-<script src="<c:url value="/static/js/index.js"/>"></script>
+<script src="<c:url value="/static/js/indexx.js"/>"></script>
 <script src="<c:url value="/webjars/bootstrap/3.3.5/js/bootstrap.js"/>"></script>
 </body>
 </html>

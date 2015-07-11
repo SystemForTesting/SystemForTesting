@@ -17,7 +17,10 @@
     </thead>
     <tbody>
     <logic:iterate name="testListForm" property="tests" id="test" indexId="index">
-        <tr>
+        <c:set var="testId">
+            <bean:write name="test" property="id"/>
+        </c:set>
+        <tr test-id="${testId}" onclick="selectTestFromTable(this)">
             <td><bean:write name="index"/></td>
             <td><bean:write name="test" property="title"/></td>
             <td><bean:write name="test" property="passMark"/></td>
