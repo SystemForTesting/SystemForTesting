@@ -6,10 +6,15 @@ function SlidePanel() {
 
     this.doSlide = function (element) {
         var slidePanel = $(element).parent('div');
+        var arrowSign = $(element).children('div');
         if (this.isPushedAway == false) {
             $(slidePanel).animate({right: thisPanel.slidePixelsCount}, thisPanel.animationSpeed);
+            $(arrowSign).removeClass("arrow-right");
+            $(arrowSign).addClass("arrow-left");
             this.isPushedAway = true;
         } else {
+            $(arrowSign).removeClass("arrow-left");
+            $(arrowSign).addClass("arrow-right");
             $(slidePanel).animate({right: "0px"}, thisPanel.animationSpeed);
             this.isPushedAway = false;
         }
@@ -102,6 +107,7 @@ function hoverTestLink(element){
         var newPosition = rowContainer * heightSlideButton;
 
         $('.slide-in-out-button').css("top", newPosition);
+        $('.slide-in-out-button').show();
         //alert("rowIndex" + rowContainer + " middleOfRow" + middleOfSlideButton)
     }
 }
