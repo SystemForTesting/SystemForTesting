@@ -41,6 +41,19 @@
     color: white;
     padding: 8px;
     width: 100%;
+    background-color: black;
+}
+
+.stud-wide-info:hover{
+    cursor: hand;
+}
+
+.stud-wide-info-drop-panel{
+    position: absolute;
+    padding: 8px;
+    width: 100%;
+    height: 100%;
+    background-color: aquamarine;
 }
 
 .stud-table{
@@ -50,10 +63,6 @@
 .stud-cell{
     /*position: relative;*/
     margin: 8px;
-}
-
-.stud-cell:hover{
-    cursor: hand;
 }
 
 .selected-row{

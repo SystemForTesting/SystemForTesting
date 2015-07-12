@@ -24,6 +24,7 @@
             </thead>
             <tr>
                 <td class="stud-td">
+                    <div class="stud-wide-info-drop-panel"></div>
                     <div class="stud-wide-info" onclick="widePanel.doExpand(this)">Smith</div>
                     <div class="stud-cell">Smith</div>
                 </td>
@@ -32,24 +33,27 @@
             </tr>
             <tr>
                 <td class="stud-td">
+                    <div class="stud-wide-info-drop-panel"></div>
                     <div class="stud-wide-info" onclick="widePanel.doExpand(this)">Johnson</div>
-                    <div class="stud-cell">Johnson</div>
+                    <div class="stud-cell">Smith</div>
                 </td>
                 <td></td>
                 <td></td>
             </tr>
             <tr>
                 <td class="stud-td">
+                    <div class="stud-wide-info-drop-panel"></div>
                     <div class="stud-wide-info" onclick="widePanel.doExpand(this)">White</div>
-                    <div class="stud-cell">White</div>
+                    <div class="stud-cell">Smith</div>
                 </td>
                 <td></td>
                 <td></td>
             </tr>
             <tr>
                 <td class="stud-td">
+                    <div class="stud-wide-info-drop-panel"></div>
                     <div class="stud-wide-info" onclick="widePanel.doExpand(this)">Scott</div>
-                    <div class="stud-cell">Scott</div>
+                    <div class="stud-cell">Smith</div>
                 </td>
                 <td></td>
                 <td></td>

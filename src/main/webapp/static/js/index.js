@@ -20,38 +20,38 @@ function WidePanel() {
     this.doExpand = function (element) {
         if (widePanel.previousElement != null && widePanel.previousElement != element){
             if (widePanel.isExpanded == false)
-                widePanel.slideToDown(widePanel.previousElement);
+                widePanel.slideToDownTop(widePanel.previousElement);
             else
-                widePanel.slideToLeft(widePanel.previousElement, function(){
+                widePanel.slideToLeftRight(widePanel.previousElement, function(){
                     widePanel.previousElement = element;
-                    widePanel.slideToDown(element);
+                    widePanel.slideToDownTop(element);
                 });
         }else{
             widePanel.previousElement = element;
             if (widePanel.isExpanded == false)
-                widePanel.slideToDown(element);
+                widePanel.slideToDownTop(element);
             else
-                widePanel.slideToLeft(element);
+                widePanel.slideToLeftRight(element);
         }
     };
 
-    this.slideToLeft = function (element, callback) {
+    this.slideToLeftRight = function (element, callback) {
         if (widePanel.isExpanded == false) {
             $(element).parent('td').addClass('selected-row');
             $(element).addClass('selected-row');
             $(element).animate({left: "-200px"}, 150);
         } else {
             $(element).parent('td').removeClass('selected-row');
-            if (isFunction(callback))$(element).animate({left: "0px"}, 150, widePanel.slideToDown(element), callback);
-            else $(element).animate({left: "0px"}, 150, widePanel.slideToDown(element));
+            if (isFunction(callback))$(element).animate({left: "0px"}, 150, widePanel.slideToDownTop(element), callback);
+            else $(element).animate({left: "0px"}, 150, widePanel.slideToDownTop(element));
             widePanel.isExpanded = false;
         }
     };
 
-    this.slideToDown = function (element) {
+    this.slideToDownTop = function (element) {
         if (widePanel.isExpanded == false) {
             $(element).parent('td').addClass('selected-row');
-            $(element).animate({height: "300px"}, 150, widePanel.slideToLeft(element));
+            $(element).animate({height: "300px"}, 150, widePanel.slideToLeftRight(element));
             widePanel.isExpanded = true;
         } else {
             $(element).parent('td').removeClass('selected-row');
