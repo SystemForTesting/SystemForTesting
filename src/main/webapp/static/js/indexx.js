@@ -12,50 +12,66 @@ function SlidePanel() {
     }
 };
 //----------------------------------------------------------------
+
 function WidePanel() {
+    this.animationSpeed = 150;
+    this.slidePixelsCount = -200;
+    this.slidePanelIndent = 10;
+    this.dropPanelPixelsCount = 300;
     this.isExpanded = false;
     this.previousElement = null;
+    this.processing = false;
     var widePanel = this;
 
     this.doExpand = function (element) {
-        if (widePanel.previousElement != null && widePanel.previousElement != element){
-            if (widePanel.isExpanded == false)
-                widePanel.slideToDown(widePanel.previousElement);
-            else
-                widePanel.slideToLeft(widePanel.previousElement, function(){
+        if (widePanel.processing == false) {
+            widePanel.processing = true;
+            if (widePanel.previousElement != null && widePanel.previousElement != element && widePanel.isExpanded == true) {
+                widePanel.slideToDownTop($(widePanel.previousElement).prev(), function () {
+                    widePanel.slideToLeftRight(widePanel.previousElement, function(){widePanel.slideToLeftRight(element)});
                     widePanel.previousElement = element;
-                    widePanel.slideToDown(element);
                 });
-        }else{
-            widePanel.previousElement = element;
-            if (widePanel.isExpanded == false)
-                widePanel.slideToDown(element);
-            else
-                widePanel.slideToLeft(element);
+            } else {
+                widePanel.previousElement = element;
+                if (widePanel.isExpanded == false)
+                    widePanel.slideToLeftRight(element);
+                else
+                    widePanel.slideToLeftRight(element);
+            }
         }
     };
 
-    this.slideToLeft = function (element, callback) {
+
+    this.slideToLeftRight = function (element, callback) {
+        var elementDropPanel = $(element).prev();
+
         if (widePanel.isExpanded == false) {
-            $(element).parent('td').addClass('selected-row');
-            $(element).addClass('selected-row');
-            $(element).animate({left: "-200px"}, 150);
+            var elementWidth = parseInt($(element).css('width'), 10) + Math.abs(widePanel.slidePixelsCount);
+            var dropPanelWidth = Math.abs(widePanel.slidePixelsCount) - widePanel.slidePanelIndent;
+            $(element).animate({left: widePanel.slidePixelsCount, width: elementWidth}, widePanel.animationSpeed);
+            $(elementDropPanel).animate({left: widePanel.slidePixelsCount, width: dropPanelWidth}, widePanel.animationSpeed, function () {
+                widePanel.slideToDownTop(elementDropPanel)
+            });
         } else {
-            $(element).parent('td').removeClass('selected-row');
-            if (isFunction(callback))$(element).animate({left: "0px"}, 150, widePanel.slideToDown(element), callback);
-            else $(element).animate({left: "0px"}, 150, widePanel.slideToDown(element));
-            widePanel.isExpanded = false;
+            widePanel.slideToDownTop(elementDropPanel, function () {
+                $(elementDropPanel).animate({left: "0px", width: "100%"}, widePanel.animationSpeed);
+                $(element).animate({left: "0px", width: "100%"}, widePanel.animationSpeed);
+                widePanel.isExpanded = false;
+
+                if (isFunction(callback) == true){
+                    callback();
+                } else widePanel.processing = false;
+            })
         }
     };
 
-    this.slideToDown = function (element) {
+    this.slideToDownTop = function (element, callback) {
         if (widePanel.isExpanded == false) {
-            $(element).parent('td').addClass('selected-row');
-            $(element).animate({height: "300px"}, 150, widePanel.slideToLeft(element));
+            $(element).animate({height: widePanel.dropPanelPixelsCount}, widePanel.animationSpeed);
             widePanel.isExpanded = true;
+            widePanel.processing = false;
         } else {
-            $(element).parent('td').removeClass('selected-row');
-            $(element).animate({height: "100%"}, 150);
+            $(element).animate({height: "100%"}, widePanel.animationSpeed, callback);
         }
     };
 };
