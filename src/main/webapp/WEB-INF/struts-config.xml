@@ -7,45 +7,54 @@
     <form-beans>
         <form-bean name="testForm" type="com.epam.testsystem.form.TestForm"/>
         <form-bean name="testListForm" type="com.epam.testsystem.form.TestListForm"/>
+        <form-bean name="questionForm" type="com.epam.testsystem.form.QuestionForm"/>
         <form-bean name="questionListForm" type="com.epam.testsystem.form.QuestionListForm"/>
+        <form-bean name="testCaseForm" type="com.epam.testsystem.form.TestCaseForm"/>
     </form-beans>
 
     <action-mappings>
         <action path="/login"
                 type="org.springframework.web.struts.DelegatingActionProxy">
-            <forward name="success" path="WEB-INF/pages/common/login.jsp"/>
+            <forward name="success" path="/WEB-INF/pages/common/login.jsp"/>
         </action>
         <action path="/admin/testAddEdit"
                 type="org.springframework.web.struts.DelegatingActionProxy"
                 name="testForm"
                 scope="request">
-            <forward name="success" path="WEB-INF/pages/admin/test-add-edit.jsp"/>
+            <forward name="success" path="/WEB-INF/pages/admin/test-add-edit.jsp"/>
             <forward name="redirect" redirect="true" path="/admin/testView.do"/>
         </action>
         <action path="/admin/testView"
                 type="org.springframework.web.struts.DelegatingActionProxy"
                 name="testForm"
                 scope="request">
-            <forward name="success" path="WEB-INF/pages/admin/test-view.jsp"/>
+            <forward name="success" path="/WEB-INF/pages/admin/test-view.jsp"/>
             <forward name="redirect" redirect="true" path="/admin/testList.do"/>
         </action>
         <action path="/admin/testList"
                 type="org.springframework.web.struts.DelegatingActionProxy"
                 name="testListForm"
                 scope="request">
-            <forward name="success" path="WEB-INF/pages/admin/test-list.jsp"/>
+            <forward name="success" path="/WEB-INF/pages/admin/test-list.jsp"/>
+        </action>
+        <action path="/admin/questionAddEdit"
+                type="org.springframework.web.struts.DelegatingActionProxy"
+                name="questionForm"
+                scope="request">
+            <forward name="success" path="/WEB-INF/pages/admin/question-add-edit.jsp"/>
+            <forward name="redirect" redirect="true" path="/admin/questionView.do"/>
         </action>
         <action path="/admin/questionList"
                 type="org.springframework.web.struts.DelegatingActionProxy"
                 name="questionListForm"
                 scope="request">
-            <forward name="success" path="WEB-INF/pages/admin/question-list.jsp"/>
+            <forward name="success" path="/WEB-INF/pages/admin/question-list.jsp"/>
         </action>
         <action path="/test"
                 type="org.springframework.web.struts.DelegatingActionProxy"
-                name="testForm"
-                scope="request"><!--TODO the name right?-->
-            <forward name="success" path="WEB-INF/pages/user/user-testcase.jsp"/>
+                name="testCaseForm"
+                scope="request">
+            <forward name="success" path="/WEB-INF/pages/user/user-testcase.jsp"/>
         </action>
     </action-mappings>
 
@@ -53,6 +62,6 @@
 
     <plug-in className="org.apache.struts.tiles.TilesPlugin">
         <set-property property="definitions-config"
-                      value="/tiles-defs.xml"/>
+                      value="/WEB-INF/tiles-defs.xml"/>
     </plug-in>
 </struts-config>
