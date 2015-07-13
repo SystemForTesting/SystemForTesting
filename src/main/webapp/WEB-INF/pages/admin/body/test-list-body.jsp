@@ -8,12 +8,12 @@
 
 <table class="table table-striped">
     <thead>
-        <tr>
-            <th>#</th>
-            <th><bean:message key="test.title" /> </th>
-            <th><bean:message key="test.pass.mark"/> </th>
-            <th><bean:message key="test.duration"/> </th>
-        </tr>
+    <tr>
+        <th>#</th>
+        <th><bean:message key="test.title"/></th>
+        <th><bean:message key="test.pass.mark"/></th>
+        <th><bean:message key="test.duration"/></th>
+    </tr>
     </thead>
     <tbody>
     <logic:iterate name="testListForm" property="tests" id="test" indexId="index">
@@ -29,3 +29,8 @@
     </logic:iterate>
     </tbody>
 </table>
+<div align="center">
+    <html:link action="/admin/testAddEdit" styleClass="btn btn-primary btn-raised add-qwest-button">
+        <bean:message key="admin.sidebar.navigation.test.add"/>
+    </html:link>
+</div>
