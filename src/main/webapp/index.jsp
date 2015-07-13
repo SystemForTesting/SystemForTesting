@@ -28,7 +28,7 @@
                     <div class="stud-wide-info" onclick="widePanel.doExpand(this)">Smith</div>
                     <div class="stud-cell">Smith</div>
                 </td>
-                <td></td>
+                <td onmouseover="hoverTestLink(this)"></td>
                 <td></td>
             </tr>
             <tr>
@@ -37,7 +37,7 @@
                     <div class="stud-wide-info" onclick="widePanel.doExpand(this)">Johnson</div>
                     <div class="stud-cell">Smith</div>
                 </td>
-                <td></td>
+                <td onmouseover="hoverTestLink(this)"></td>
                 <td></td>
             </tr>
             <tr>
@@ -46,7 +46,7 @@
                     <div class="stud-wide-info" onclick="widePanel.doExpand(this)">White</div>
                     <div class="stud-cell">Smith</div>
                 </td>
-                <td></td>
+                <td onmouseover="hoverTestLink(this)"></td>
                 <td></td>
             </tr>
             <tr>
@@ -55,7 +55,7 @@
                     <div class="stud-wide-info" onclick="widePanel.doExpand(this)">Scott</div>
                     <div class="stud-cell">Smith</div>
                 </td>
-                <td></td>
+                <td onmouseover="hoverTestLink(this)"></td>
                 <td></td>
             </tr>
         </table>

@@ -3,7 +3,8 @@
     height: 400px;
     background-color: #275485;
     float: left;
-    position: relative;
+    position: absolute;
+    right: 0px;
 }
 
 .back-panel{
@@ -16,14 +17,15 @@
 .main{
     width: 400px;
     margin: auto;
+    position: relative;
 }
 
 .slide-in-out-button{
     width: 30px;
-    height: 60px;
+    height: 39px;
     background-color: #97A63A;
-    position: relative;
-    left: -10px;
+    position: absolute;
+    right: -10px;
     z-index: 1;
     cursor: hand;
 }
@@ -41,11 +43,11 @@
     color: white;
     padding: 8px;
     width: 100%;
-    background-color: black;
 }
 
 .stud-wide-info:hover{
     cursor: hand;
+    background-color: #275485;
 }
 
 .stud-wide-info-drop-panel{
