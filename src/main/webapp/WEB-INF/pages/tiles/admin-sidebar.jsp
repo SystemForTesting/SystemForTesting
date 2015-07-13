@@ -10,7 +10,7 @@
         </html:link>
     </li>
     <li>
-        <html:link action="/admin/testAddEdit">
+        <html:link action="/admin/studentList">
             <bean:message key="admin.sidebar.navigation.students" />
         </html:link>
     </li>
