@@ -11,7 +11,22 @@
 
 <div class="main">
     <div class="panel panel-default front-panel">
-        <span class="slide-in-out-button" onclick="slidePanel.doSlide(this)">BBB</span>
+        <span class="slide-in-out-button" onclick="slidePanel.doSlide(this)">
+            <div class="arrow-right"></div>
+        </span>
+        <input type="text" class="form-control search-row" aria-label="">
+        <div class="panel panel-default admin-test-list">
+            <div><input type="radio" name="tests"> Test1</div>
+            <div><input type="radio" name="tests"> Test1</div>
+            <div><input type="radio" name="tests"> Test1</div>
+            <div><input type="radio" name="tests"> Test1</div>
+            <div><input type="radio" name="tests"> Test1</div>
+            <div><input type="radio" name="tests"> Test1</div>
+            <div><input type="radio" name="tests"> Test1</div>
+            <div><input type="radio" name="tests"> Test1</div>
+            <div><input type="radio" name="tests"> Test1</div>
+            <div><input type="radio" name="tests"> Test1</div>
+        </div>
     </div>
 
     <div class="panel panel-default back-panel">
@@ -24,12 +39,11 @@
             </thead>
             <tr>
                 <td class="stud-td">
-                    <div class="stud-wide-info-drop-panel"></div>
+                    <div class="panel panel-primary stud-wide-info-drop-panel"></div>
                     <div class="stud-wide-info" onclick="widePanel.doExpand(this)">Smith</div>
                     <div class="stud-cell">Smith</div>
                 </td>
                 <td onmouseover="hoverTestLink(this)"></td>
-                <td></td>
             </tr>
             <tr>
                 <td class="stud-td">
@@ -38,7 +52,6 @@
                     <div class="stud-cell">Smith</div>
                 </td>
                 <td onmouseover="hoverTestLink(this)"></td>
-                <td></td>
             </tr>
             <tr>
                 <td class="stud-td">
@@ -47,7 +60,6 @@
                     <div class="stud-cell">Smith</div>
                 </td>
                 <td onmouseover="hoverTestLink(this)"></td>
-                <td></td>
             </tr>
             <tr>
                 <td class="stud-td">
@@ -56,7 +68,6 @@
                     <div class="stud-cell">Smith</div>
                 </td>
                 <td onmouseover="hoverTestLink(this)"></td>
-                <td></td>
             </tr>
         </table>
     </div>
