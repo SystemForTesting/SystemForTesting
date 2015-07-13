@@ -24,7 +24,7 @@ public class UserListAction  extends Action {
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
                                  HttpServletResponse response) throws Exception {
-        List<User> users = userService.findAll();
+        List<User> users = userService.findByRoleName("user");
         UserListForm userListForm = (UserListForm) form;
         userListForm.setUsers(users);
         return mapping.findForward("success");

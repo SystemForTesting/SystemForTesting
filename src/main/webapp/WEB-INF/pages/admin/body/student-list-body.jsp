@@ -6,4 +6,11 @@
 <%@ taglib uri="http://struts.apache.org/tags-nested" prefix="nested" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 
-<div>Student list page</div>
+<tbody>
+<logic:iterate name="userListForm" property="users" id="user" indexId="index">
+    <tr>
+        <td><bean:write name="index"/></td>
+        <td><bean:write name="user" property="username"/></td>
+    </tr>
+</logic:iterate>
+</tbody>

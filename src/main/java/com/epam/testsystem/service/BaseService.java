@@ -6,11 +6,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-public class BaseService<E extends BaseEntity> {
+public class BaseService<E extends BaseEntity, T extends BaseRepository<E>> {
 
-    protected BaseRepository<E> repository;
+    protected T repository;
 
-    protected BaseService(BaseRepository<E> repository) {
+    protected BaseService(T repository) {
         this.repository = repository;
     }
 

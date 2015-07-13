@@ -11,7 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import static com.epam.testsystem.util.SecurityUtils.getCurrentlyAuthenticatedUser;
 
 @Service
-public class TestService extends BaseService<Test> {
+public class TestService extends BaseService<Test, TestRepository> {
+
     @Autowired
     public TestService(TestRepository repository) {
         super(repository);
