@@ -1,6 +1,6 @@
 function SlidePanel() {
     this.isPushedAway = false;
-    this.slidePixelsCount = -200;
+    this.slidePixelsCount = -190;
     this.animationSpeed = 500;
     var thisPanel = this;
 
