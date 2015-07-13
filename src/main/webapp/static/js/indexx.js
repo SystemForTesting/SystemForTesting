@@ -1,12 +1,16 @@
 function SlidePanel() {
     this.isPushedAway = false;
+    this.slidePixelsCount = -200;
+    this.animationSpeed = 500;
+    var thisPanel = this;
+
     this.doSlide = function (element) {
         var slidePanel = $(element).parent('div');
         if (this.isPushedAway == false) {
-            $(slidePanel).animate({left: "-200px"}, 500);
+            $(slidePanel).animate({right: thisPanel.slidePixelsCount}, thisPanel.animationSpeed);
             this.isPushedAway = true;
         } else {
-            $(slidePanel).animate({left: "0px"}, 500);
+            $(slidePanel).animate({right: "0px"}, thisPanel.animationSpeed);
             this.isPushedAway = false;
         }
     }
@@ -48,6 +52,7 @@ function WidePanel() {
         if (widePanel.isExpanded == false) {
             var elementWidth = parseInt($(element).css('width'), 10) + Math.abs(widePanel.slidePixelsCount);
             var dropPanelWidth = Math.abs(widePanel.slidePixelsCount) - widePanel.slidePanelIndent;
+            $(element).addClass('selected-row');
             $(element).animate({left: widePanel.slidePixelsCount, width: elementWidth}, widePanel.animationSpeed);
             $(elementDropPanel).animate({left: widePanel.slidePixelsCount, width: dropPanelWidth}, widePanel.animationSpeed, function () {
                 widePanel.slideToDownTop(elementDropPanel)
@@ -60,7 +65,11 @@ function WidePanel() {
 
                 if (isFunction(callback) == true){
                     callback();
-                } else widePanel.processing = false;
+                    $(element).removeClass('selected-row');
+                } else {
+                    widePanel.processing = false;
+                    $(element).removeClass('selected-row');
+                }
             })
         }
     };
@@ -83,3 +92,16 @@ function isFunction(functionToCheck) {
 
 var slidePanel = new SlidePanel();
 var widePanel = new WidePanel();
+
+function hoverTestLink(element){
+
+    if (slidePanel.isPushedAway == false){
+        var rowContainer = parseInt($(element).parent().index(), 10) + 1;
+        var heightSlideButton = parseInt($(element).css('height'), 10);
+        var middleOfSlideButton = parseInt($(element).css('height'), 10) - (parseInt($(element).css('height'), 10) / 2);
+        var newPosition = rowContainer * heightSlideButton;
+
+        $('.slide-in-out-button').css("top", newPosition);
+        //alert("rowIndex" + rowContainer + " middleOfRow" + middleOfSlideButton)
+    }
+}
