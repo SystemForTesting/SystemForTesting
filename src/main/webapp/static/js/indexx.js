@@ -64,6 +64,7 @@ function WidePanel() {
             });
         } else {
             widePanel.slideToDownTop(elementDropPanel, function () {
+                //$(elementDropPanel).removeClass('panel panel-primary');
                 $(elementDropPanel).animate({left: "0px", width: "100%"}, widePanel.animationSpeed);
                 $(element).animate({left: "0px", width: "100%"}, widePanel.animationSpeed);
                 widePanel.isExpanded = false;
@@ -81,11 +82,14 @@ function WidePanel() {
 
     this.slideToDownTop = function (element, callback) {
         if (widePanel.isExpanded == false) {
-            $(element).animate({height: widePanel.dropPanelPixelsCount}, widePanel.animationSpeed);
+
+            //$(element).animate({height: widePanel.dropPanelPixelsCount}, widePanel.animationSpeed);
+            $(element).slideDown(widePanel.animationSpeed);
             widePanel.isExpanded = true;
             widePanel.processing = false;
         } else {
-            $(element).animate({height: "100%"}, widePanel.animationSpeed, callback);
+            $(element).slideUp(widePanel.animationSpeed, callback);
+            //$(element).animate({height: "100%"}, widePanel.animationSpeed, callback);
         }
     };
 };
