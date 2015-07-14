@@ -72,6 +72,7 @@
 .stud-td{
     position: relative;
     padding: 0px!important;
+    width: 180px;
 }
 
 .stud-wide-info{
@@ -89,10 +90,26 @@
 
 .stud-wide-info-drop-panel{
     position: absolute;
-    padding: 8px;
+    padding: 40px 8px;
     width: 100%;
     height: 100%;
+    font-size: 10px;
+    display: none;
     /*background-color: aquamarine;*/
+}
+
+.stud-wide-info-drop-panel .role{
+    text-align: right;
+    border: solid 0;
+}
+
+.stud-wide-info-drop-panel div label{
+    margin: 10px 0 0;
+}
+
+.stud-wide-info-drop-panel div div{
+    margin-left: 10%;
+    border-bottom: solid 1px #275485;
 }
 
 .stud-table{
@@ -100,11 +117,10 @@
 }
 
 .stud-cell{
-    /*position: relative;*/
     margin: 8px;
 }
 
 .selected-row{
-    background: linear-gradient(to bottom, #606060 0%,#dbdbdb 45%,#dbdbdb 55%,#606060 100%); /* W3C */
+    background: linear-gradient(to bottom, #337ab7 0%,#ffffff 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#606060', endColorstr='#606060',GradientType=0 );
 }
