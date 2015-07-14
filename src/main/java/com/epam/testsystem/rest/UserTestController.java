@@ -1,70 +1,34 @@
 package com.epam.testsystem.rest;
 
+import com.epam.testsystem.model.TestCase;
+import com.epam.testsystem.service.TestCaseService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/tests-users/")
 public class UserTestController {
-    private List<User> users = new ArrayList<>();
 
-    private User getUserByName(String name){
-        for (User user : users) {
-            if (user.getName().toLowerCase().equals(name.toLowerCase()))
-                return user;
-        }
-        return null;
-    }
+    @Autowired
+    TestCaseService testCaseService;
 
-    @RequestMapping(value = "/{name}.rest", method = RequestMethod.GET, headers = "Accept=application/json")
-    public @ResponseBody User getUser(@PathVariable String name, ModelMap model) {
-        if (users.isEmpty()){
-            users.add(new User("John", "Smith"));
-            users.add(new User("Marcus", "Gray"));
-            users.add(new User("Son", "Stevens"));
-            users.add(new User("James", "Raygan"));
+    @RequestMapping(value = "/.rest", method = RequestMethod.GET, headers = "Accept=application/json")
+    public @ResponseBody Map<Long, Long> getTestsUsers() {
+//        @PathVariable String name, ModelMap model
+
+        List<TestCase> testCases = testCaseService.findAll();
+        Map<Long, Long> users_tests = new HashMap<>();
+
+        for (TestCase testCase : testCases) {
+            users_tests.put(testCase.getUser().getId(), testCase.getTest().getId());
         }
 
-//        User user = getUserByName(name);
-//        model.addAttribute("user", user);
-        return new User("John", "Smith");
-//        return "index";
-    }
-
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String getDefaultUser(ModelMap model) {
-
-        model.addAttribute("user", "this is default movie");
-        return "index";
-
-    }
-
-    private class User {
-        private String name;
-        private String surname;
-
-        public User(String name, String surname) {
-            this.name = name;
-            this.surname = surname;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getSurname() {
-            return surname;
-        }
-
-        public void setSurname(String surname) {
-            this.surname = surname;
-        }
+        return users_tests;
     }
 }

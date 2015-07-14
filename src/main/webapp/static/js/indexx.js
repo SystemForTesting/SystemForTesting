@@ -1,3 +1,10 @@
+var users_tests = {};
+
+$.get("tests-users/.rest", function(result){
+    users_tests = result;
+});
+
+
 function SlidePanel() {
     this.isPushedAway = false;
     this.slidePixelsCount = -190;
@@ -112,6 +119,22 @@ function hoverTestLink(element){
 
         $('.slide-in-out-button').css("top", newPosition);
         $('.slide-in-out-button').show();
-        //alert("rowIndex" + rowContainer + " middleOfRow" + middleOfSlideButton)
+
+        var userId = $(element).parent().attr("id");
+        var testIDs = users_tests[userId];
+
+        var inputTestsElement = $("input[id=test"+testIDs+"]");
+
+        if (inputTestsElement != null){
+            //$(".admin-test-list input").attr("checked", false);
+            inputTestsElement.attr("checked", true)
+        }
+
+        //testIDs.forEach(function(testIdIndex, IdValue){
+        //    var inputTestsElement = $("input[id=test"+IdValue+"]");
+        //    if (inputTestsElement != null){
+        //        inputTestsElement.attr("checked", "checked")
+        //    }
+        //})
     }
 }
