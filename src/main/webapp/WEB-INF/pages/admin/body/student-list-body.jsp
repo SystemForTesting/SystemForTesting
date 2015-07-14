@@ -6,11 +6,39 @@
 <%@ taglib uri="http://struts.apache.org/tags-nested" prefix="nested" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 
-<tbody>
-<logic:iterate name="userListForm" property="users" id="user" indexId="index">
+<table class="table table-striped">
+    <thead>
     <tr>
-        <td><bean:write name="index"/></td>
-        <td><bean:write name="user" property="username"/></td>
+        <th>#</th>
+        <th><bean:message key="user.username"/></th>
+        <th><bean:message key="user.first.name"/></th>
+        <th><bean:message key="user.last.name"/></th>
+        <th><bean:message key="user.email"/></th>
     </tr>
-</logic:iterate>
-</tbody>
+    </thead>
+    <tbody>
+    <logic:iterate name="userListForm" property="users" id="user" indexId="index">
+        <tr>
+            <td><bean:write name="index"/></td>
+            <td><bean:write name="user" property="username"/></td>
+            <td><bean:write name="user" property="firstName"/></td>
+            <td><bean:write name="user" property="lastName"/></td>
+            <td><bean:write name="user" property="email"/></td>
+        </tr>
+    </logic:iterate>
+    <tr id="createUserInputsId">
+        <html:form action="/admin/userAddEdit">
+            <td></td>
+            <td><html:text property="username"/></td>
+            <td><html:text property="firstName"/></td>
+            <td><html:text property="lastName"/></td>
+            <td><html:text property="email"/></td>
+        </html:form>
+    </tr>
+    </tbody>
+</table>
+<div align="center">
+    <a class="btn btn-primary btn-raised add-qwest-button" onclick="show()">
+        <bean:message key="admin.sidebar.navigation.student.add"/>
+    </a>
+</div>

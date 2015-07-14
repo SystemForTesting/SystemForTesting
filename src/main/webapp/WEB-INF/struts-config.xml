@@ -11,6 +11,7 @@
         <form-bean name="questionListForm" type="com.epam.testsystem.form.QuestionListForm"/>
         <form-bean name="testCaseForm" type="com.epam.testsystem.form.TestCaseForm"/>
         <form-bean name="userListForm" type="com.epam.testsystem.form.UserListForm"/>
+        <form-bean name="userForm" type="com.epam.testsystem.form.UserForm"/>
     </form-beans>
 
     <action-mappings>
@@ -60,6 +61,12 @@
         <action path="/admin/studentList"
                 type="org.springframework.web.struts.DelegatingActionProxy"
                 name="userListForm"
+                scope="request">
+            <forward name="success" path="/WEB-INF/pages/admin/student-list.jsp"/>
+        </action>
+        <action path="/admin/userAddEdit"
+                type="org.springframework.web.struts.DelegatingActionProxy"
+                name="userForm"
                 scope="request">
             <forward name="success" path="/WEB-INF/pages/admin/student-list.jsp"/>
         </action>
