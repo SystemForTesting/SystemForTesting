@@ -38,7 +38,13 @@
     </tbody>
 </table>
 <div align="center">
-    <a class="btn btn-primary btn-raised add-qwest-button" onclick="show()">
+    <a class="btn btn-primary btn-raised add-qwest-button" onclick="createCancelStudent()" id="createButton">
         <bean:message key="admin.sidebar.navigation.student.add"/>
+    </a>
+    <a class="btn btn-primary btn-raised add-qwest-button" id="save">
+        <bean:message key="admin.sidebar.navigation.student.save"/>
+    </a>
+    <a class="btn btn-default btn-raised add-qwest-button" onclick="createCancelStudent()" id="cancel">
+        <bean:message key="admin.sidebar.navigation.student.cancel"/>
     </a>
 </div>
