@@ -69,6 +69,7 @@
                 name="userForm"
                 scope="request">
             <forward name="success" path="/WEB-INF/pages/admin/student-list.jsp"/>
+            <forward name="redirect" redirect="true" path="/admin/studentList.do"/>
         </action>
     </action-mappings>
 
