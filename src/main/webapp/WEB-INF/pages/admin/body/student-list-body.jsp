@@ -4,7 +4,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-nested" prefix="nested" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <nested:form action="/admin/userAddEdit">
     <table class="table table-striped">
@@ -25,8 +25,11 @@
                 <td><bean:write name="user" property="firstName"/></td>
                 <td><bean:write name="user" property="lastName"/></td>
                 <td><bean:write name="user" property="email"/></td>
-                <td><html:link property="user.id" action="/admin/removeUser"
-                               styleClass="btn btn-danger btn-raised add-qwest-button"> X </html:link>
+                <c:set var="id">
+                    <bean:write name="user" property="id"/>
+                </c:set>
+                <td><a class="btn btn-danger btn-raised add-qwest-button"
+                       href="<c:url value="/admin/removeUser.do?id=${id}" />">X</a>
                 </td>
             </tr>
         </logic:iterate>

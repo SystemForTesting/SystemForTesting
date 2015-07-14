@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller("/admin/studentList")
@@ -25,8 +26,14 @@ public class UserListAction extends Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
                                  HttpServletResponse response) throws Exception {
         List<User> users = userService.findByRoleName("user");
+        List<User> undeletedUsers = new ArrayList<>();
+        for (User user : users) {
+            if (!user.isDeleted()) {
+                undeletedUsers.add(user);
+            }
+        }
         UserListForm userListForm = (UserListForm) form;
-        userListForm.setUsers(users);
+        userListForm.setUsers(undeletedUsers);
         return mapping.findForward("success");
     }
 }
