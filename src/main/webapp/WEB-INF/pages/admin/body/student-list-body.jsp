@@ -25,6 +25,9 @@
                 <td><bean:write name="user" property="firstName"/></td>
                 <td><bean:write name="user" property="lastName"/></td>
                 <td><bean:write name="user" property="email"/></td>
+                <td><html:link property="user.id" action="/admin/removeUser"
+                               styleClass="btn btn-danger btn-raised add-qwest-button"> X </html:link>
+                </td>
             </tr>
         </logic:iterate>
         <tr id="createUserInputsId">

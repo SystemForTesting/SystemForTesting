@@ -26,4 +26,8 @@ public class UserForm extends BaseForm<User> {
     public void update(User user) {
 
     }
+
+    public String getCredentials() {
+        return user.getLastName() + " " + user.getFirstName().substring(0, 1) + ".";
+    }
 }

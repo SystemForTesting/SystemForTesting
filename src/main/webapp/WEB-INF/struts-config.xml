@@ -71,6 +71,12 @@
             <forward name="success" path="/WEB-INF/pages/admin/student-list.jsp"/>
             <forward name="redirect" redirect="true" path="/admin/studentList.do"/>
         </action>
+        <action path="/admin/removeUser"
+                type="org.springframework.web.struts.DelegatingActionProxy"
+                name="userForm"
+                scope="request">
+            <forward name="success" path="/WEB-INF/pages/admin/student-list.jsp"/>
+        </action>
     </action-mappings>
 
     <message-resources parameter="properties.messages"/>
