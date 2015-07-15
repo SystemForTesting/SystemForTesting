@@ -12,7 +12,7 @@
 <nested:form action="/admin/questionAddEdit">
     <c:if test="${not empty testForm}">
         <input class="hidden" type="hidden"
-               name=testId"
+               name="testId"
                value="${testForm.id}"/>
     </c:if>
     <div class="question-form" id="<nested:write property='id' />">

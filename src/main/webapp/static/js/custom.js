@@ -4,8 +4,10 @@ $('.main-quest-panel').on('click', '.add-qwest-button', function () {
     var nextQuestionId = parseInt($('.question-form').last().attr('id')) + 1;
     var nextQuestionNumber = parseInt($('.question-form').length) + 1;
     var csrf = $('input[name=_csrf]').last();
+    var testId = $('input[name=testId]').last();
     $('.questions').append(
         '<form name="questionForm" method="post" action="/testsystem/admin/questionAddEdit.do">' +
+            testId.prop('outerHTML') +
             '<div class="question-form" id="' + nextQuestionId + '">' +
                 '<div>' +
                     '<textarea name="title" rows="3" class="form-control vresize" placeholder="Enter your question here"></textarea>' +
