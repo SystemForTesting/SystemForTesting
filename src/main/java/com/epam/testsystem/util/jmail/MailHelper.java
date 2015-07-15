@@ -1,4 +1,6 @@
-package com.epam.testsystem.util;
+package com.epam.testsystem.util.jmail;
+
+import com.epam.testsystem.model.User;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -8,21 +10,19 @@ import java.io.IOException;
 
 public class MailHelper {
 
-    public static void sendEmail(Session session, String userEmail, String username) throws MessagingException, IOException {
+    public static void sendEmail(Session session, User user, String userPassword) throws MessagingException, IOException {
         SmtpMessageSender messageSender = new SmtpMessageSender();
         MimeMessage message = messageSender.createMimeMessage(session,
-                "Hello, " + username,
+                "Hello, " + user.getUsername(),
                 "systemfortesting2015@gmail.com",
-                userEmail,
+                user.getEmail(),
                 Message.RecipientType.TO);
-        messageSender.addText(message, "Please follow this", "utf-8", "plain");
+        messageSender.addText(message, "Your username: " + user.getUsername(), "utf-8", "plain");
+        messageSender.addText(message, "Your password: " + userPassword, "utf-8", "plain");
         messageSender.addText(message,
-                "<a href='http://localhost:8080/testsystem/changePassword.do'>link</a>",
+                "<a href='http://localhost:8080/testsystem/login.do'>Go to main page</a>",
                 "utf-8",
                 "html");
-        messageSender.addText(message, "to change this password",
-                "utf-8",
-                "plain");
         messageSender.sendMimeMessage(message);
     }
 }

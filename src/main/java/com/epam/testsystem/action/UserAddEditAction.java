@@ -5,20 +5,19 @@ import com.epam.testsystem.model.Role;
 import com.epam.testsystem.model.User;
 import com.epam.testsystem.service.RoleService;
 import com.epam.testsystem.service.UserService;
-import com.epam.testsystem.util.MailHelper;
-import com.epam.testsystem.util.SmtpMessageSender;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 
-import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
-import javax.mail.internet.MimeMessage;
 import java.io.IOException;
+import java.util.UUID;
 
-import static com.epam.testsystem.util.MailHelper.sendEmail;
+import static com.epam.testsystem.util.jmail.MailHelper.sendEmail;
 
 @Controller("/admin/userAddEdit")
 public class UserAddEditAction extends BaseAction<UserForm> {
@@ -37,7 +36,11 @@ public class UserAddEditAction extends BaseAction<UserForm> {
             Role userRole = roleService.findById((long) 2);
             user.setRole(userRole);
 
-            sendEmail(session, user.getEmail(), user.getUsername());
+            String randomPassword = UUID.randomUUID().toString();
+            PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            String encodedPassword = passwordEncoder.encode(randomPassword);
+            user.setPassword(encodedPassword);
+            sendEmail(session, user, randomPassword);
             userService.save(user);
             return mapping.findForward("redirect");
         } catch (MessagingException | IOException e) {

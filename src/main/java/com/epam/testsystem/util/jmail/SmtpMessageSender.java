@@ -1,4 +1,4 @@
-package com.epam.testsystem.util;
+package com.epam.testsystem.util.jmail;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
