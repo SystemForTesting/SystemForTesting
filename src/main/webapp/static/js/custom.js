@@ -1,13 +1,39 @@
 //------------------------------START ADMIN PAGE------------------------------------------------
 
 $('.main-quest-panel').on('click', '.add-qwest-button', function () {
-    var nextQuestionId = $('.question-form').last().attr('id') - 1 + 2;
-    var nextQuestionNumber = $('.question-form').last().attr('id') - 1 + 3;
-    if (isNaN(nextQuestionNumber)) {
-        nextQuestionId = 0;
-        nextQuestionNumber = 1;
-    }
-    $('.questions').append('<div class="question-form" id="' + nextQuestionId + '"><label>' + 'Вопрос №' + nextQuestionNumber + '</label><div class="input-group"><span class="input-group-addon"><span class="glyphicon glyphicon-remove" onclick="removeQuestion(this)" aria-hidden="true"></span></span><textarea name="questions[' + nextQuestionId + '].title" rows="3" class="form-control vresize"></textarea></div><div class="answers"><div class="answer"><div><div class="input-group"><span class="input-group-addon"><span class="glyphicon glyphicon-remove" onclick="removeAnswer(this)" aria-hidden="true"></span></span><textarea name="questions[' + nextQuestionId + '].answers[0].text" rows="3" class="form-control vresize"></textarea><span class="input-group-addon"><input type="checkbox" name="questions[' + nextQuestionId + '].answers[0].right"> </span></div></div></div></div><a onclick="addAnswer(this)" href="javascript:void(0)" class="btn btn-primary btn-raised add-ans-button">Add answer</a><div class="clearfix"></div></div>');
+    var nextQuestionId = parseInt($('.question-form').last().attr('id')) + 1;
+    var nextQuestionNumber = parseInt($('.question-form').length) + 1;
+    var csrf = $('input[name=_csrf]').last();
+    $('.questions').append(
+        '<form name="questionForm" method="post" action="/testsystem/admin/questionAddEdit.do">' +
+            '<div class="question-form" id="' + nextQuestionId + '">' +
+                '<div>' +
+                    '<textarea name="title" rows="3" class="form-control vresize" placeholder="Enter your question here"></textarea>' +
+                '</div>' +
+                '<div class="answers">' +
+                    '<div class="answer">' +
+                        '<div>' +
+                            '<div class="input-group">' +
+                                '<span class="input-group-addon">' +
+                                    '<span class="glyphicon glyphicon-remove" onclick="removeAnswer(this)" aria-hidden="true"></span>' +
+                                '</span>' +
+                                '<textarea name="answers[0].text" rows="3" class="form-control vresize" placeholder="Enter your answer here"></textarea>' +
+                                '<span class="input-group-addon">' +
+                                    '<input type="checkbox" name="answers[0].right" value="on">' +
+                                '</span>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+                '<a onclick="addAnswer(this)" href="javascript:void(0)" class="btn btn-primary btn-raised add-ans-button">Add answer</a>' +
+                '<div class="clearfix"></div>' +
+                '<div class="text-center">' +
+                    csrf.prop('outerHTML') +
+                    '<input type="submit" name="" value="Сохранить">' +
+                '</div>' +
+            '</div>' +
+        '</form>'
+    );
     $('textarea').last().focus();
 });
 

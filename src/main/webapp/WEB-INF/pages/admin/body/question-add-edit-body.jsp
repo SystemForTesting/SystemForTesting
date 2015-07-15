@@ -10,7 +10,7 @@
     <nested:define id="questionForm" />
 </c:if>
 <nested:form action="/admin/questionAddEdit">
-    <div class="question-form">
+    <div class="question-form" id="<nested:write property='id' />">
         <div>
             <nested:textarea property="title" rows="3" styleClass="form-control vresize">
             </nested:textarea>
