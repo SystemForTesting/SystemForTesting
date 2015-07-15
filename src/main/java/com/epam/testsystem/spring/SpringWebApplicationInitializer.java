@@ -13,23 +13,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletRegistration;
 
 public class SpringWebApplicationInitializer
-//        extends AbstractAnnotationConfigDispatcherServletInitializer {
-//
-//    @Override
-//    protected Class<?>[] getRootConfigClasses() {
-//        return new Class<?>[] {SpringAppConfig.class};
-//    }
-//
-//    @Override
-//    protected Class<?>[] getServletConfigClasses() {
-//        return new Class<?>[] {RestConfig.class};
-//    }
-//
-//    @Override
-//    protected String[] getServletMappings() {
-//        return new String[]{ "/rest"};
-//    }
-//}
         extends AbstractSecurityWebApplicationInitializer {
 
     public SpringWebApplicationInitializer() {
