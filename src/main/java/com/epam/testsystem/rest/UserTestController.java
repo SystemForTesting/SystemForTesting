@@ -19,7 +19,7 @@ public class UserTestController {
         return null;
     }
 
-    @RequestMapping(value = "/{name}", method = RequestMethod.GET, headers = "Accept=application/json")
+    @RequestMapping(value = "/{name}.rest", method = RequestMethod.GET, headers = "Accept=application/json")
     public @ResponseBody User getUser(@PathVariable String name, ModelMap model) {
         if (users.isEmpty()){
             users.add(new User("John", "Smith"));
