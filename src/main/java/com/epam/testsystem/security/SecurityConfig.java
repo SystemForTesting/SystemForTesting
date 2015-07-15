@@ -41,23 +41,28 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/login", "/login.do").anonymous()
-                    .antMatchers("/admin", "/admin/**").hasRole("ADMIN")
-                    .anyRequest().authenticated()
-                    .and()
+                .antMatchers("/login", "/login.do").anonymous()
+                .antMatchers("/admin", "/admin/**").hasRole("ADMIN")
+                .anyRequest().authenticated()
+                .and()
                 .formLogin()
-                    .loginPage("/login.do")
-                    .loginProcessingUrl("/login")
-                    .successHandler(new SavedRequestAwareAuthenticationSuccessHandler() {
-                        @Override
-                        protected String determineTargetUrl(HttpServletRequest request, HttpServletResponse response) {
-                            String targetUrl = super.determineTargetUrl(request, response);
-                            boolean role_admin = getCurrentlyAuthenticatedUser().getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN"));
-                            if (targetUrl.equals("/") && role_admin)
-                                targetUrl = "/admin/testList.do";
-                            return targetUrl;
-                        }
-                    })
+                .loginPage("/login.do")
+                .loginProcessingUrl("/login")
+                .successHandler(new SavedRequestAwareAuthenticationSuccessHandler() {
+                    @Override
+                    protected String determineTargetUrl(HttpServletRequest request, HttpServletResponse response) {
+                        String targetUrl = super.determineTargetUrl(request, response);
+                        boolean role_admin = getCurrentlyAuthenticatedUser().getAuthorities()
+                                .contains(new SimpleGrantedAuthority("ROLE_ADMIN"));
+                        boolean role_user = getCurrentlyAuthenticatedUser().getAuthorities()
+                                .contains(new SimpleGrantedAuthority("ROLE_USER"));
+                        if (targetUrl.equals("/") && role_admin) {
+                            targetUrl = "/admin/testList.do";
+                        } else if (targetUrl.equals("/") && role_user)
+                            targetUrl = "/index.do";
+                        return targetUrl;
+                    }
+                })
                 .failureUrl("/login.do?error=1")
                 .and()
                 .exceptionHandling()
