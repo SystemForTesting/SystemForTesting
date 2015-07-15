@@ -8,16 +8,21 @@
 
 <html>
 <head>
-    <title>welcome</title>
+    <title>Index</title>
     <link rel="stylesheet" type="text/css" href="<c:url value="webjars/bootstrap/3.3.5/css/bootstrap.css"/>"/>
     <link rel="stylesheet" type="text/css" href="<c:url value="/static/css/index.css"/>"/>
 </head>
 <body>
-<div>
-    <html:submit styleClass="btn btn-primary btn-raised add-qwest-button" styleId="save">
-        <%--<bean:message key="admin.sidebar.navigation.student.save"/>--%>
-        Change password
-    </html:submit>
-</div>
+<nested:form action="/changePassword">
+    <div align="center">
+        <html:submit styleClass="btn btn-primary btn-raised add-qwest-button" styleId="save">
+            Change password
+        </html:submit>
+        <html:hidden property="user.password"/>
+    </div>
+    <input class="hidden" type="hidden"
+           name="${_csrf.parameterName}"
+           value="${_csrf.token}"/>
+</nested:form>
 </body>
 </html>
