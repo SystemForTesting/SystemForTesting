@@ -77,6 +77,10 @@
                 scope="request">
             <forward name="redirect" redirect="true" path="/admin/studentList.do"/>
         </action>
+        <action path="/index"
+                type="org.springframework.web.struts.DelegatingActionProxy">
+            <forward name="success" path="/WEB-INF/pages/user/user-main-page.jsp"/>
+        </action>
     </action-mappings>
 
     <message-resources parameter="properties.messages"/>

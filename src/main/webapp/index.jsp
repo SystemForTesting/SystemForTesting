@@ -15,6 +15,7 @@
             <div class="arrow-right"></div>
         </span>
         <input type="text" class="form-control search-row" aria-label="">
+
         <div class="panel panel-default admin-test-list">
             <div><input type="radio" name="tests"> Test1</div>
             <div><input type="radio" name="tests"> Test1</div>
@@ -32,18 +33,29 @@
     <div class="panel panel-default back-panel">
         <table class="table stud-table">
             <thead>
-                <tr>
-                    <td>Student</td>
-                    <td>Link to test</td>
-                </tr>
+            <tr>
+                <td>Student</td>
+                <td>Link to test</td>
+            </tr>
             </thead>
             <tr>
                 <td class="stud-td">
                     <div class="stud-wide-info-drop-panel">
-                        <div><div class="role">Student</div></div>
-                        <div><label>Name:</label><div>John</div></div>
-                        <div><label>Surname:</label><div>Smith</div></div>
-                        <div><label>E-mail:</label><div>mrmemberstar@gmail.com</div></div>
+                        <div>
+                            <div class="role">Student</div>
+                        </div>
+                        <div><label>Name:</label>
+
+                            <div>John</div>
+                        </div>
+                        <div><label>Surname:</label>
+
+                            <div>Smith</div>
+                        </div>
+                        <div><label>E-mail:</label>
+
+                            <div>mrmemberstar@gmail.com</div>
+                        </div>
                     </div>
                     <div class="stud-wide-info" onclick="widePanel.doExpand(this)">Smith.J</div>
                     <div class="stud-cell">Smith.J</div>
