@@ -1,8 +1,7 @@
 package com.epam.testsystem.action;
 
-import com.epam.testsystem.form.UserListForm;
+import com.epam.testsystem.form.UserForm;
 import com.epam.testsystem.model.User;
-import com.epam.testsystem.service.TestService;
 import com.epam.testsystem.service.UserService;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -13,27 +12,19 @@ import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.List;
 
-@Controller("/admin/studentList")
-public class UserListAction extends Action {
+@Controller("/admin/removeUser")
+public class UserRemoveAction extends Action {
 
     @Autowired
-    UserService userService;
+    public UserService userService;
 
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
                                  HttpServletResponse response) throws Exception {
-        List<User> users = userService.findByRoleName("user");
-        List<User> undeletedUsers = new ArrayList<>();
-        for (User user : users) {
-            if (!user.isDeleted()) {
-                undeletedUsers.add(user);
-            }
-        }
-        UserListForm userListForm = (UserListForm) form;
-        userListForm.setUsers(undeletedUsers);
-        return mapping.findForward("success");
+        UserForm userForm = (UserForm) form;
+        Long userId = userForm.getId();
+        userService.delete(userId);
+        return mapping.findForward("redirect");
     }
 }

@@ -15,6 +15,7 @@
             <div class="arrow-right"></div>
         </span>
         <input type="text" class="form-control search-row" aria-label="">
+
         <div class="panel panel-default admin-test-list">
             <div><input type="radio" name="tests"> Test1</div>
             <div><input type="radio" name="tests"> Test1</div>
@@ -32,16 +33,32 @@
     <div class="panel panel-default back-panel">
         <table class="table stud-table">
             <thead>
-                <tr>
-                    <td>Student</td>
-                    <td>Link to test</td>
-                </tr>
+            <tr>
+                <td>Student</td>
+                <td>Link to test</td>
+            </tr>
             </thead>
             <tr>
                 <td class="stud-td">
-                    <div class="panel panel-primary stud-wide-info-drop-panel"></div>
-                    <div class="stud-wide-info" onclick="widePanel.doExpand(this)">Smith</div>
-                    <div class="stud-cell">Smith</div>
+                    <div class="stud-wide-info-drop-panel">
+                        <div>
+                            <div class="role">Student</div>
+                        </div>
+                        <div><label>Name:</label>
+
+                            <div>John</div>
+                        </div>
+                        <div><label>Surname:</label>
+
+                            <div>Smith</div>
+                        </div>
+                        <div><label>E-mail:</label>
+
+                            <div>mrmemberstar@gmail.com</div>
+                        </div>
+                    </div>
+                    <div class="stud-wide-info" onclick="widePanel.doExpand(this)">Smith.J</div>
+                    <div class="stud-cell">Smith.J</div>
                 </td>
                 <td onmouseover="hoverTestLink(this)"></td>
             </tr>
@@ -49,7 +66,7 @@
                 <td class="stud-td">
                     <div class="stud-wide-info-drop-panel"></div>
                     <div class="stud-wide-info" onclick="widePanel.doExpand(this)">Johnson</div>
-                    <div class="stud-cell">Smith</div>
+                    <div class="stud-cell">Johnson</div>
                 </td>
                 <td onmouseover="hoverTestLink(this)"></td>
             </tr>
@@ -57,7 +74,7 @@
                 <td class="stud-td">
                     <div class="stud-wide-info-drop-panel"></div>
                     <div class="stud-wide-info" onclick="widePanel.doExpand(this)">White</div>
-                    <div class="stud-cell">Smith</div>
+                    <div class="stud-cell">White</div>
                 </td>
                 <td onmouseover="hoverTestLink(this)"></td>
             </tr>
@@ -65,7 +82,7 @@
                 <td class="stud-td">
                     <div class="stud-wide-info-drop-panel"></div>
                     <div class="stud-wide-info" onclick="widePanel.doExpand(this)">Scott</div>
-                    <div class="stud-cell">Smith</div>
+                    <div class="stud-cell">Scott</div>
                 </td>
                 <td onmouseover="hoverTestLink(this)"></td>
             </tr>

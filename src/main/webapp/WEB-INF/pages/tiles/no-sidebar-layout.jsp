@@ -9,6 +9,7 @@
         <bean:message key="layout.title" />
     </title>
     <link rel="stylesheet" href="<c:url value='/webjars/bootstrap/3.3.5/css/bootstrap.min.css' />" />
+    <link rel="stylesheet" href="<c:url value='/static/css/style.css' />" />
 </head>
 <body>
     <div class="container">

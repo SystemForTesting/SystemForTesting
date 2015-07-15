@@ -1,12 +1,9 @@
 package com.epam.testsystem.form;
 
-import com.epam.testsystem.model.Answer;
-import com.epam.testsystem.model.BaseEntity;
 import com.epam.testsystem.model.Question;
 import com.epam.testsystem.model.Test;
 
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.List;
 
 public class TestForm extends BaseForm<Test> {
