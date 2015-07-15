@@ -81,6 +81,19 @@
                 type="org.springframework.web.struts.DelegatingActionProxy">
             <forward name="success" path="/WEB-INF/pages/user/user-main-page.jsp"/>
         </action>
+        <action path="/changePassword"
+                name="userForm"
+                scope="request"
+                type="org.springframework.web.struts.DelegatingActionProxy">
+            <forward name="success" path="/WEB-INF/pages/user/change-password.jsp"/>
+        </action>
+        <action path="/saveNewPassword"
+                name="userForm"
+                scope="request"
+                type="org.springframework.web.struts.DelegatingActionProxy">
+            <forward name="success" path="/index.do"/>
+            <forward name="saveError" redirect="true" path="/WEB-INF/pages/common/error.jsp"/>
+        </action>
     </action-mappings>
 
     <message-resources parameter="properties.messages"/>
