@@ -10,6 +10,11 @@
     <nested:define id="questionForm" />
 </c:if>
 <nested:form action="/admin/questionAddEdit">
+    <c:if test="${not empty testForm}">
+        <input class="hidden" type="hidden"
+               name=testId"
+               value="${testForm.id}"/>
+    </c:if>
     <div class="question-form" id="<nested:write property='id' />">
         <div>
             <nested:textarea property="title" rows="3" styleClass="form-control vresize">

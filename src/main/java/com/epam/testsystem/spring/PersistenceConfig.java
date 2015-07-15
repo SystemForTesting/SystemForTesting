@@ -30,13 +30,6 @@ public class PersistenceConfig {
     }
 
     @Bean
-    public Session session() throws NamingException {
-        JndiTemplate jndi = new JndiTemplate();
-        Session session = (Session) jndi.lookup("java:jboss/mail/gmail");
-        return session;
-    }
-
-    @Bean
     public PlatformTransactionManager transactionManager(){
         return new JtaTransactionManager();
     }
