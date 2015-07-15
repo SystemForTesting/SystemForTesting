@@ -30,7 +30,6 @@ public class UserSavePasswordAction extends BaseAction<UserForm> {
 
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(newPassword);
-        System.out.println(encodedPassword);
 
         userById.setPassword(encodedPassword);
         userService.save(userById);
