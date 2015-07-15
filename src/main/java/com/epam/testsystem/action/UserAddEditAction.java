@@ -37,9 +37,7 @@ public class UserAddEditAction extends BaseAction<UserForm> {
             Role userRole = roleService.findById((long) 2);
             user.setRole(userRole);
 
-            String email = user.getEmail();
-            sendEmail(session, email);
-
+            sendEmail(session, user.getEmail(), user.getUsername());
             userService.save(user);
             return mapping.findForward("redirect");
         } catch (MessagingException | IOException e) {
