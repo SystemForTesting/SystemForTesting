@@ -92,6 +92,7 @@
                 scope="request"
                 type="org.springframework.web.struts.DelegatingActionProxy">
             <forward name="success" path="/index.do"/>
+            <forward name="redirect" redirect="true" path="/index.do"/>
             <forward name="saveError" redirect="true" path="/WEB-INF/pages/common/error.jsp"/>
         </action>
     </action-mappings>

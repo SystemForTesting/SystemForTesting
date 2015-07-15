@@ -21,6 +21,7 @@ public class UserSavePasswordAction extends BaseAction<UserForm> {
     @Override
     protected ActionForward onPost(ActionMapping mapping, UserForm form) {
         User user = getCurrentlyAuthenticatedUser();
+        User userById = userService.findById(user.getId());
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
         if (!encoder.matches(form.getUser().getPassword(), user.getPassword())) return mapping.findForward("saveError");
@@ -31,9 +32,9 @@ public class UserSavePasswordAction extends BaseAction<UserForm> {
         String encodedPassword = passwordEncoder.encode(newPassword);
         System.out.println(encodedPassword);
 
-        user.setPassword(encodedPassword);
-        userService.save(user);
-        return mapping.findForward("success");
+        userById.setPassword(encodedPassword);
+        userService.save(userById);
+        return mapping.findForward("redirect");
     }
 
     @Override
