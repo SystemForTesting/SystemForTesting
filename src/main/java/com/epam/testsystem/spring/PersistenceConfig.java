@@ -9,6 +9,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.jta.JtaTransactionManager;
 
+import javax.mail.Session;
 import javax.naming.NamingException;
 import javax.persistence.EntityManagerFactory;
 
@@ -26,6 +27,13 @@ public class PersistenceConfig {
         JndiTemplate jndi = new JndiTemplate();
         EntityManagerFactory emf = (EntityManagerFactory) jndi.lookup("java:/emf");
         return emf;
+    }
+
+    @Bean
+    public Session session() throws NamingException {
+        JndiTemplate jndi = new JndiTemplate();
+        Session session = (Session) jndi.lookup("java:jboss/mail/gmail");
+        return session;
     }
 
     @Bean
