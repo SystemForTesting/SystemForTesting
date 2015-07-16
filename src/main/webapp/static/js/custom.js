@@ -3,6 +3,7 @@
 $('.main-quest-panel').on('click', '.add-qwest-button', function () {
     var nextQuestionId = $('.question-form').last().attr('id') - 1 + 2;
     var nextQuestionNumber = $('.question-form').last().attr('id') - 1 + 3;
+
     if (isNaN(nextQuestionNumber)) {
         nextQuestionId = 0;
         nextQuestionNumber = 1;

@@ -51,7 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .successHandler(new SavedRequestAwareAuthenticationSuccessHandler() {
                     @Override
                     protected String determineTargetUrl(HttpServletRequest request, HttpServletResponse response) {
-                        String targetUrl = super.determineTargetUrl(request, response);
+                            String targetUrl = super.determineTargetUrl(request, response);
                         boolean role_admin = getCurrentlyAuthenticatedUser().getAuthorities()
                                 .contains(new SimpleGrantedAuthority("ROLE_ADMIN"));
                         boolean role_user = getCurrentlyAuthenticatedUser().getAuthorities()
