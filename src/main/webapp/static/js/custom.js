@@ -55,11 +55,6 @@ function removeAnswer(element) {
     $('a').last().focus();
 }
 
-function removeQuestion(element) {
-    $(element).parent().parent().parent().remove();
-    $('a').last().focus();
-}
-
 function selectTestFromTable(element){
     var testId =$(element).attr('test-id');
     window.location.href = "testView.do?id="+testId;
