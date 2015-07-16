@@ -3,7 +3,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-nested" prefix="nested" %>
 <%@ taglib prefix="bean" uri="http://struts.apache.org/tags-bean" %>
 
-<div class="times-new-roman">
+<div>
     <nested:form action="/saveNewPassword" method="post" styleClass="form-signin">
         <div class="account-wall">
             <div class="margin-left-right-5px">

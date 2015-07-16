@@ -17,5 +17,4 @@
         <put name="sidebar" value="/WEB-INF/pages/tiles/testcase-sidebar.jsp" />
         <put name="footer" value="/WEB-INF/pages/tiles/footer.jsp" />
     </definition>
-
 </tiles-definitions>
