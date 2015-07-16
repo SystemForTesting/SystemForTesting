@@ -124,9 +124,7 @@
     left: 200px;
 
     display: table-cell;
-    vertical-align: top
-
-    margin: 0 auto;
+    vertical-align: top margin : 0 auto;
 
     -webkit-border-radius: 20px;
 
@@ -328,22 +326,21 @@
 
 /*---------FINISH USER PAGE------------------------*/
 /*---------START LOGIN PAGE------------------------*/
-.form-signin
-{
+.form-signin {
     max-width: 330px;
     padding: 15px;
     margin: 0 auto;
 }
-.form-signin .form-signin-heading, .form-signin .checkbox
-{
+
+.form-signin .form-signin-heading, .form-signin .checkbox {
     margin-bottom: 10px;
 }
-.form-signin .checkbox
-{
+
+.form-signin .checkbox {
     font-weight: normal;
 }
-.form-signin .form-control
-{
+
+.form-signin .form-control {
     position: relative;
     font-size: 16px;
     height: auto;
@@ -352,24 +349,24 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-.form-signin .form-control:focus
-{
+
+.form-signin .form-control:focus {
     z-index: 2;
 }
-.form-signin input[type="text"]
-{
+
+.form-signin input[type="text"] {
     margin-bottom: -1px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
-.form-signin input[type="password"]
-{
+
+.form-signin input[type="password"] {
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
-.account-wall
-{
+
+.account-wall {
     margin-top: 20px;
     padding: 0 0 20px 0;
     background-color: #f7f7f7;
@@ -377,15 +374,15 @@
     -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
 }
-.login-title
-{
+
+.login-title {
     color: #555;
     font-size: 18px;
     font-weight: 400;
     display: block;
 }
-.profile-img
-{
+
+.profile-img {
     width: 96px;
     height: 96px;
     margin: 0 auto 10px;
@@ -394,13 +391,37 @@
     -webkit-border-radius: 50%;
     border-radius: 50%;
 }
-.need-help
-{
+
+.need-help {
     margin-top: 10px;
 }
-.new-account
-{
+
+.new-account {
     display: block;
     margin-top: 10px;
 }
+
 /*---------FINISH LOGIN PAGE------------------------*/
+
+.margin-left-right-5px {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.times-new-roman {
+    font-family: "Times New Roman", Georgia, serif;
+}
+
+.font-size-20px {
+    font-size: 20px;
+    padding-top: 8px;
+}
+
+.padding-top-bottom-5px {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+
+.font-size-14px {
+    font-size: 14px !important;
+}

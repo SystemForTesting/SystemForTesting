@@ -10,7 +10,3 @@ function createCancelStudent() {
     $('#save').toggle();
     $('#cancel').toggle();
 }
-
-function removeUser() {
-
-}
