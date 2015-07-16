@@ -47,10 +47,15 @@
 <div class="col-lg-6 width-73-perc padding-5px">
     <div class="bs-example bs-example-tabs" data-example-id="togglable-tabs">
         <ul id="myTabs" class="nav nav-tabs" role="tablist">
-            <li role="presentation" class=""><a href="#home" id="home-tab" role="tab" data-toggle="tab"
-                                                aria-controls="home" aria-expanded="false">Home</a></li>
-            <li role="presentation" class="active"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab"
-                                                      aria-controls="profile" aria-expanded="true">Profile</a></li>
+            <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab"
+                                                aria-controls="home" aria-expanded="false">
+                <bean:message key="not.completed.tests"/>
+            </a></li>
+            <li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab"
+                                                      aria-controls="profile" aria-expanded="true">
+                <bean:message key="completed.tests"/>
+            </a>
+            </li>
         </ul>
         <div id="myTabContent" class="tab-content">
             <div role="tabpanel" class="tab-pane fade" id="home" aria-labelledby="home-tab">
