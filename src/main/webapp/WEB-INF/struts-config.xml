@@ -45,6 +45,7 @@
                 scope="request">
             <forward name="success" path="/WEB-INF/pages/admin/question-add-edit.jsp"/>
             <forward name="redirect" redirect="true" path="/admin/questionView.do"/>
+            <forward name="redirectToTest" redirect="true" path="/admin/testAddEdit.do"/>
         </action>
         <action path="/admin/questionList"
                 type="org.springframework.web.struts.DelegatingActionProxy"

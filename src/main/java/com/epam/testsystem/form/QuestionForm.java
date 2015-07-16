@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QuestionForm extends BaseForm<Question> {
+    private Long testId;
     private Integer multipleAnswers = 0;
     private String title;
     private Double weight;
@@ -42,6 +43,18 @@ public class QuestionForm extends BaseForm<Question> {
     }
 
     public void setMultipleAnswers(int multipleAnswers) {
+        this.multipleAnswers = multipleAnswers;
+    }
+
+    public Long getTestId() {
+        return testId;
+    }
+
+    public void setTestId(Long testId) {
+        this.testId = testId;
+    }
+
+    public void setMultipleAnswers(Integer multipleAnswers) {
         this.multipleAnswers = multipleAnswers;
     }
 

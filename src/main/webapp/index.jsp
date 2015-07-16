@@ -16,18 +16,21 @@
         </span>
         <input type="text" class="form-control search-row" aria-label="">
 
-        <div class="panel panel-default admin-test-list">
-            <div><input type="radio" name="tests"> Test1</div>
-            <div><input type="radio" name="tests"> Test1</div>
-            <div><input type="radio" name="tests"> Test1</div>
-            <div><input type="radio" name="tests"> Test1</div>
-            <div><input type="radio" name="tests"> Test1</div>
-            <div><input type="radio" name="tests"> Test1</div>
-            <div><input type="radio" name="tests"> Test1</div>
-            <div><input type="radio" name="tests"> Test1</div>
-            <div><input type="radio" name="tests"> Test1</div>
-            <div><input type="radio" name="tests"> Test1</div>
-        </div>
+        <form>
+            <div class="panel panel-default admin-test-list">
+                <div><input id="test1" type="radio" name="tests"> Test1</div>
+                <div><input id="test2" type="radio" name="tests"> Test2</div>
+                <div><input id="test3" type="radio" name="tests"> Test3</div>
+                <div><input id="test4" type="radio" name="tests"> Test4</div>
+                <div><input id="test5" type="radio" name="tests"> Test5</div>
+                <div><input id="test6" type="radio" name="tests"> Test6</div>
+                <div><input id="test7" type="radio" name="tests"> Test7</div>
+                <div><input id="test8" type="radio" name="tests"> Test8</div>
+                <div><input id="test9" type="radio" name="tests"> Test9</div>
+                <div><input id="test10" type="radio" name="tests"> Test10</div>
+            </div>
+            <buton>Apply</buton>
+        </form>
     </div>
 
     <div class="panel panel-default back-panel">
@@ -38,7 +41,7 @@
                 <td>Link to test</td>
             </tr>
             </thead>
-            <tr>
+            <tr id="1">
                 <td class="stud-td">
                     <div class="stud-wide-info-drop-panel">
                         <div>
@@ -62,7 +65,7 @@
                 </td>
                 <td onmouseover="hoverTestLink(this)"></td>
             </tr>
-            <tr>
+            <tr id="2">
                 <td class="stud-td">
                     <div class="stud-wide-info-drop-panel"></div>
                     <div class="stud-wide-info" onclick="widePanel.doExpand(this)">Johnson</div>
@@ -78,7 +81,7 @@
                 </td>
                 <td onmouseover="hoverTestLink(this)"></td>
             </tr>
-            <tr>
+            <tr id="3">
                 <td class="stud-td">
                     <div class="stud-wide-info-drop-panel"></div>
                     <div class="stud-wide-info" onclick="widePanel.doExpand(this)">Scott</div>
