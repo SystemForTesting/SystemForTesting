@@ -424,14 +424,15 @@
 
 .width-25-perc {
     width: 25%;
-    border: solid 1px darkgrey;
+    border: solid 1px #ddd;
     border-radius: 5px;
 }
 
-.width-75-perc {
-    width: 75%;
-    border: solid 1px darkgrey;
+.width-73-perc {
+    width: 73%;
+    border: solid 1px #ddd;
     border-radius: 5px;
+    margin-left: 15px;
 }
 
 .padding-5px {
