@@ -10,7 +10,7 @@ import org.apache.struts.action.Action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import static com.epam.testsystem.util.SecurityUtils.getCurrentlyAuthenticatedUser;
+import static com.epam.testsystem.util.SpringUtils.getCurrentlyAuthenticatedUser;
 
 @Controller("/index")
 public class UserIndexAction extends Action {

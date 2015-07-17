@@ -18,7 +18,7 @@ import org.springframework.security.web.authentication.SavedRequestAwareAuthenti
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import static com.epam.testsystem.util.SecurityUtils.getCurrentlyAuthenticatedUser;
+import static com.epam.testsystem.util.SpringUtils.getCurrentlyAuthenticatedUser;
 
 @Configuration
 @EnableWebSecurity
@@ -43,6 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/login", "/login.do").anonymous()
                 .antMatchers("/admin", "/admin/**").hasRole("ADMIN")
+                .antMatchers("/", "/index.do").hasRole("USER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -51,7 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .successHandler(new SavedRequestAwareAuthenticationSuccessHandler() {
                     @Override
                     protected String determineTargetUrl(HttpServletRequest request, HttpServletResponse response) {
-                            String targetUrl = super.determineTargetUrl(request, response);
+                        String targetUrl = super.determineTargetUrl(request, response);
                         boolean role_admin = getCurrentlyAuthenticatedUser().getAuthorities()
                                 .contains(new SimpleGrantedAuthority("ROLE_ADMIN"));
                         boolean role_user = getCurrentlyAuthenticatedUser().getAuthorities()

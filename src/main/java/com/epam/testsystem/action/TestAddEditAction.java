@@ -10,7 +10,9 @@ import org.apache.struts.action.ActionRedirect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import static com.epam.testsystem.util.SecurityUtils.getCurrentlyAuthenticatedUser;
+import javax.servlet.http.HttpServletRequest;
+
+import static com.epam.testsystem.util.SpringUtils.getCurrentlyAuthenticatedUser;
 
 @Controller("/admin/testAddEdit")
 public class TestAddEditAction extends BaseAction<TestForm> {
@@ -19,11 +21,11 @@ public class TestAddEditAction extends BaseAction<TestForm> {
     TestService testService;
 
     @Override
-    protected ActionForward onPost(ActionMapping mapping, TestForm form) {
+    protected ActionForward onPost(ActionMapping mapping, TestForm form, HttpServletRequest request) {
         User user = getCurrentlyAuthenticatedUser();
         Long id = form.getId();
         Test test;
-        if(id == null || id.equals(0L)) {
+        if (id == null || id.equals(0L)) {
             test = new Test();
             test.setCreatedBy(user);
         } else {

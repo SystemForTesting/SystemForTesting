@@ -5,15 +5,19 @@ import com.epam.testsystem.model.Role;
 import com.epam.testsystem.model.User;
 import com.epam.testsystem.service.RoleService;
 import com.epam.testsystem.service.UserService;
+import org.apache.struts.Globals;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.mail.MessagingException;
 import javax.mail.Session;
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.UUID;
 
@@ -30,17 +34,18 @@ public class UserAddEditAction extends BaseAction<UserForm> {
     public Session session;
 
     @Override
-    protected ActionForward onPost(ActionMapping mapping, UserForm form) {
+    protected ActionForward onPost(ActionMapping mapping, UserForm form, HttpServletRequest request) {
         try {
             User user = form.getUser();
             Role userRole = roleService.findById((long) 2);
             user.setRole(userRole);
-
             String randomPassword = UUID.randomUUID().toString();
             PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
             String encodedPassword = passwordEncoder.encode(randomPassword);
             user.setPassword(encodedPassword);
-            sendEmail(session, user, randomPassword);
+
+            String locale = request.getSession().getAttribute(Globals.LOCALE_KEY).toString();
+            sendEmail(session, user, randomPassword, locale);
             userService.save(user);
             return mapping.findForward("redirect");
         } catch (MessagingException | IOException e) {

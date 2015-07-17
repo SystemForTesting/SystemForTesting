@@ -13,13 +13,13 @@
 
                 <div>
                     <div class="text-center">
-                        <input type="text" name="user.password" value="" id="oldPassword"
+                        <input type="password" name="user.password" value="" id="oldPassword"
                                class="form-control padding-top-bottom-5px font-size-14px"
                                placeholder="<bean:message key="old.password"/>">
-                        <input type="text" name="newPassword" value="" id="newPassword"
+                        <input type="password" name="newPassword" value="" id="newPassword"
                                class="form-control padding-top-bottom-5px font-size-14px"
                                placeholder="<bean:message key="new.password"/>">
-                        <input type="text" name="confirmPassword" value="" id="confirmPassword"
+                        <input type="password" name="confirmPassword" value="" id="confirmPassword"
                                class="form-control padding-top-bottom-5px font-size-14px"
                                placeholder="<bean:message key="confirm.password"/>">
                         <input class="hidden" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

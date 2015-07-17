@@ -3,6 +3,7 @@ package com.epam.testsystem.action;
 import com.epam.testsystem.form.UserForm;
 import com.epam.testsystem.model.User;
 import com.epam.testsystem.service.UserService;
+import org.apache.struts.Globals;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 
-import static com.epam.testsystem.util.SecurityUtils.getCurrentlyAuthenticatedUser;
+import javax.servlet.http.HttpServletRequest;
+
+import static com.epam.testsystem.util.SpringUtils.getCurrentlyAuthenticatedUser;
 
 @Controller("/saveNewPassword")
 public class UserSavePasswordAction extends BaseAction<UserForm> {
@@ -19,7 +22,7 @@ public class UserSavePasswordAction extends BaseAction<UserForm> {
     public UserService userService;
 
     @Override
-    protected ActionForward onPost(ActionMapping mapping, UserForm form) {
+    protected ActionForward onPost(ActionMapping mapping, UserForm form, HttpServletRequest request) {
         User user = getCurrentlyAuthenticatedUser();
         User userById = userService.findById(user.getId());
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
