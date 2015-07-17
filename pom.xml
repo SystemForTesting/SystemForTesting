@@ -149,6 +149,6 @@
     </dependencies>
 
     <build>
-        <finalName>testsystem</finalName>
+        <finalName>testsystem.war</finalName>
     </build>
 </project>
