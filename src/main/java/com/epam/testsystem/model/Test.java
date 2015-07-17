@@ -1,8 +1,11 @@
 package com.epam.testsystem.model;
 
 import com.epam.testsystem.util.DurationToStringConverter;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +18,7 @@ public class Test extends BaseEntity {
     @Convert(converter = DurationToStringConverter.class)
     private Duration duration;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Question> questions;
 
     public String getTitle() {
@@ -69,5 +72,19 @@ public class Test extends BaseEntity {
         }
 
         this.questions.add(question);
+    }
+
+    public boolean removeQuestionById(Long questionId) {
+        if (questions == null || questionId == null) {
+            return false;
+        }
+
+        for (Question question : questions) {
+            if (questionId.equals(question.getId())) {
+                questions.remove(question);
+                return true;
+            }
+        }
+        return false;
     }
 }

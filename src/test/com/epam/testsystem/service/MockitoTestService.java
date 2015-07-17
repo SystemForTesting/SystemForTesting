@@ -3,7 +3,7 @@ package com.epam.testsystem.service;
 import com.epam.testsystem.form.TestForm;
 import com.epam.testsystem.model.Test;
 import com.epam.testsystem.model.User;
-import com.epam.testsystem.repository.BaseRepository;
+import com.epam.testsystem.repository.TestRepository;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -18,7 +18,7 @@ public class MockitoTestService {
     @InjectMocks
     private TestService testService;
     @Mock
-    private BaseRepository<Test> repository;
+    private TestRepository repository;
     @Mock
     private TestForm testForm;
 
