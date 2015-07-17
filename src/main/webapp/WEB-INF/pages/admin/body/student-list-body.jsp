@@ -35,7 +35,7 @@
         </logic:iterate>
         <tr id="createUserInputsId">
             <td></td>
-            <td><html:text property="user.username"/></td>
+            <td><html:text property="user.username" size="20"/></td>
             <td><html:text property="user.firstName"/></td>
             <td><html:text property="user.lastName"/></td>
             <td><html:text property="user.email"/></td>
@@ -56,5 +56,8 @@
     <input class="hidden" type="hidden"
            name="${_csrf.parameterName}"
            value="${_csrf.token}"/>
+    <font color="red">
+        <html:errors/>
+    </font>
 </nested:form>
 

@@ -22,27 +22,31 @@
         <action path="/admin/testAddEdit"
                 type="org.springframework.web.struts.DelegatingActionProxy"
                 name="testForm"
-                scope="request">
+                scope="request"
+                validate="false">
             <forward name="success" path="/WEB-INF/pages/admin/test-add-edit.jsp"/>
             <forward name="redirect" redirect="true" path="/admin/testView.do"/>
         </action>
         <action path="/admin/testView"
                 type="org.springframework.web.struts.DelegatingActionProxy"
                 name="testForm"
-                scope="request">
+                scope="request"
+                validate="false">
             <forward name="success" path="/WEB-INF/pages/admin/test-view.jsp"/>
             <forward name="redirect" redirect="true" path="/admin/testList.do"/>
         </action>
         <action path="/admin/testList"
                 type="org.springframework.web.struts.DelegatingActionProxy"
                 name="testListForm"
-                scope="request">
+                scope="request"
+                validate="false">
             <forward name="success" path="/WEB-INF/pages/admin/test-list.jsp"/>
         </action>
         <action path="/admin/questionAddEdit"
                 type="org.springframework.web.struts.DelegatingActionProxy"
                 name="questionForm"
-                scope="request">
+                scope="request"
+                validate="false">
             <forward name="success" path="/WEB-INF/pages/admin/question-add-edit.jsp"/>
             <forward name="redirect" redirect="true" path="/admin/questionView.do"/>
             <forward name="redirectToTest" redirect="true" path="/admin/testAddEdit.do"/>
@@ -50,32 +54,37 @@
         <action path="/admin/questionList"
                 type="org.springframework.web.struts.DelegatingActionProxy"
                 name="questionListForm"
-                scope="request">
+                scope="request"
+                validate="false">
             <forward name="success" path="/WEB-INF/pages/admin/question-list.jsp"/>
         </action>
         <action path="/test"
                 type="org.springframework.web.struts.DelegatingActionProxy"
                 name="testCaseForm"
-                scope="request">
+                scope="request"
+                validate="false">
             <forward name="success" path="/WEB-INF/pages/user/user-testcase.jsp"/>
         </action>
         <action path="/admin/studentList"
                 type="org.springframework.web.struts.DelegatingActionProxy"
                 name="userListForm"
-                scope="request">
+                scope="request"
+                validate="false">
             <forward name="success" path="/WEB-INF/pages/admin/student-list.jsp"/>
         </action>
         <action path="/admin/userAddEdit"
                 type="org.springframework.web.struts.DelegatingActionProxy"
                 name="userForm"
-                scope="request">
+                scope="request"
+                validate="true">
             <forward name="success" path="/WEB-INF/pages/admin/student-list.jsp"/>
             <forward name="redirect" redirect="true" path="/admin/studentList.do"/>
         </action>
         <action path="/admin/removeUser"
                 type="org.springframework.web.struts.DelegatingActionProxy"
                 name="userForm"
-                scope="request">
+                scope="request"
+                validate="false">
             <forward name="redirect" redirect="true" path="/admin/studentList.do"/>
         </action>
         <action path="/index"
@@ -85,12 +94,14 @@
         <action path="/changePassword"
                 name="userForm"
                 scope="request"
+                validate="false"
                 type="org.springframework.web.struts.DelegatingActionProxy">
             <forward name="success" path="/WEB-INF/pages/user/change-password.jsp"/>
         </action>
         <action path="/saveNewPassword"
                 name="userForm"
                 scope="request"
+                validate="false"
                 type="org.springframework.web.struts.DelegatingActionProxy">
             <forward name="success" path="/index.do"/>
             <forward name="redirect" redirect="true" path="/index.do"/>
@@ -103,5 +114,11 @@
     <plug-in className="org.apache.struts.tiles.TilesPlugin">
         <set-property property="definitions-config"
                       value="/WEB-INF/tiles-defs.xml"/>
+    </plug-in>
+
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames"
+                      value="/WEB-INF/validator-rules.xml, /WEB-INF/validator-user.xml"/>
+
     </plug-in>
 </struts-config>
