@@ -27,13 +27,13 @@ public class UserListAction extends Action {
                                  HttpServletResponse response) throws Exception {
         List<User> users = userService.findByRoleName("user");
         List<User> undeletedUsers = new ArrayList<>();
-        for (User user : users) {
-            if (!user.isDeleted()) {
-                undeletedUsers.add(user);
-            }
-        }
+//        for (User user : users) {
+//            if (!user.isDeleted()) {
+//                undeletedUsers.add(user);
+//            }
+//        }
         UserListForm userListForm = (UserListForm) form;
-        userListForm.setUsers(undeletedUsers);
+        userListForm.setUsers(users);
         return mapping.findForward("success");
     }
 }

@@ -19,6 +19,10 @@
     box-sizing: border-box;
 }
 
+.answers {
+    float:right;
+}
+
 .add-ans-button {
     float: right;
 }

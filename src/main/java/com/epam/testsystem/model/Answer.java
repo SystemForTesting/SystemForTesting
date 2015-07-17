@@ -1,5 +1,9 @@
 package com.epam.testsystem.model;
 
+import org.hibernate.annotations.ForeignKey;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
@@ -7,6 +11,7 @@ import javax.persistence.ManyToOne;
 public class Answer extends BaseEntity {
     private String text;
     private boolean right;
+
     @ManyToOne
     private Question question;
 

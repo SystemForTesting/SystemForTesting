@@ -47,6 +47,12 @@
             <forward name="redirect" redirect="true" path="/admin/questionView.do"/>
             <forward name="redirectToTest" redirect="true" path="/admin/testAddEdit.do"/>
         </action>
+        <action path="/admin/questionDelete"
+                type="org.springframework.web.struts.DelegatingActionProxy"
+                name="questionForm"
+                scope="request">
+            <forward name="redirectToTest" redirect="true" path="/admin/testAddEdit.do"/>
+        </action>
         <action path="/admin/questionList"
                 type="org.springframework.web.struts.DelegatingActionProxy"
                 name="questionListForm"

@@ -1,12 +1,12 @@
 package com.epam.testsystem.service;
 
 import com.epam.testsystem.model.BaseEntity;
-import com.epam.testsystem.repository.BaseRepository;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-public class BaseService<E extends BaseEntity, T extends BaseRepository<E>> {
+public class BaseService<E extends BaseEntity, T extends CrudRepository<E, Long>> {
 
     protected T repository;
 

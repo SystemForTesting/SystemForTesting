@@ -1,10 +1,11 @@
 package com.epam.testsystem.repository;
 
 import com.epam.testsystem.model.User;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface UserRepository extends BaseRepository<User> {
+public interface UserRepository extends CrudRepository<User, Long> {
 
     User findByUsername(String username);
 
