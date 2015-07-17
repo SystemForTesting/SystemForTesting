@@ -10,19 +10,41 @@ import java.io.IOException;
 
 public class MailHelper {
 
-    public static void sendEmail(Session session, User user, String userPassword) throws MessagingException, IOException {
+    public static final String UTF_8 = "utf-8";
+    public static final String HTML = "html";
+    public static final String SYSTEM_MAIL = "systemfortesting2015@gmail.com";
+    public static final String PLAIN = "plain";
+    public static final String A_HREF = "<a href='http://localhost:8080/testsystem/login.do'>";
+
+    public static void sendEmail(Session session, User user, String userPassword,
+                                 String locale) throws MessagingException, IOException {
         SmtpMessageSender messageSender = new SmtpMessageSender();
-        MimeMessage message = messageSender.createMimeMessage(session,
-                "Hello, " + user.getUsername(),
-                "systemfortesting2015@gmail.com",
-                user.getEmail(),
-                Message.RecipientType.TO);
-        messageSender.addText(message, "Your username: " + user.getUsername(), "utf-8", "plain");
-        messageSender.addText(message, "Your password: " + userPassword, "utf-8", "plain");
-        messageSender.addText(message,
-                "<a href='http://localhost:8080/testsystem/login.do'>Go to main page</a>",
-                "utf-8",
-                "html");
+        MimeMessage message;
+        if (locale.equals("ru")) {
+            message = messageSender.createMimeMessage(session,
+                    "Привет, " + user.getUsername(),
+                    SYSTEM_MAIL,
+                    user.getEmail(),
+                    Message.RecipientType.TO);
+            messageSender.addText(message, "Ваш логин: " + user.getUsername(), UTF_8, PLAIN);
+            messageSender.addText(message, "Ваш пароль: " + userPassword, UTF_8, PLAIN);
+            messageSender.addText(message,
+                    A_HREF + "Перейти на стартовую страницу</a>",
+                    UTF_8,
+                    HTML);
+        } else {
+            message = messageSender.createMimeMessage(session,
+                    "Hello, " + user.getUsername(),
+                    SYSTEM_MAIL,
+                    user.getEmail(),
+                    Message.RecipientType.TO);
+            messageSender.addText(message, "Your username: " + user.getUsername(), UTF_8, PLAIN);
+            messageSender.addText(message, "Your password: " + userPassword, UTF_8, PLAIN);
+            messageSender.addText(message,
+                    A_HREF + "Go to main page</a>",
+                    UTF_8,
+                    HTML);
+        }
         messageSender.sendMimeMessage(message);
     }
 }

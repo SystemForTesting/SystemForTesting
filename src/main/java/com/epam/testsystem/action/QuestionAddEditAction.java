@@ -10,7 +10,9 @@ import org.apache.struts.action.ActionRedirect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import static com.epam.testsystem.util.SecurityUtils.getCurrentlyAuthenticatedUser;
+import javax.servlet.http.HttpServletRequest;
+
+import static com.epam.testsystem.util.SpringUtils.getCurrentlyAuthenticatedUser;
 
 @Controller("/admin/questionAddEdit")
 public class QuestionAddEditAction extends BaseAction<QuestionForm> {
@@ -19,7 +21,7 @@ public class QuestionAddEditAction extends BaseAction<QuestionForm> {
     QuestionService questionService;
 
     @Override
-    protected ActionForward onPost(ActionMapping mapping, QuestionForm form) {
+    protected ActionForward onPost(ActionMapping mapping, QuestionForm form, HttpServletRequest request) {
         User user = getCurrentlyAuthenticatedUser();
         Long id = form.getId();
         Question question;

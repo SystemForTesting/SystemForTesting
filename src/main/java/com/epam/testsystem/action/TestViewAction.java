@@ -8,6 +8,8 @@ import org.apache.struts.action.ActionMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller("/admin/testView")
 public class TestViewAction extends BaseAction<TestForm> {
 
@@ -15,7 +17,7 @@ public class TestViewAction extends BaseAction<TestForm> {
     TestService testService;
 
     @Override
-    protected ActionForward onPost(ActionMapping mapping, TestForm form) {
+    protected ActionForward onPost(ActionMapping mapping, TestForm form, HttpServletRequest request) {
         testService.delete(form.getId());
         return mapping.findForward("redirect");
     }

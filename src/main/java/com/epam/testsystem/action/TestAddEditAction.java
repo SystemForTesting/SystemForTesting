@@ -9,6 +9,8 @@ import org.apache.struts.action.ActionRedirect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller("/admin/testAddEdit")
 public class TestAddEditAction extends BaseAction<TestForm> {
 
@@ -16,7 +18,7 @@ public class TestAddEditAction extends BaseAction<TestForm> {
     TestService testService;
 
     @Override
-    protected ActionForward onPost(ActionMapping mapping, TestForm form) {
+    protected ActionForward onPost(ActionMapping mapping, TestForm form, HttpServletRequest request) {
         Test saved = testService.createOrUpdate(form);
 
         ActionRedirect redirect = new ActionRedirect(mapping.findForward("redirect"));
