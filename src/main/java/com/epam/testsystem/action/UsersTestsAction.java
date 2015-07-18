@@ -46,7 +46,7 @@ public class UsersTestsAction extends BaseAction<UsersTestsForm> {
             testForms.add(new TestForm(test));
         }
         for (User user : users) {
-//            form.putUserTestCases(user.getId(),testCaseService.findByUserId(user.getId()));
+            form.putUserTestCases(user.getId(),testCaseService.findByUserId(user.getId()));
         }
 
         UserListForm userListForm = new UserListForm(userForms);

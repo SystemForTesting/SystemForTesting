@@ -432,7 +432,7 @@ thead tr th {
 
 .front-panel {
     width: 200px;
-    height: 400px;
+    min-height: 400px;
     background-color: #eeeeee;
     float: left;
     position: absolute;
@@ -441,10 +441,14 @@ thead tr th {
 
 .back-panel {
     width: 400px;
-    height: 400px;
-    background-color: white;
     position: relative;
+    min-height: 400px;
+    background-color: white;
     border-color: #eeeeee;
+}
+
+.back-panel table{
+    position: relative;
 }
 
 .main {
@@ -592,6 +596,18 @@ thead tr th {
     position: absolute;
     left: 0px;
     bottom: 0px;
+}
+
+.panel-body ol{
+    margin: 0;
+    padding: 0 12px;
+}
+
+.search-student-row{
+    position: inherit;
+    margin: 0;
+    width: inherit;
+    height: 20px;
 }
 
 /*---------FINISH ADMIN PAGE------------------------*/

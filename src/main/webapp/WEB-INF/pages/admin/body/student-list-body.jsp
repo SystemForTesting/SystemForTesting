@@ -24,14 +24,13 @@
                     <span class="slide-in-out-button" onclick="slidePanel.doSlide(this)">
                         <div class="arrow-right"></div>
                     </span>
-                    <input type="text" class="form-control search-row" aria-label="">
+                    <input type="text" class="form-control search-row" placeholder="<bean:message key="admin.message.test.title"/>">
 
 
                     <div class="panel panel-default admin-test-list">
                         <nested:define id="testListForm" property="testListForm"/>
                         <nested:iterate name="testListForm" property="testForms" id="testForm">
                             <div>
-                                    <%--<input id="test1" type="checkbox" name="tests">--%>
                                 <c:set var="testId">
                                     <nested:write property="test.id"/>
                                 </c:set>
@@ -47,7 +46,10 @@
                     <table class="table stud-table">
                         <thead>
                         <tr>
-                            <th><bean:message key="admin.message.student"/></th>
+                            <th>
+                                <%--<bean:message key="admin.message.student"/>--%>
+                                <input type="text" class="form-control search-student-row" placeholder="<bean:message key="admin.message.user"/>">
+                            </th>
                             <th><bean:message key="admin.message.appointed.tests"/></th>
                         </tr>
                         </thead>
@@ -81,14 +83,21 @@
                                     </a>
                                     <div id="collapse<nested:write property="user.id"/>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" aria-expanded="false" style="height: 0px;">
                                         <div class="panel-body">
-                                            <div><a href="https://www.google.ru/?gws_rd=ssl#newwindow=1&amp;q=How+it+made">FirsTest</a></div>
-                                            <div><a href="https://www.google.ru/?gws_rd=ssl#newwindow=1&amp;q=How+it+made">FirsTest</a></div>
-                                            <div><a href="https://www.google.ru/?gws_rd=ssl#newwindow=1&amp;q=How+it+made">FirsTest</a></div>
-                                            <div><a href="https://www.google.ru/?gws_rd=ssl#newwindow=1&amp;q=How+it+made">FirsTest</a></div>
-                                            <div><a href="https://www.google.ru/?gws_rd=ssl#newwindow=1&amp;q=How+it+made">FirsTest</a></div>
-                                            <div><a href="https://www.google.ru/?gws_rd=ssl#newwindow=1&amp;q=How+it+made">FirsTest</a></div>
-                                            <div><a href="https://www.google.ru/?gws_rd=ssl#newwindow=1&amp;q=How+it+made">FirsTest</a></div>
-                                            <div><a href="https://www.google.ru/?gws_rd=ssl#newwindow=1&amp;q=How+it+made">FirsTest</a></div>
+                                            <c:set var="currentUserId">
+                                                <nested:write property="user.id"/>
+                                            </c:set>
+                                            <ol>
+                                                <nested:iterate name="usersTestsForm" property="apointedTestsForEachUser" id="entry">
+                                                    <c:set var="userId">
+                                                        <nested:write name="entry" property="key"/>
+                                                    </c:set>
+                                                    <c:if test="${currentUserId == userId}">
+                                                        <nested:iterate name="entry" property="value" id="testcase">
+                                                            <li><label><nested:write name="testcase" property="test.title"/></label></li>
+                                                        </nested:iterate>
+                                                    </c:if>
+                                                </nested:iterate>
+                                            </ol>
                                         </div>
                                     </div>
                                 </td>

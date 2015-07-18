@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/tests-users/")
+@RequestMapping("/admin/tests-users/")
 public class UserTestController {
 
     @Autowired
@@ -41,7 +41,7 @@ public class UserTestController {
 
         for (TestCase testCase : testCases) {
             users_tests.add(new UserTestDto(testCase.getUser().getId(), testCase.getTest().getId()));
-        }//todo list insted map, cause map can't store equal key
+        }
 
         return users_tests;
     }
