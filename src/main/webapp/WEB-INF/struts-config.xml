@@ -11,6 +11,7 @@
         <form-bean name="questionListForm" type="com.epam.testsystem.form.QuestionListForm"/>
         <form-bean name="testCaseForm" type="com.epam.testsystem.form.TestCaseForm"/>
         <form-bean name="userListForm" type="com.epam.testsystem.form.UserListForm"/>
+        <form-bean name="usersTestsForm" type="com.epam.testsystem.form.UsersTestsForm"/>
         <form-bean name="userForm" type="com.epam.testsystem.form.UserForm"/>
     </form-beans>
 
@@ -65,9 +66,10 @@
                 scope="request">
             <forward name="success" path="/WEB-INF/pages/user/user-testcase.jsp"/>
         </action>
-        <action path="/admin/studentList"
+        <!--<action path="/admin/studentList"-->
+        <action path="/admin/usersTests"
                 type="org.springframework.web.struts.DelegatingActionProxy"
-                name="userListForm"
+                name="usersTestsForm"
                 scope="request">
             <forward name="success" path="/WEB-INF/pages/admin/student-list.jsp"/>
         </action>
@@ -76,13 +78,13 @@
                 name="userForm"
                 scope="request">
             <forward name="success" path="/WEB-INF/pages/admin/student-list.jsp"/>
-            <forward name="redirect" redirect="true" path="/admin/studentList.do"/>
+            <forward name="redirect" redirect="true" path="/admin/usersTests.do"/>
         </action>
         <action path="/admin/removeUser"
                 type="org.springframework.web.struts.DelegatingActionProxy"
                 name="userForm"
                 scope="request">
-            <forward name="redirect" redirect="true" path="/admin/studentList.do"/>
+            <forward name="redirect" redirect="true" path="/admin/usersTests.do"/>
         </action>
         <action path="/index"
                 type="org.springframework.web.struts.DelegatingActionProxy">

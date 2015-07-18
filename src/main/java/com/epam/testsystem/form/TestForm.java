@@ -7,10 +7,38 @@ import java.time.Duration;
 import java.util.List;
 
 public class TestForm extends BaseForm<Test> {
+
+    private Test test;
     private String title;
     private Double passMark;
     private Duration duration;
     private List<QuestionForm> questions = new StrutsArrayList<>(QuestionForm.class);
+
+    public TestForm() {
+    }
+
+    public TestForm(Test test) {
+        this.test = test;
+    }
+
+    public TestForm(List<QuestionForm> questions) {
+        this.questions = questions;
+    }
+
+    public TestForm(String title, Double passMark, Duration duration, List<QuestionForm> questions) {
+        this.title = title;
+        this.passMark = passMark;
+        this.duration = duration;
+        this.questions = questions;
+    }
+
+    public Test getTest() {
+        return test;
+    }
+
+    public void setTest(Test test) {
+        this.test = test;
+    }
 
     public String getTitle() {
         return title;

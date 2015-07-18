@@ -1,5 +1,6 @@
 package com.epam.testsystem.action;
 
+import com.epam.testsystem.form.TestForm;
 import com.epam.testsystem.form.TestListForm;
 import com.epam.testsystem.model.Test;
 import com.epam.testsystem.service.TestService;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller("/admin/testList")
@@ -25,7 +27,13 @@ public class TestListAction extends Action {
                                  HttpServletResponse response) throws Exception {
         List<Test> tests = testService.findAll();
         TestListForm testListForm = (TestListForm) form;
-        testListForm.setTests(tests);
+        List<TestForm> testForms = new ArrayList<>();
+
+        for (Test test : tests) {
+            testForms.add(new TestForm(test));
+        }
+
+        testListForm.setTestForms(testForms);
         return mapping.findForward("success");
     }
 }

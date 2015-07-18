@@ -7,13 +7,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TestListForm extends ActionForm {
-    private List<Test> tests = new ArrayList<>();
+    private List<TestForm> testForms = new ArrayList<>();
 
-    public List<Test> getTests() {
-        return tests;
+    public TestListForm() {
     }
 
-    public void setTests(List<Test> tests) {
-        this.tests = tests;
+    public TestListForm(List<TestForm> testForms) {
+        this.testForms = testForms;
+    }
+
+    public List<TestForm> getTestForms() {
+        return testForms;
+    }
+
+    public void setTestForms(List<TestForm> testForms) {
+        this.testForms = testForms;
     }
 }

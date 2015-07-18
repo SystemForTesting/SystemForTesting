@@ -1,3 +1,7 @@
+body{
+    font-family: "Times New Roman";
+}
+
 #body {
     border-left: 1px solid #eee;
 }
@@ -406,6 +410,191 @@
 }
 
 /*---------FINISH LOGIN PAGE------------------------*/
+
+/*---------START ADMIN PAGE------------------------*/
+
+thead tr {
+    background: linear-gradient(to bottom, #ffffff 0%, #eeeeee 50%, #ffffff 100%);
+}
+
+thead tr th {
+    text-align: center;
+}
+
+.admin-test-apply {
+    background-color: #4D6DC0 !important;
+    border-color: #4D6DC0 !important;
+}
+
+.admin-test-apply:hover {
+    background-color: #4558a3 !important;
+}
+
+.front-panel {
+    width: 200px;
+    height: 400px;
+    background-color: #eeeeee;
+    float: left;
+    position: absolute;
+    right: 0px;
+}
+
+.back-panel {
+    width: 400px;
+    height: 400px;
+    background-color: white;
+    position: relative;
+    border-color: #eeeeee;
+}
+
+.main {
+    width: 400px;
+    margin: auto;
+    position: relative;
+}
+
+.slide-in-out-button {
+    width: 39px;
+    height: 39px;
+    position: absolute;
+    right: -10px;
+    z-index: 1;
+    cursor: hand;
+    border-radius: 6px;
+    display: none;
+
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #eeeeee 35%, #eeeeee 65%, rgba(0, 0, 0, 0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#000000', GradientType=0);
+}
+
+.slide-in-out-button .arrow-right {
+    width: 0;
+    height: 0;
+    margin: 10px 10px;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+
+    border-left: 15px solid rgb(77, 109, 192);
+}
+
+.slide-in-out-button .arrow-left {
+    width: 0;
+    height: 0;
+    margin: 10px 10px;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+
+    border-right: 15px solid rgb(77, 109, 192);
+}
+
+.arrow-top{
+    width: 0;
+    height: 0;
+
+    border-bottom: 15px solid rgb(77, 109, 192);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+}
+
+.arrow-bottom{
+    width: 0;
+    height: 0;
+
+    border-top: 15px solid rgb(77, 109, 192);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+}
+
+.search-row {
+    position: absolute;
+    margin: 5px 15px;
+    height: 20px;
+    width: 90%;
+}
+
+.admin-test-list {
+    margin: 30px 5px 5px 15px;
+    padding: 10px;
+}
+
+.stud-tr {
+}
+
+.stud-td {
+    position: relative;
+    padding: 0px !important;
+    width: 180px;
+}
+
+.stud-wide-info {
+    position: absolute;
+    color: #4D6DC0;
+    padding: 8px;
+    width: 100%;
+}
+
+.stud-wide-info:hover {
+    cursor: hand;
+    background: linear-gradient(to bottom, #ffffff 0%, #eeeeee 50%, #ffffff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#606060', endColorstr='#606060', GradientType=0);
+}
+
+.stud-wide-info-drop-panel {
+    position: absolute;
+    padding: 40px 8px;
+    width: 100%;
+    height: 100%;
+    font-size: 13px;
+    display: none;
+    /*background-color: aquamarine;*/
+}
+
+.stud-wide-info-drop-panel .role {
+    text-align: right;
+    border: solid 0;
+}
+
+.stud-wide-info-drop-panel div label {
+    margin: 10px 0 0;
+}
+
+.stud-wide-info-drop-panel div div {
+    margin-left: 10%;
+    border-bottom: solid 1px #275485;
+}
+
+.stud-table {
+    position: absolute;
+}
+
+.stud-cell {
+    margin: 8px;
+}
+
+.selected-row {
+    background: linear-gradient(to bottom, #ffffff 0%, #eeeeee 50%, #ffffff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#606060', endColorstr='#606060', GradientType=0);
+}
+
+.select-test-form input[type=button] {
+    margin: 5px 15px;
+    width: 90%;
+}
+
+.tests-block{
+    position: relative;
+    padding-left: 25px;
+}
+
+.tests-block span{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+}
+
+/*---------FINISH ADMIN PAGE------------------------*/
 
 .margin-left-right-5px {
     margin-left: 5px;

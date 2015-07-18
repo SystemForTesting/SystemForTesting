@@ -14,9 +14,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
+import org.springframework.security.web.util.matcher.RegexRequestMatcher;
+import org.springframework.security.web.util.matcher.RequestMatcher;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import java.util.regex.Pattern;
 
 import static com.epam.testsystem.util.SpringUtils.getCurrentlyAuthenticatedUser;
 
@@ -68,6 +72,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .exceptionHandling()
                 .accessDeniedPage("/WEB-INF/pages/common/403.jsp");
+
+        http.csrf().requireCsrfProtectionMatcher(new RequestMatcher() {
+            private Pattern allowedMethods = Pattern.compile("^(GET|HEAD|TRACE|OPTIONS)$");
+            private RegexRequestMatcher apiMatcher = new RegexRequestMatcher(".*\\.rest", null);
+
+            @Override
+            public boolean matches(HttpServletRequest request) {
+                // No CSRF due to allowedMethod
+                if (allowedMethods.matcher(request.getMethod()).matches())
+                    return false;
+
+                // No CSRF due to api call
+                if (apiMatcher.matches(request))
+                    return false;
+
+                // CSRF for everything else that is not an API call or an allowedMethod
+                return true;
+            }
+        });
     }
 
     @Bean
