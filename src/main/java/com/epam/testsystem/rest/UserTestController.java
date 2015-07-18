@@ -66,6 +66,7 @@ public class UserTestController {
 
         User user = userService.findById((long) Integer.parseInt(userTestsDto.getUserId()));
 
+//        testCaseService.deleteByUserIdAndTestIdNotIn(userTestsDto.getUserId(), userTestsDto.getTestIds());
         for (String testId : userTestsDto.getTestIds()) {
             TestCase testCase = new TestCase();
             testCase.setUser(user);
