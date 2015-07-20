@@ -15,8 +15,18 @@
                name="testId"
                value="${testForm.id}"/>
     </c:if>
-    <div class="question-form" id="<nested:write property='id' />">
-        <div>
+    <c:set var="questionId">
+        <nested:write property='id' />
+    </c:set>
+    <div class="question-form" id="${questionId}">
+        <div class="input-group">
+            <c:if test="${not empty testForm}">
+                <span class="input-group-addon">
+                    <a href="/testsystem/admin/questionDelete.do?id=${questionId}&testId=${testForm.id}">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </a>
+                </span>
+            </c:if>
             <nested:textarea property="title" rows="3" styleClass="form-control vresize">
             </nested:textarea>
         </div>

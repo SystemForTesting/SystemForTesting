@@ -16,17 +16,19 @@
     </tr>
     </thead>
     <tbody>
-    <logic:iterate name="testListForm" property="tests" id="test" indexId="index">
-        <c:set var="testId">
-            <bean:write name="test" property="id"/>
-        </c:set>
-        <tr test-id="${testId}" onclick="selectTestFromTable(this)">
-            <td><bean:write name="index"/></td>
-            <td><bean:write name="test" property="title"/></td>
-            <td><bean:write name="test" property="passMark"/></td>
-            <td><bean:write name="test" property="duration"/></td>
-        </tr>
-    </logic:iterate>
+    <nested:form action="/admin/testList">
+        <nested:iterate name="testListForm" property="testForms" id="testForm" indexId="index">
+            <c:set var="testId">
+                <nested:write property="test.id"/>
+            </c:set>
+            <tr test-id="${testId}" onclick="selectTestFromTable(this)">
+                <td><nested:write name="index"/></td>
+                <td><nested:write property="test.title"/></td>
+                <td><nested:write property="test.passMark"/></td>
+                <td><nested:write property="test.duration"/></td>
+            </tr>
+        </nested:iterate>
+    </nested:form>
     </tbody>
 </table>
 <div align="center">

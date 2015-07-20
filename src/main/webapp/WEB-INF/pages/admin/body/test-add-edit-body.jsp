@@ -5,6 +5,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 <%@ taglib uri="http://struts.apache.org/tags-nested" prefix="nested" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <nested:form action="/admin/testAddEdit">
     <div class="form-inline col-sm-4 text-center form-group">
@@ -35,9 +36,14 @@
 
 <div class="main-quest-panel col-sm-12">
     <div class="questions">
-        <%--<logic:iterate name="testForm" property="questions" id="question">--%>
-        <nested:iterate name="testForm" property="questions" id="questionForm">
-            <jsp:include page="question-add-edit-body.jsp"/>
+        <nested:iterate name="testForm" property="questions" id="questionForm" indexId="index">
+            <c:set var="i">
+                <nested:write name="index"/>
+            </c:set>
+            <div class="question-list-item">
+                <label>Вопрос № ${i + 1}</label>
+                <jsp:include page="question-add-edit-body.jsp"/>
+            </div>
         </nested:iterate>
     </div>
     <div class="text-center">

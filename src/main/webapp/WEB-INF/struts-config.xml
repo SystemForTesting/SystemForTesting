@@ -11,6 +11,7 @@
         <form-bean name="questionListForm" type="com.epam.testsystem.form.QuestionListForm"/>
         <form-bean name="testCaseForm" type="com.epam.testsystem.form.TestCaseForm"/>
         <form-bean name="userListForm" type="com.epam.testsystem.form.UserListForm"/>
+        <form-bean name="usersTestsForm" type="com.epam.testsystem.form.UsersTestsForm"/>
         <form-bean name="userForm" type="com.epam.testsystem.form.UserForm"/>
     </form-beans>
 
@@ -51,6 +52,12 @@
             <forward name="redirect" redirect="true" path="/admin/questionView.do"/>
             <forward name="redirectToTest" redirect="true" path="/admin/testAddEdit.do"/>
         </action>
+        <action path="/admin/questionDelete"
+                type="org.springframework.web.struts.DelegatingActionProxy"
+                name="questionForm"
+                scope="request">
+            <forward name="redirectToTest" redirect="true" path="/admin/testAddEdit.do"/>
+        </action>
         <action path="/admin/questionList"
                 type="org.springframework.web.struts.DelegatingActionProxy"
                 name="questionListForm"
@@ -65,11 +72,11 @@
                 validate="false">
             <forward name="success" path="/WEB-INF/pages/user/user-testcase.jsp"/>
         </action>
-        <action path="/admin/studentList"
+        <!--<action path="/admin/studentList"-->
+        <action path="/admin/usersTests"
                 type="org.springframework.web.struts.DelegatingActionProxy"
-                name="userListForm"
-                scope="request"
-                validate="false">
+                name="usersTestsForm"
+                scope="request">
             <forward name="success" path="/WEB-INF/pages/admin/student-list.jsp"/>
         </action>
         <action path="/admin/userAddEdit"
@@ -78,17 +85,18 @@
                 scope="request"
                 validate="true">
             <forward name="success" path="/WEB-INF/pages/admin/student-list.jsp"/>
-            <forward name="redirect" redirect="true" path="/admin/studentList.do"/>
+            <forward name="redirect" redirect="true" path="/admin/usersTests.do"/>
         </action>
         <action path="/admin/removeUser"
                 type="org.springframework.web.struts.DelegatingActionProxy"
                 name="userForm"
-                scope="request"
-                validate="false">
-            <forward name="redirect" redirect="true" path="/admin/studentList.do"/>
+                scope="request">
+            <forward name="redirect" redirect="true" path="/admin/usersTests.do"/>
         </action>
         <action path="/index"
-                type="org.springframework.web.struts.DelegatingActionProxy">
+                type="org.springframework.web.struts.DelegatingActionProxy"
+                name="testCaseForm"
+                scope="request">
             <forward name="success" path="/WEB-INF/pages/user/user-main-page.jsp"/>
         </action>
         <action path="/changePassword"
