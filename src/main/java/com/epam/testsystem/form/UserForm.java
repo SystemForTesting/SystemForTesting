@@ -8,6 +8,19 @@ public class UserForm extends BaseForm<User> {
     private String newPassword;
     private String confirmPassword;
 
+    public UserForm() {
+    }
+
+    public UserForm(User user) {
+        this.user = user;
+    }
+
+    public UserForm(User user, String newPassword, String confirmPassword) {
+        this.user = user;
+        this.newPassword = newPassword;
+        this.confirmPassword = confirmPassword;
+    }
+
     public String getNewPassword() {
         return newPassword;
     }

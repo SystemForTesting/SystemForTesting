@@ -7,13 +7,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserListForm extends ActionForm {
-    private List<User> users = new ArrayList<>();
+    private List<UserForm> userForms = new ArrayList<>();
 
-    public List<User> getUsers() {
-        return users;
+    public UserListForm() {
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public UserListForm(List<UserForm> userForms) {
+        this.userForms = userForms;
+    }
+
+    public List<UserForm> getUserForms() {
+        return userForms;
+    }
+
+    public void setUserForms(List<UserForm> userForms) {
+        this.userForms = userForms;
     }
 }
