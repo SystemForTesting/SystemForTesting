@@ -23,7 +23,7 @@ public class TestViewAction extends BaseAction<TestForm> {
     }
 
     @Override
-    protected ActionForward onGet(ActionMapping mapping, TestForm form) {
+    protected ActionForward onGet(ActionMapping mapping, TestForm form, HttpServletRequest request) {
         Long id = form.getId();
         if (id != null) {
             Test test = testService.findById(id);

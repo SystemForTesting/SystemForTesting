@@ -13,7 +13,7 @@ public abstract class BaseAction<T> extends Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         String method = request.getMethod();
         if (method.equals("GET")) {
-            return onGet(mapping, (T) form);
+            return onGet(mapping, (T) form, request);
         } else if (method.equals("POST")) {
             return onPost(mapping, (T) form, request);
         }
@@ -22,5 +22,5 @@ public abstract class BaseAction<T> extends Action {
 
     protected abstract ActionForward onPost(ActionMapping mapping, T form, HttpServletRequest request);
 
-    protected abstract ActionForward onGet(ActionMapping mapping, T form);
+    protected abstract ActionForward onGet(ActionMapping mapping, T form, HttpServletRequest request);
 }

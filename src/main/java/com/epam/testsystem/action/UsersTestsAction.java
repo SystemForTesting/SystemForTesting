@@ -33,7 +33,7 @@ public class UsersTestsAction extends BaseAction<UsersTestsForm> {
     }
 
     @Override
-    protected ActionForward onGet(ActionMapping mapping, UsersTestsForm form) {
+    protected ActionForward onGet(ActionMapping mapping, UsersTestsForm form, HttpServletRequest request) {
         List<User> users = userService.findByRoleName("user");
         List<Test> tests = testService.findAll();
 //        Map<Long, List<Long>> usersTestCases = new HashMap<>();

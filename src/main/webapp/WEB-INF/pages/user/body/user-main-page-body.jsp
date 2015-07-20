@@ -63,19 +63,40 @@
         <nested:form action="/test">
             <div id="myTabContent" class="tab-content">
                 <div role="tabpanel" class="tab-pane fade active in" id="home" aria-labelledby="home-tab">
-                    <p>
-                        <nested:iterate name="testCaseForm" property="notCompletedTestCases" id="notCompletedTestCase"
-                                        indexId="index">
-                            <a><bean:write name="notCompletedTestCase" property="test.title"/></a>
-                        </nested:iterate>
-                    </p>
+                    <c:set var="notCTestCase">
+                        <nested:write property="notCompletedTestCases"/>
+                    </c:set>
+                    <c:choose>
+                        <c:when test="${not empty testCaseForm.notCompletedTestCases}">
+                            <nested:iterate name="testCaseForm" property="notCompletedTestCases"
+                                            id="notCompletedTestCase"
+                                            indexId="index">
+                                <h4 align="center">
+                                    <html:link action="/test?id=${notCompletedTestCase.id}">
+                                        <bean:write name="notCompletedTestCase" property="test.title"/>
+                                    </html:link><br/>
+                                </h4>
+                            </nested:iterate>
+                        </c:when>
+                        <c:otherwise>
+                            <h4 align="center"><b><bean:message key="empty.not.completed.tests"/></b></h4>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
-                <div role="tabpanel" class="tab-pane fade active in" id="profile" aria-labelledby="profile-tab">
-                    <p><nested:iterate name="testCaseForm" property="completedTestCases" id="completedTestCase"
-                                       indexId="index">
-                        <bean:write name="completedTestCase" property="test.title"/>
-                    </nested:iterate>
-                    </p>
+                <div role="tabpanel" class="tab-pane fade in" id="profile" aria-labelledby="profile-tab">
+                    <c:choose>
+                        <c:when test="${not empty testCaseForm.completedTestCases}">
+                            <nested:iterate name="testCaseForm" property="completedTestCases" id="completedTestCase"
+                                            indexId="index">
+                                <h4 align="center">
+                                    <a><bean:write name="completedTestCase" property="test.title"/></a>
+                                </h4>
+                            </nested:iterate>
+                        </c:when>
+                        <c:otherwise>
+                            <h4 align="center"><b><bean:message key="empty.completed.tests"/></b></h4>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
         </nested:form>

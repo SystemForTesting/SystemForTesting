@@ -24,20 +24,22 @@ public class UserIndexAction extends Action {
 
     @Autowired
     private TestCaseRepository testCaseRepository;
-      @Override
-      public ActionForward execute(ActionMapping mapping, ActionForm form,
-                                   HttpServletRequest request, HttpServletResponse response) throws Exception {
-          User user = getCurrentlyAuthenticatedUser();
-          List<TestCase> testCasesByUserId = testCaseRepository.findByUser_Id(user.getId());
-          TestCaseForm testCaseForm = (TestCaseForm) form;
-          for (TestCase testCase : testCasesByUserId) {
-              if (testCase.getStartedAt() == null) {
-                  testCaseForm.getNotCompletedTestCases().add(testCase);
-              } else {
-                  testCaseForm.getCompletedTestCases().add(testCase);
-              }
-          }
-          request.setAttribute("user", user);
-          return mapping.findForward("success");
-      }
+
+    @Override
+    public ActionForward execute(ActionMapping mapping, ActionForm form,
+                                 HttpServletRequest request, HttpServletResponse response) throws Exception {
+        User user = getCurrentlyAuthenticatedUser();
+        List<TestCase> testCasesByUserId = testCaseRepository.findByUser_Id(user.getId());
+        TestCaseForm testCaseForm = (TestCaseForm) form;
+        for (TestCase testCase : testCasesByUserId) {
+            if (testCase.getStartedAt() == null) {
+                testCaseForm.getNotCompletedTestCases().add(testCase);
+            } else {
+                testCaseForm.getCompletedTestCases().add(testCase);
+            }
+            System.out.println(testCaseForm.getCompletedTestCases());
+        }
+        request.setAttribute("user", user);
+        return mapping.findForward("success");
+    }
 }

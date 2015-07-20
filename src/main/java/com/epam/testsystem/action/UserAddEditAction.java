@@ -52,7 +52,7 @@ public class UserAddEditAction extends BaseAction<UserForm> {
     }
 
     @Override
-    protected ActionForward onGet(ActionMapping mapping, UserForm form) {
+    protected ActionForward onGet(ActionMapping mapping, UserForm form, HttpServletRequest request) {
         return mapping.findForward("success");
     }
 }
