@@ -36,7 +36,6 @@ public class UsersTestsAction extends BaseAction<UsersTestsForm> {
     protected ActionForward onGet(ActionMapping mapping, UsersTestsForm form) {
         List<User> users = userService.findByRoleName("user");
         List<Test> tests = testService.findAll();
-//        Map<Long, List<Long>> usersTestCases = new HashMap<>();
         List<UserForm> userForms = new ArrayList<>();
         List<TestForm> testForms = new ArrayList<>();
         for (User user : users) {
