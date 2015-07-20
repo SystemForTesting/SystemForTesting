@@ -87,7 +87,9 @@
             <forward name="redirect" redirect="true" path="/admin/usersTests.do"/>
         </action>
         <action path="/index"
-                type="org.springframework.web.struts.DelegatingActionProxy">
+                type="org.springframework.web.struts.DelegatingActionProxy"
+                name="testCaseForm"
+                scope="request">
             <forward name="success" path="/WEB-INF/pages/user/user-main-page.jsp"/>
         </action>
         <action path="/changePassword"

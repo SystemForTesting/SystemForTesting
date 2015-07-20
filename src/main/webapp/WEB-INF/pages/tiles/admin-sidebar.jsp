@@ -11,7 +11,7 @@
         </html:link>
     </li>
     <li>
-        <html:link action="/admin/studentList">
+        <html:link action="/admin/usersTests">
             <bean:message key="admin.sidebar.navigation.students" />
         </html:link>
     </li>
