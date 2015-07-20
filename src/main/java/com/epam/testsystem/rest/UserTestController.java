@@ -69,16 +69,6 @@ public class UserTestController {
         User user = userService.findById((long) Integer.parseInt(userTestsDto.getUserId()));
         updateUserTestCases(user, userTestsDto.getTestIds());
         userService.save(user);
-//        testCaseService.deleteByUserIdAndTestIdNotIn(userTestsDto.getUserId(), userTestsDto.getTestIds());
-//        for (String testId : userTestsDto.getTestIds()) {
-//            TestCase testCase = new TestCase();
-//            testCase.setUser(user);
-//            testCase.setTest(testService.findById((long) Integer.parseInt(testId)));
-//            testCase.setCreatedAt(LocalDateTime.now());
-//            testCase.setCreatedBy(user);
-//
-//            testCaseService.save(testCase);
-//        }
     }
 
     private void updateUserTestCases(User user, List<String> testIds) {
@@ -88,10 +78,15 @@ public class UserTestController {
                 user.addTestCase(new TestCase(user, testService.findById(testId)));
             }
         }
-        for (TestCase testCase : user.getTestCases()) {
+        List<TestCase> testCases = user.getTestCases();
+        List<TestCase> testCasesForDeleting = new ArrayList<>();
+        for (TestCase testCase : testCases) {
             if(!testIds.contains(testCase.getTest().getId().toString())) {
-                user.getTestCases().remove(testCase);
+                testCasesForDeleting.add(testCase);
             }
+        }
+        for (TestCase testCase : testCasesForDeleting) {
+            testCases.remove(testCase);
         }
     }
 }
