@@ -227,6 +227,34 @@ function setTestsForUser() {
         }
     });
 }
+
+function findUsers(element){
+    var soughtForText = $(element).val().toLowerCase();
+    var foundAllCels = $(element).parents('table').children('tbody').children('tr').children('td').children('.stud-cell');
+
+    foundAllCels.each(function(index, val){
+        if ($(val).html().toLowerCase().indexOf(soughtForText) < 0 && soughtForText.length > 0){
+            $(val).parents('tr').css('display', 'none');
+        } else {
+            $(val).parents('tr').css('display', '');
+        }
+    })
+}
+
+function findTest(element){
+    var soughtForText = $(element).val().toLowerCase();
+    var foundAllCels = $(element).parents('.front-panel').children('.admin-test-list').children('div').children('label');
+
+    foundAllCels.each(function(index, val){
+        //var celText = $(val).html().indexOf(soughtForText);
+        var celText = $(val).text().toLowerCase();
+        if ($(val).text().toLowerCase().indexOf(soughtForText) < 0 && soughtForText.length > 0){
+            $($(val).parents('div').get(0)).css('display', 'none');
+        } else {
+            $($(val).parents('div').get(0)).css('display', '');
+        }
+    })
+}
 //------------------------------END ADMIN PAGE------------------------------------------------
 
 //------------------------------START USER PAGE------------------------------------------------
