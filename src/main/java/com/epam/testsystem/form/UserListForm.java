@@ -1,6 +1,5 @@
 package com.epam.testsystem.form;
 
-import com.epam.testsystem.model.User;
 import org.apache.struts.action.ActionForm;
 
 import java.util.ArrayList;
