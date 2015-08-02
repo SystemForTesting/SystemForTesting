@@ -19,15 +19,6 @@ public class TestCaseService extends BaseService<TestCase, TestCaseRepository> {
 
         @Transactional
     public List<TestCase> findByUserId(Long id) {
-        return (List<TestCase>) repository.findByUser_Id(id);
-    }
-
-    public void deleteByUserIdAndTestIdNotIn(String user_id,List<String> testIds){
-        List<Long> longs = new ArrayList<>();
-        for (String testId : testIds) {
-            longs.add(Long.parseLong(testId, 10));
-        }
-
-//        repository.deleteByUser_IdAndTest_IdNotIn(Long.parseLong(user_id, 10), longs);
+        return repository.findByUser_Id(id);
     }
 }

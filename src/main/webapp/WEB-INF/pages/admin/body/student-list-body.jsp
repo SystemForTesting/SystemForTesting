@@ -47,7 +47,6 @@
                         <thead>
                         <tr>
                             <th>
-                                <%--<bean:message key="admin.message.student"/>--%>
                                 <input type="text" class="form-control search-student-row" placeholder="<bean:message key="admin.message.user"/>">
                             </th>
                             <th><bean:message key="admin.message.appointed.tests"/></th>

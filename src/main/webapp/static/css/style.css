@@ -660,3 +660,16 @@ thead tr th {
 .change-password-button:hover {
     background-color: #275485 !important;
 }
+
+.user-in-system{
+    margin-top: 20px;
+}
+
+.user-in-system img{
+    width: 20px;
+    height: 20px;
+}
+
+.user-in-system:hover{
+    cursor: hand;
+}
