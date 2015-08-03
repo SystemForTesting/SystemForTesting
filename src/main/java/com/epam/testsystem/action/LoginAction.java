@@ -1,5 +1,6 @@
 package com.epam.testsystem.action;
 
+import com.epam.testsystem.model.User;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;

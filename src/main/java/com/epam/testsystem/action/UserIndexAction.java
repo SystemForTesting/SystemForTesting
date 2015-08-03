@@ -40,7 +40,7 @@ public class UserIndexAction extends Action {
             System.out.println(testCaseForm.getCompletedTestCases());
         }
 
-        request.setAttribute("user", user);
+        request.getSession().setAttribute("user", user);
         return mapping.findForward("success");
     }
 }

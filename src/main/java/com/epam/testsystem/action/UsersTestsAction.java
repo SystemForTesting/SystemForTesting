@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.epam.testsystem.util.SpringUtils.getCurrentlyAuthenticatedUser;
+
 @Controller("/admin/usersTests")
 public class UsersTestsAction extends BaseAction<UsersTestsForm> {
 
@@ -34,6 +36,9 @@ public class UsersTestsAction extends BaseAction<UsersTestsForm> {
 
     @Override
     protected ActionForward onGet(ActionMapping mapping, UsersTestsForm form, HttpServletRequest request) {
+        User userr = getCurrentlyAuthenticatedUser();
+        request.getSession().setAttribute("user", userr);
+
         List<User> users = userService.findByRoleName("user");
         List<Test> tests = testService.findAll();
         List<UserForm> userForms = new ArrayList<>();
