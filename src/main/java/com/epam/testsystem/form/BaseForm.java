@@ -2,8 +2,9 @@ package com.epam.testsystem.form;
 
 import com.epam.testsystem.model.BaseEntity;
 import org.apache.struts.action.ActionForm;
+import org.apache.struts.validator.ValidatorForm;
 
-public abstract class BaseForm<E extends BaseEntity> extends ActionForm {
+public abstract class BaseForm<E extends BaseEntity> extends ValidatorForm {
     protected Long id;
 //    protected boolean deleted;
 //    private LocalDateTime createdAt;

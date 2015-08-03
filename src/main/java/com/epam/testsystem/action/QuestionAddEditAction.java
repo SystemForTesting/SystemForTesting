@@ -56,7 +56,7 @@ public class QuestionAddEditAction extends BaseAction<QuestionForm> {
     }
 
     @Override
-    protected ActionForward onGet(ActionMapping mapping, QuestionForm form) {
+    protected ActionForward onGet(ActionMapping mapping, QuestionForm form, HttpServletRequest request) {
         Long id = form.getId();
         if (id != null) {
             Question question = questionService.findById(id);

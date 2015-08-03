@@ -12,8 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.mail.MessagingException;
 import javax.mail.Session;
@@ -54,7 +52,7 @@ public class UserAddEditAction extends BaseAction<UserForm> {
     }
 
     @Override
-    protected ActionForward onGet(ActionMapping mapping, UserForm form) {
+    protected ActionForward onGet(ActionMapping mapping, UserForm form, HttpServletRequest request) {
         return mapping.findForward("success");
     }
 }
