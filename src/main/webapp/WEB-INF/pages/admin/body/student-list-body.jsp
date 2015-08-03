@@ -50,12 +50,8 @@
                         <thead>
                         <tr>
                             <th>
-<<<<<<< HEAD
-                                <input type="text" class="form-control search-student-row" onkeyup="findUsers(this)" placeholder="<bean:message key="admin.message.user"/>">
-=======
                                 <input type="text" class="form-control search-student-row" onkeyup="findUsers(this)"
                                        placeholder="<bean:message key="admin.message.user"/>">
->>>>>>> origin
                             </th>
                             <th><bean:message key="admin.message.appointed.tests"/></th>
                         </tr>

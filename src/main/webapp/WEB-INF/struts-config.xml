@@ -82,7 +82,8 @@
         <action path="/admin/usersTests"
                 type="org.springframework.web.struts.DelegatingActionProxy"
                 name="usersTestsForm"
-                scope="request">
+                scope="request"
+                validate="false">
             <forward name="success" path="/WEB-INF/pages/admin/student-list.jsp"/>
         </action>
         <action path="/admin/userAddEdit"

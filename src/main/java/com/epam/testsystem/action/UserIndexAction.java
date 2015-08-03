@@ -1,17 +1,9 @@
 package com.epam.testsystem.action;
 
 import com.epam.testsystem.form.TestCaseForm;
-<<<<<<< HEAD
-import com.epam.testsystem.form.UserForm;
 import com.epam.testsystem.model.TestCase;
 import com.epam.testsystem.model.User;
 import com.epam.testsystem.repository.TestCaseRepository;
-=======
-import com.epam.testsystem.form.TestCaseListForm;
-import com.epam.testsystem.model.TestCase;
-import com.epam.testsystem.model.User;
-import com.epam.testsystem.service.TestCaseService;
->>>>>>> origin
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
