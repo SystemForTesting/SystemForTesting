@@ -25,13 +25,9 @@
                     <span class="slide-in-out-button" onclick="slidePanel.doSlide(this)">
                         <div class="arrow-right"></div>
                     </span>
-<<<<<<< HEAD
-                    <input type="text" class="form-control search-row"
-                           placeholder="<bean:message key="admin.message.test.title"/>">
-=======
-                    <input type="text" class="form-control search-row" onkeyup="findTest(this)" placeholder="<bean:message key="admin.message.test.title"/>">
->>>>>>> master
 
+                    <input type="text" class="form-control search-row" onkeyup="findTest(this)"
+                           placeholder="<bean:message key="admin.message.test.title"/>">
 
                     <div class="panel panel-default admin-test-list">
                         <nested:define id="testListForm" property="testListForm"/>
@@ -54,7 +50,12 @@
                         <thead>
                         <tr>
                             <th>
+<<<<<<< HEAD
                                 <input type="text" class="form-control search-student-row" onkeyup="findUsers(this)" placeholder="<bean:message key="admin.message.user"/>">
+=======
+                                <input type="text" class="form-control search-student-row" onkeyup="findUsers(this)"
+                                       placeholder="<bean:message key="admin.message.user"/>">
+>>>>>>> origin
                             </th>
                             <th><bean:message key="admin.message.appointed.tests"/></th>
                         </tr>

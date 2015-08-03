@@ -13,6 +13,7 @@
         <form-bean name="userListForm" type="com.epam.testsystem.form.UserListForm"/>
         <form-bean name="usersTestsForm" type="com.epam.testsystem.form.UsersTestsForm"/>
         <form-bean name="userForm" type="com.epam.testsystem.form.UserForm"/>
+        <form-bean name="testCaseListForm" type="com.epam.testsystem.form.TestCaseListForm"/>
     </form-beans>
 
     <action-mappings>
@@ -20,6 +21,10 @@
                 type="org.springframework.web.struts.DelegatingActionProxy">
             <forward name="success" path="/WEB-INF/pages/common/login.jsp"/>
         </action>
+        <action path="/logout"
+                type="org.springframework.web.struts.DelegatingActionProxy">
+        <forward name="success" path="/login.do" redirect="true"/>
+    </action>
         <action path="/admin/testAddEdit"
                 type="org.springframework.web.struts.DelegatingActionProxy"
                 name="testForm"

@@ -25,10 +25,6 @@ public class UserTestCaseAction extends BaseAction<TestCaseForm> {
 
     @Override
     protected ActionForward onPost(ActionMapping mapping, TestCaseForm form, HttpServletRequest request) {
-//        Test saved = testService.createOrUpdate(form);
-//
-//        ActionRedirect redirect = new ActionRedirect(mapping.findForward("redirect"));
-//        redirect.addParameter("id", saved.getId());
         return null;
     }
 

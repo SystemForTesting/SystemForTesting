@@ -27,7 +27,7 @@ public class UserSavePasswordAction extends BaseAction<UserForm> {
         User userById = userService.findById(user.getId());
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-        if (!encoder.matches(form.getUser().getPassword(), user.getPassword())) return mapping.findForward("saveError");
+        if (!encoder.matches(form.getOldPassword(), user.getPassword())) return mapping.findForward("saveError");
         String newPassword = form.getNewPassword();
         if (!newPassword.equals(form.getConfirmPassword())) return mapping.findForward("saveError");
 
