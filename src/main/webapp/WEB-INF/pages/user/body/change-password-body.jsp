@@ -13,7 +13,7 @@
 
                 <div>
                     <div class="text-center">
-                        <input type="password" name="user.password" value="" id="oldPassword"
+                        <input type="password" name="oldPassword" value="" id="oldPassword"
                                class="form-control padding-top-bottom-5px font-size-14px"
                                placeholder="<bean:message key="old.password"/>">
                         <input type="password" name="newPassword" value="" id="newPassword"

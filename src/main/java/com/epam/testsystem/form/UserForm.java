@@ -5,6 +5,7 @@ import com.epam.testsystem.model.User;
 public class UserForm extends BaseForm<User> {
 
     private User user;
+    private String oldPassword;
     private String newPassword;
     private String confirmPassword;
 
@@ -19,6 +20,14 @@ public class UserForm extends BaseForm<User> {
         this.user = user;
         this.newPassword = newPassword;
         this.confirmPassword = confirmPassword;
+    }
+
+    public String getOldPassword() {
+        return oldPassword;
+    }
+
+    public void setOldPassword(String oldPassword) {
+        this.oldPassword = oldPassword;
     }
 
     public String getNewPassword() {

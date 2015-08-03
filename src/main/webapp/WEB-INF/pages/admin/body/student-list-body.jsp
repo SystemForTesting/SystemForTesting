@@ -8,7 +8,8 @@
 
 <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="admin-tabs active"><a href="#home" aria-controls="home" role="tab"
-                                                         data-toggle="tab"><bean:message key="admin.tests.for.users"/></a></li>
+                                                         data-toggle="tab"><bean:message
+            key="admin.tests.for.users"/></a></li>
     <li role="presentation" class="admin-tabs"><a href="#profile" aria-controls="profile" role="tab"
                                                   data-toggle="tab"><bean:message key="admin.message.users"/></a></li>
 </ul>
@@ -24,7 +25,8 @@
                     <span class="slide-in-out-button" onclick="slidePanel.doSlide(this)">
                         <div class="arrow-right"></div>
                     </span>
-                    <input type="text" class="form-control search-row" onkeyup="findTest(this)" placeholder="<bean:message key="admin.message.test.title"/>">
+                    <input type="text" class="form-control search-row" onkeyup="findTest(this)"
+                           placeholder="<bean:message key="admin.message.test.title"/>">
 
 
                     <div class="panel panel-default admin-test-list">
@@ -39,7 +41,8 @@
                             </div>
                         </nested:iterate>
                     </div>
-                    <input type="button" class="btn btn-info admin-test-apply" onclick="setTestsForUser()" value="Apply">
+                    <input type="button" class="btn btn-info admin-test-apply" onclick="setTestsForUser()"
+                           value="Apply">
 
                 </div>
                 <div class="panel panel-default back-panel">
@@ -47,8 +50,8 @@
                         <thead>
                         <tr>
                             <th>
-                                <%--<bean:message key="admin.message.student"/>--%>
-                                <input type="text" class="form-control search-student-row" onkeyup="findUsers(this)" placeholder="<bean:message key="admin.message.user"/>">
+                                <input type="text" class="form-control search-student-row" onkeyup="findUsers(this)"
+                                       placeholder="<bean:message key="admin.message.user"/>">
                             </th>
                             <th><bean:message key="admin.message.appointed.tests"/></th>
                         </tr>
@@ -62,12 +65,15 @@
                                             <div class="role"><nested:write property="user.role.name"/></div>
                                         </div>
                                         <div><label><bean:message key="user.first.name"/>:</label>
+
                                             <div><nested:write property="user.firstName"/></div>
                                         </div>
                                         <div><label><bean:message key="user.last.name"/>:</label>
+
                                             <div><nested:write property="user.lastName"/></div>
                                         </div>
                                         <div><label><bean:message key="user.email"/>:</label>
+
                                             <div><nested:write property="user.email"/></div>
                                         </div>
                                     </div>
@@ -76,24 +82,33 @@
                                     <div class="stud-cell"><nested:write property="credentials"/></div>
                                 </td>
                                 <td onmouseover="hoverTestLink(this)">
-                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<nested:write property="user.id"/>" aria-expanded="false" aria-controls="collapse<nested:write property="user.id"/>" class="collapsed" onmouseover="hoverTestLink(this)">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion"
+                                       href="#collapse<nested:write property="user.id"/>" aria-expanded="false"
+                                       aria-controls="collapse<nested:write property="user.id"/>" class="collapsed"
+                                       onmouseover="hoverTestLink(this)">
                                             <span>
                                                 <div class="arrow-bottom"></div>
                                             </span>
                                     </a>
-                                    <div id="collapse<nested:write property="user.id"/>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" aria-expanded="false" style="height: 0px;">
+
+                                    <div id="collapse<nested:write property="user.id"/>" class="panel-collapse collapse"
+                                         role="tabpanel" aria-labelledby="headingOne" aria-expanded="false"
+                                         style="height: 0px;">
                                         <div class="panel-body">
                                             <c:set var="currentUserId">
                                                 <nested:write property="user.id"/>
                                             </c:set>
                                             <ol>
-                                                <nested:iterate name="usersTestsForm" property="apointedTestsForEachUser" id="entry">
+                                                <nested:iterate name="usersTestsForm"
+                                                                property="apointedTestsForEachUser" id="entry">
                                                     <c:set var="userId">
                                                         <nested:write name="entry" property="key"/>
                                                     </c:set>
                                                     <c:if test="${currentUserId == userId}">
                                                         <nested:iterate name="entry" property="value" id="testcase">
-                                                            <li><label><nested:write name="testcase" property="test.title"/></label></li>
+                                                            <li><label><nested:write name="testcase"
+                                                                                     property="test.title"/></label>
+                                                            </li>
                                                         </nested:iterate>
                                                     </c:if>
                                                 </nested:iterate>
