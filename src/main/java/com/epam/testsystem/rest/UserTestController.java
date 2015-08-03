@@ -2,6 +2,7 @@ package com.epam.testsystem.rest;
 
 import com.epam.testsystem.dto.UserTestDto;
 import com.epam.testsystem.dto.UserTestsDto;
+import com.epam.testsystem.model.Test;
 import com.epam.testsystem.model.TestCase;
 import com.epam.testsystem.model.User;
 import com.epam.testsystem.service.TestCaseService;
@@ -39,6 +40,7 @@ public class UserTestController {
         List<TestCase> testCases = testCaseService.findAll();
         List<UserTestDto> users_tests = new ArrayList<>();
 
+        
         for (TestCase testCase : testCases) {
             users_tests.add(new UserTestDto(testCase.getUser().getId(), testCase.getTest().getId()));
         }
@@ -65,16 +67,26 @@ public class UserTestController {
     public void setUserTests(@RequestBody UserTestsDto userTestsDto) {
 
         User user = userService.findById((long) Integer.parseInt(userTestsDto.getUserId()));
+        updateUserTestCases(user, userTestsDto.getTestIds());
+        userService.save(user);
+    }
 
-//        testCaseService.deleteByUserIdAndTestIdNotIn(userTestsDto.getUserId(), userTestsDto.getTestIds());
-        for (String testId : userTestsDto.getTestIds()) {
-            TestCase testCase = new TestCase();
-            testCase.setUser(user);
-            testCase.setTest(testService.findById((long) Integer.parseInt(testId)));
-            testCase.setCreatedAt(LocalDateTime.now());
-            testCase.setCreatedBy(user);
-
-            testCaseService.save(testCase);
+    private void updateUserTestCases(User user, List<String> testIds) {
+        for (String testIdString : testIds) {
+            Long testId = Long.valueOf(testIdString);
+            if(!user.containsTestCase(testId)) {
+                user.addTestCase(new TestCase(user, testService.findById(testId)));
+            }
+        }
+        List<TestCase> testCases = user.getTestCases();
+        List<TestCase> testCasesForDeleting = new ArrayList<>();
+        for (TestCase testCase : testCases) {
+            if(!testIds.contains(testCase.getTest().getId().toString())) {
+                testCasesForDeleting.add(testCase);
+            }
+        }
+        for (TestCase testCase : testCasesForDeleting) {
+            testCases.remove(testCase);
         }
     }
 }

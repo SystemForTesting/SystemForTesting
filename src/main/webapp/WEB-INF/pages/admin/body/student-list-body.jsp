@@ -25,8 +25,12 @@
                     <span class="slide-in-out-button" onclick="slidePanel.doSlide(this)">
                         <div class="arrow-right"></div>
                     </span>
+<<<<<<< HEAD
                     <input type="text" class="form-control search-row"
                            placeholder="<bean:message key="admin.message.test.title"/>">
+=======
+                    <input type="text" class="form-control search-row" onkeyup="findTest(this)" placeholder="<bean:message key="admin.message.test.title"/>">
+>>>>>>> master
 
 
                     <div class="panel panel-default admin-test-list">
@@ -37,7 +41,7 @@
                                     <nested:write property="test.id"/>
                                 </c:set>
                                 <nested:checkbox property="test.id" value="${testId}"/>
-                                <nested:write property="test.title"/>
+                                <label><nested:write property="test.title"/></label>
                             </div>
                         </nested:iterate>
                     </div>
@@ -50,9 +54,7 @@
                         <thead>
                         <tr>
                             <th>
-                                    <%--<bean:message key="admin.message.student"/>--%>
-                                <input type="text" class="form-control search-student-row"
-                                       placeholder="<bean:message key="admin.message.user"/>">
+                                <input type="text" class="form-control search-student-row" onkeyup="findUsers(this)" placeholder="<bean:message key="admin.message.user"/>">
                             </th>
                             <th><bean:message key="admin.message.appointed.tests"/></th>
                         </tr>
