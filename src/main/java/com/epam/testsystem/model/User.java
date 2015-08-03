@@ -1,8 +1,8 @@
 package com.epam.testsystem.model;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "DBUSER"
@@ -16,6 +16,17 @@ public class User extends BaseEntity {
     private String email;
     @ManyToOne
     private Role role;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TestCase> testCases;
+
+    public List<TestCase> getTestCases() {
+        return testCases;
+    }
+
+    public void setTestCases(List<TestCase> testCases) {
+        this.testCases = testCases;
+    }
 
     public String getUsername() {
         return username;
@@ -67,5 +78,26 @@ public class User extends BaseEntity {
 
     public String getRoleName() {
         return this.getRole().getName();
+    }
+
+    public boolean containsTestCase(Long testId) {
+        if (testCases == null || testId == null) {
+            return false;
+        }
+
+        for (TestCase testCase : testCases) {
+            if (testId.equals(testCase.getTest().getId())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void addTestCase(TestCase testCase) {
+        if (testCases == null) {
+            testCases = new ArrayList<>();
+        }
+
+        this.testCases.add(testCase);
     }
 }

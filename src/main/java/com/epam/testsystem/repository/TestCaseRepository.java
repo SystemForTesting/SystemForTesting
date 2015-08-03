@@ -10,6 +10,4 @@ import java.util.List;
 public interface TestCaseRepository extends CrudRepository<TestCase, Long> {
 
     List<TestCase> findByUser_Id(Long userId);
-
-//    void deleteByUser_IdAndTest_IdNot(Long user_id,Long testIds);
 }

@@ -22,6 +22,14 @@ public class TestCase extends BaseEntity {
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Answer> answers;
 
+    public TestCase() {
+    }
+
+    public TestCase(User user, Test test) {
+        this.user = user;
+        this.test = test;
+    }
+
     public LocalDateTime getStartedAt() {
         return startedAt;
     }
